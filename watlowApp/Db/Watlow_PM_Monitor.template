@@ -1,0 +1,104 @@
+####  Macro Definitions  ####
+# (s) - Beam Line
+# (ta) - Target Area
+# (ss) - Device Name
+# (i)	- Channel or Index
+# (CMA)	- Control Mode Active
+# (hPr)	- Heat Power
+# (CPr)	- Cool Power
+# (PvA)	- Filtered Process Value
+# (CLS)	- Read Closed Loop Setpoint
+# (AtS)	- Autotune Status
+
+
+#=========== Monitor Menu ===========
+
+# Control Mode Active
+record(mbbi, "$(s):$(ta):$(ss):1:ControlModeActive$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(modmem.1,$(CMA=2362),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Auto")
+	field(ONVL,	"10")
+	field(TWST,	"Manual")
+	field(TWVL,	"54")
+}
+
+# Heat Power
+record(ai, "$(s):$(ta):$(ss):1:HeatPower$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(hPr=2384),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(PREC,	"1")
+	field(ADEL,	"0.1")
+}
+
+# Cool Power
+record(ai, "$(s):$(ta):$(ss):1:CoolPower$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(CPr=2386),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(PREC,	"1")
+	field(ADEL,	"0.1")
+}
+
+# Filtered Process Value
+record(ai, "$(s):$(ta):$(ss):1:ProcessValue$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(PvA=402),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+}
+
+# Read Closed Loop Setpoint. Same as Set Point Active
+record(ai, "$(s):$(ta):$(ss):1:ReadClosedLoopSV$(i)")
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(CLS=2652),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+}
+
+# Autotune Status
+record(mbbi, "$(s):$(ta):$(ss):1:AutotuneStatus$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(modmem.1,$(AtS=2412),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Waiting: cross 1 positive")
+	field(ONVL,	"119")
+	field(TWST,	"Waiting: cross 1 negative")
+	field(TWVL,	"120")
+	field(THST,	"Waiting: cross 2 positive")
+	field(THVL,	"121")
+	field(FRST,	"Waiting: cross 2 negative")
+	field(FRVL,	"122")
+	field(FVST,	"Waiting: cross 3 positive")
+	field(FVVL,	"123")
+	field(SXST,	"Waiting: cross 3 negative")
+	field(SXVL,	"150")
+	field(SVST,	"Measuring maximum peak")
+	field(SVVL,	"151")
+	field(EIST,	"Measuring minimum peak")
+	field(EIVL,	"152")
+	field(NIST,	"Calculating")
+	field(NIVL,	"153")
+	field(TEST,	"Complete")
+	field(TEVL,	"18")
+	field(ELST,	"Timeout")
+	field(ELVL,	"118")
+}

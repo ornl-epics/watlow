@@ -1,0 +1,142 @@
+####  Macro Definitions  ####
+# (s)	- Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+
+#=========== Output Menu Instance 1 ===========
+
+# Output Type
+record(mbbo, "$(s):$(ta):$(ss):1:OutputType1") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"112")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,840,0xFF,1000)UINT16")
+	field(ZRST,	"Volts")
+	field(ZRVL,	"104")
+	field(ONST,	"Milliampere")
+	field(ONVL,	"112")
+	info(autosaveFields,	"VAL")
+}
+
+# Output Function
+record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction1") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"36")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,842,0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Heat")
+	field(ONVL,	"36")
+	field(TWST,	"Cool")
+	field(TWVL,	"20")
+	field(THST,	"Duplex")
+	field(THVL,	"212")
+	field(FRST,	"Alarm")
+	field(FRVL,	"6")
+	field(FVST,	"Profile Event Out A")
+	field(FVVL,	"233")
+	field(SXST,	"Profile Event Out B")
+	field(SXVL,	"234")
+	field(SVST,	"Retransmit")
+	field(SVVL,	"213")
+	info(autosaveFields,	"VAL")
+}
+
+# Retransmit Source
+record(mbbo, "$(s):$(ta):$(ss):1:RetransmitSource1") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,844,0xFF,1000)UINT16")
+	field(ZRST,	"Analog Input")
+	field(ZRVL,	"142")
+	field(ONST,	"Set Point")
+	field(ONVL,	"85")
+	field(TWST,	"Current")
+	field(TWVL,	"22")
+	field(THST,	"Process Value")
+	field(THVL,	"241")
+	info(autosaveFields,	"VAL")
+}
+
+# Output Function Instance
+record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceA1") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,846,0xFF,1000)UINT16")
+	field(ZRST,	"1")
+	field(ZRVL,	"1")
+	field(ONST,	"2")
+	field(ONVL,	"2")
+	field(TWST,	"3")
+	field(TWVL,	"3")
+	field(THST,	"4")
+	field(THVL,	"4")
+	info(autosaveFields,	"VAL")
+}
+
+# Scale Low
+record(ao, "$(s):$(ta):$(ss):1:AOScaleLow1") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"4")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,856,1000)FLOAT32_BE")
+	field(PREC,	"1")
+	field(DRVL,	"-100")
+	field(DRVH,	"100")
+	info(autosaveFields,	"VAL")
+}
+
+# Scale High
+record(ao, "$(s):$(ta):$(ss):1:AOScaleHigh1") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"20")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,858,1000)FLOAT32_BE")
+	field(PREC,	"1")
+	field(DRVL,	"-100")
+	field(DRVH,	"100")
+	info(autosaveFields,	"VAL")
+}
+
+# Range Low
+record(ao, "$(s):$(ta):$(ss):1:AORangeLow1") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,860,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(DRVL,	"-1999")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Range High
+record(ao, "$(s):$(ta):$(ss):1:AORangeHigh1") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,862,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(DRVL,	"-1999")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Calibration Offset
+record(ao, "$(s):$(ta):$(ss):1:AOCalOffset1") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,852,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(DRVL,	"-1999")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}

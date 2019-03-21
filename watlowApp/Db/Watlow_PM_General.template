@@ -1,0 +1,149 @@
+####  Macro Definitions  ####
+#  (s) - Beam Line
+# (ta) - Target Area
+# (ss) - Device Name
+
+
+
+
+#=========== Lock/Factory Menu ===========
+
+# Operations Security
+record(ao, "$(s):$(ta):$(ss):1:OperationsSecurity")
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,2302,1000)INT32_BE")
+	field(DRVL,	"1")
+	field(DRVH,	"3")
+}
+
+# Read Lock
+record(ao, "$(s):$(ta):$(ss):1:ReadLock")
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,2318,1000)INT32_BE")
+	field(DRVL,	"1")
+	field(DRVH,	"5")
+}
+
+# Write Lock
+record(ao, "$(s):$(ta):$(ss):1:WriteLock")
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,2314,1000)INT32_BE")
+	field(DRVL,	"0")
+	field(DRVH,	"5")
+}
+
+# Software Revision
+record(ai, "$(s):$(ta):$(ss):1:SoftwareRev")
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,4,1000)INT32_BE")
+}
+
+# Serial Number
+record(ai, "$(s):$(ta):$(ss):1:SerialNumber") 
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,12,1000)INT32_BE")
+}
+
+# Software Build Number
+record(ai, "$(s):$(ta):$(ss):1:SoftwareBuild") 
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,8,1000)INT32_BE")
+}
+
+# Date of Manufacture
+record(ai, "$(s):$(ta):$(ss):1:MakeDate") 
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,14,1000)INT32_BE")
+}
+
+# Hardware ID
+record(ai, "$(s):$(ta):$(ss):1:HardwareID") 
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,0,1000)INT32_BE")
+}
+
+# Firmware ID
+record(ai, "$(s):$(ta):$(ss):1:FirmwareID") 
+{
+	field(PINI,	"YES")
+	field(DTYP,	"asynInt32")
+	field(INP,	"@asyn(modmem.1,2,1000)INT32_BE")
+}
+
+
+
+#=========== Global Menu ===========
+
+# Units
+#record(mbbi, "$(s):$(ta):$(ss):1:Units")
+#{
+#	field(SCAN,	"10 second")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(INP,	"@asynMask(mod_enum.1,2308,0xFF,1000)UINT16")
+#	field(ZRST,	"F")
+#	field(ZRVL,	"30")
+#	field(ONST,	"C")
+#	field(ONVL,	"15")
+#}
+
+# Ramp Type
+record(mbbo, "$(s):$(ta):$(ss):1:RampType") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,4414,0xFF,1000)UINT16")
+	field(ZRST,	"Rate")
+	field(ZRVL,	"81")
+	field(ONST,	"Time")
+	field(ONVL,	"143")
+#	info(autosaveFields,	"VAL")
+}
+
+#=========== Force Controller Units to C  ===========
+
+# Force Units on Global Menu
+record(mbbo, "$(s):$(ta):$(ss):1:ForceUnits")
+{
+	field(DOL,	"0")
+	field(SCAN,	"Passive")
+	field(VAL,	"0")
+	field(PINI, "YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,2308,0xFF,1000)UINT16")
+	field(ZRST,	"F")
+	field(ZRVL,	"30")
+	field(ONST,	"C")
+	field(ONVL,	"15")
+}
+
+
+# Force Units on COM Menu
+record(mbbo, "$(s):$(ta):$(ss):1:ForceUnitsCom")
+{
+#	field(DOL,	"30")
+	field(VAL,	"0")
+	field(PINI, "YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,2990,0xFF,1000)UINT16")
+	field(ZRST,	"F")
+	field(ZRVL,	"30")
+	field(ONST,	"C")
+	field(ONVL,	"15")
+}
+

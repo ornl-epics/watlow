@@ -1,0 +1,159 @@
+#### Macro Definitions ####
+# (s)	- Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+
+
+
+#=========== Limits Menu ===========
+
+# Low Trip Setpoint
+record(ao, "$(s):$(ta):$(ss):1:LowTripSP") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,724,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(EGU,	"°")
+	info(autosaveFields,	"VAL")
+}
+
+# High Trip Setpoint
+record(ao, "$(s):$(ta):$(ss):1:HighTripSP") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,726,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(EGU,	"°")
+	info(autosaveFields,	"VAL")
+}
+
+# Limits State
+record(mbbi, "$(s):$(ta):$(ss):1:LimitState") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,730,0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"None")
+	field(ONVL,	"61")
+	field(TWST,	"Limit High")
+	field(TWVL,	"51")
+	field(THST,	"Limit Low")
+	field(THVL,	"52")
+	field(FRST,	"Error")
+	field(FRVL,	"255")
+}
+
+# Limit Clear Request
+record(ao, "$(s):$(ta):$(ss):1:ClearLimitError") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asynMask(modmem.1,720,0xFF,1000)UINT16")
+}
+
+# Limit Status
+record(mbbi, "$(s):$(ta):$(ss):1:LimitStatus") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,744,0xFFFF,1000)INT32_BE")
+	field(ZRST,	"Fail")
+	field(ZRVL,	"32")
+	field(ONST,	"Safe")
+	field(ONVL,	"1667")
+}
+
+# Limits Sides
+record(mbbo, "$(s):$(ta):$(ss):1:LimitSides") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"37")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,728,0xFF,1000)UINT16")
+	field(ZRST,	"Both")
+	field(ZRVL,	"13")
+	field(ONST,	"High")
+	field(ONVL,	"37")
+	field(TWST,	"Low")
+	field(TWVL,	"53")
+	info(autosaveFields,	"VAL")
+}
+
+# Limit Hysteresis
+record(ao, "$(s):$(ta):$(ss):1:LimitHysteresis") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,722,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Maximum Setpoint
+record(ao, "$(s):$(ta):$(ss):1:MaxLimitSP") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"(205")
+##	Need method for dynamically defining the minimum and maximum limits based upon sample environment configuration
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,736,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(DRVL,	"-1999")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Minimum Setpoint
+record(ao, "$(s):$(ta):$(ss):1:MinLimitSP") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,738,1000)FLOAT32_BE")
+	field(PREC,	"3")
+	field(DRVL,	"-1999")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Source Function A
+record(mbbo, "$(s):$(ta):$(ss):1:LimitSourceFnA") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,748,0xFFFF,1000)INT32_BE")
+	field(ZRST,	"None")
+	field(ZRVL,	"61")
+	field(ONST,	"Digital I/O")
+	field(ONVL,	"1142")
+	field(TWST,	"Function Key")
+	field(TWVL,	"1001")
+}
+
+# Source Instance A
+#record(ao, "$(s):$(ta):$(ss):1:LimitSrcInstance") 
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynInt32")
+## No address defined in manual ##
+#	field(OUT,	"@asyn(modmem.1,750,1000)INT32_BE")
+#	field(DRVL,	"1")
+#	field(DRVH,	"12")
+#}
+
+# Limits Integrate
+record(mbbo, "$(s):$(ta):$(ss):1:LimitIntegrate") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,734,0xFFFF,1000)INT32_BE")
+	field(ZRST,	"No")
+	field(ZRVL,	"59")
+	field(ONST,	"Yes")
+	field(ONVL,	"106")
+	info(autosaveFields,	"VAL")
+}
+

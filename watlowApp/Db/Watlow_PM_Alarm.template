@@ -1,0 +1,289 @@
+####  Macro Definitions  ####
+# (s)	- Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+# (i)	- Channel or Index
+# (ALo)	- Low Alarm Setpoint
+# (Ahi)	- High Alarm Setpoint
+# (ACLr)- Clear Alarm
+# (ASr)	- Alarm Silence Request
+# (ASt)	- Alarm State
+# (ACL)	- Alarm Clearable
+# (ASh)	- Alarm Silenced
+# (ALt)	- Alarm Latched
+# (Aty)	- Alarm Type
+# (SrA)	- Alarm Source
+# (iSA)	- Alarm Source Instance
+# (LoP)	- Control Loop (Not on this module)
+# (Ahy)	- Alarm Hysteresis
+# (ALg)	- Alarm Logic
+# (ASd)	- Alarm Sides
+# (ALA)	- Alarm Latching
+# (AbL)	- Alarm Blocking
+# (ASi)	- Alarm Silencing
+# (AdL)	- Alarm Delay
+
+
+#=========== Alarm Menu Instance ===========
+
+# Low Alarm Setpoint
+record(ao, "$(s):$(ta):$(ss):$(module):AlarmLowSP$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(OMSL,	"closed_loop")
+	field(DOL,	"-0.5")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(ALo=1882),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+}
+
+# High Alarm Setpoint
+record(ao, "$(s):$(ta):$(ss):$(module):AlarmHighSP$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"0.5")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Ahi=1880),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+}
+
+# Clear Alarm
+record(ao, "$(s):$(ta):$(ss):$(module):ClearAlarm$(i)") 
+{
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asynMask(modmem.1,$(ACLr=1904),0xFF,1000)UINT16")
+}
+## Process Clear Alarm
+record(seq, "$(s):$(ta):$(ss):$(module):ProcessClearAlarm$(i)") 
+{
+	field(DO1,	"0")
+	field(DO2,	"255")
+	field(LNK1,	"$(s):$(ta):$(ss):$(module):ClearAlarm$(i) PP")
+	field(LNK2,	"$(s):$(ta):$(ss):$(module):ClearAlarm$(i) PP")
+	field(DLY2,	"0.25")
+}
+
+# Alarm Silence Request
+record(mbbo, "$(s):$(ta):$(ss):$(module):SilenceAlarm$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,$(ASr=1906),1000)UINT16")
+	field(ZRST,	"Silence")
+	field(ZRVL,	"1010")
+}
+## Process Silence Alarm
+record(seq, "$(s):$(ta):$(ss):$(module):ProcessSilenceAlarm$(i)") 
+{
+	field(DO1,	"0")
+	field(DO2,	"255")
+	field(LNK1,	"$(s):$(ta):$(ss):$(module):SilenceAlarm$(i) PP")
+	field(LNK2,	"$(s):$(ta):$(ss):$(module):SilenceAlarm$(i) PP")
+	field(DLY2,	"0.25")
+}
+
+# Alarm State
+record(mbbi, "$(s):$(ta):$(ss):$(module):AlarmState$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(ASt=1896),0xFF,1000)UINT16")
+	field(ZRST,	"Startup")
+	field(ZRVL,	"88")
+	field(ONST,	"None")
+	field(ONVL,	"61")
+	field(TWST,	"Blocked")
+	field(TWVL,	"12")
+	field(THST,	"Alarm Low")
+	field(THVL,	"8")
+	field(FRST,	"Alarm High")
+	field(FRVL,	"7")
+	field(FVST,	"Error")
+	field(FVVL,	"28")
+}
+
+# Alarm Clearable
+record(mbbi, "$(s):$(ta):$(ss):$(module):AlarmClearable$(i)") 
+{
+	field(SCAN,	"10 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(ACL=1902),0xFF,1000)UINT16")
+	field(ZRST,	"No")
+	field(ZRVL,	"59")
+	field(ONST,	"Yes")
+	field(ONVL,	"106")
+}
+
+# Alarm Silenced
+record(mbbi, "$(s):$(ta):$(ss):$(module):AlarmSilenced$(i)") 
+{
+	field(SCAN,	"10 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(ASh=1900),0xFF,1000)UINT16")
+	field(ZRST,	"No")
+	field(ZRVL,	"59")
+	field(ONST,	"Yes")
+	field(ONVL,	"106")
+}
+
+# Alarm Latched
+record(mbbi, "$(s):$(ta):$(ss):$(module):AlarmLatched$(i)") 
+{
+	field(SCAN,	"10 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(ALt=1898),0xFF,1000)UINT16")
+	field(ZRST,	"No")
+	field(ZRVL,	"59")
+	field(ONST,	"Yes")
+	field(ONVL,	"106")
+}
+
+# Alarm Type
+record(mbbo, "$(s):$(ta):$(ss):$(module):AlarmType$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"24")
+	field(OMSL,	"supervisory")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(Aty=1908),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Process Alarm")
+	field(ONVL,	"76")
+	field(TWST,	"Deviation Alarm")
+	field(TWVL,	"24")
+}
+
+# Alarm Source
+record(mbbo, "$(s):$(ta):$(ss):$(module):AlarmSource$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"241")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(SrA=1912),0xFF,1000)UINT16")
+	field(ZRST,	"Analog Input")
+	field(ZRVL,	"142")
+	field(ONST,	"Power")
+	field(ONVL,	"73")
+	field(TWST,	"Process Value")
+	field(TWVL,	"241")
+	field(THST,	"Linearization")
+	field(THVL,	"238")
+#	field(FRST,	"Current")
+#	field(FRVL,	"22")
+}
+
+# Alarm Source Instance
+record(ao, "$(s):$(ta):$(ss):$(module):SourceInstance$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,$(iSA=1914),1000)INT16")
+	field(DRVL,	"1")
+	field(DRVH,	"2")
+}
+
+# Alarm Control Loop
+#record(ao, "$(s):$(ta):$(ss):$(module):AlarmLoop$(i)") 
+#{
+#field(SCAN,	"Passive")
+#field(PINI,	"YES")
+#field(DOL,	"1")
+#field(DTYP,	"asynInt32")
+#field(OUT,	"@asyn(modmem.1,$(LoP=1924),1000)UINT16")
+#field(DRVL,	"1")
+#field(DRVH,	"2")
+#info(autosaveFields,	"VAL")
+#}
+
+# Alarm Hysteresis
+record(ao, "$(s):$(ta):$(ss):$(module):AlarmHysteresis$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"0.1")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Ahy=1884),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(DRVL,	"0.001")
+}
+
+# Alarm Logic
+record(mbbo, "$(s):$(ta):$(ss):$(module):AlarmLogic$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(ALg=1888),0xFF,1000)UINT16")
+	field(ZRST,	"Close On Alarm")
+	field(ZRVL,	"17")
+	field(ONST,	"Open On Alarm")
+	field(ONVL,	"66")
+}
+
+# Alarm Sides
+record(mbbo, "$(s):$(ta):$(ss):$(module):AlarmSides$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"13")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(ASd=1886),0xFF,1000)UINT16")
+	field(ZRST,	"Both")
+	field(ZRVL,	"13")
+	field(ONST,	"High")
+	field(ONVL,	"37")
+	field(TWST,	"Low")
+	field(TWVL,	"53")
+}
+
+# Alarm Latching
+record(mbbo, "$(s):$(ta):$(ss):$(module):Latching$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(ALA=1892),0xFF,1000)UINT16")
+	field(ZRST,	"Non-Latching")
+	field(ZRVL,	"60")
+	field(ONST,	"Latching")
+	field(ONVL,	"49")
+}
+
+# Alarm Blocking
+record(mbbo, "$(s):$(ta):$(ss):$(module):Blocking$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(AbL=1894),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Startup")
+	field(ONVL,	"88")
+	field(TWST,	"Setpoint")
+	field(TWVL,	"85")
+	field(THST,	"Both")
+	field(THVL,	"13")
+}
+
+# Alarm Silencing
+record(mbbo, "$(s):$(ta):$(ss):$(module):Silencing$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(ASi=1890),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"On")
+	field(ONVL,	"63")
+}
+
+# Alarm Delay
+record(ao, "$(s):$(ta):$(ss):$(module):AlarmDelay$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asyn(modmem.1,$(AdL=1920),1000)UINT16")
+	field(EGU,	"s")
+	field(DRVL,	"0")
+	field(DRVH,	"9999")
+}

@@ -1,0 +1,178 @@
+####  Macro Definitions  ####
+# (s)	- Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+# (i)	- Channel or Index
+# (PSvA)- Process Source Value A
+# (PSvB)- Process Source Value B
+# (PoFS)- Process Offset
+# (Pov)	- Process Output Value
+# (PoE)	- Process Output Error
+# (PFn)	- Process Function
+# (Punt)- Pressure Units
+# (Aunt)- Altitude Units
+# (bPr)	- Barometric Pressure
+# (PvF)	- Process Value Filter
+
+
+#=========== Process Value Menu ===========
+
+# Process Source Value A
+record(ai, "$(s):$(ta):$(ss):1:PrcsSrcVA$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(PSvA=3310),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+}
+
+# Process Source Value B
+record(ai, "$(s):$(ta):$(ss):1:PrcsSrcVB$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(PSvB=3312),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+}
+
+# Process Offset
+record(ao, "$(s):$(ta):$(ss):1:PrcsOffset$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(PoFS=3324),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+	info(autosaveFields,	"VAL")
+}
+
+# Process Output Value
+record(ai, "$(s):$(ta):$(ss):1:PrcsOutput$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(Pov=3322),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+}
+
+# Process Output Error
+record(mbbi, "$(s):$(ta):$(ss):1:PrcsOutputError$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(PoE=3332),0xFFFF,1000)INT32_BE")
+	field(ZRST,	"None")
+	field(ZRVL,	"61")
+	field(ONST,	"Open")
+	field(ONVL,	"65")
+	field(TWST,	"Measurement Error")
+	field(TWVL,	"140")
+	field(THST,	"Bad Calibration Data")
+	field(THVL,	"139")
+	field(FRST,	"Ambient Error")
+	field(FRVL,	"9")
+	field(FVST,	"RTD Error")
+	field(FVVL,	"141")
+	field(SXST,	"Fail")
+	field(SXVL,	"32")
+	field(SVST,	"Math Error")
+	field(SVVL,	"1423")
+	field(EIST,	"Not Sourced")
+	field(EIVL,	"246")
+	field(NIST,	"Stale")
+	field(NIVL,	"1617")
+	field(TEST,	"Can't Process")
+	field(TEVL,	"1659")
+	field(ELST,	"Shorted")
+	field(ELVL,	"127")
+}
+
+# Process Function
+record(mbbo, "$(s):$(ta):$(ss):1:PrcsFunction$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(PFn=3332),0xFFFF,1000)INT32_BE")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Sensor Backup")
+	field(ONVL,	"1201")
+	field(TWST,	"Pressure to Altitude")
+	field(TWVL,	"1649")
+#	field(THST,	"Vaisala RH Compensation")
+#	field(THVL,	"1648")
+#	field(FRST,	"Wet Bulb/Dry Bulb")
+#	field(FRVL,	"1369")
+#	field(FVST,	"Ratio")
+#	field(FVVL,	"1374")
+#	field(SXST,	"Differential")
+#	field(SXVL,	"1373")
+#	field(SVST,	"Square Root")
+#	field(SVVL,	"1380")
+	info(autosaveFields,	"VAL")
+}
+
+# Pressure Units
+record(mbbo, "$(s):$(ta):$(ss):1:PressureUnits$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(Punt=3332),0xFFFF,1000)INT32_BE")
+	field(ZRST,	"Pounds per Square Inch")
+	field(ZRVL,	"1671")
+	field(ONST,	"Pascal")
+	field(ONVL,	"1674")
+	field(TWST,	"Atmosphere")
+	field(TWVL,	"1675")
+	field(THST,	"Millibar")
+	field(THVL,	"1672")
+	field(FRST,	"Torr")
+	field(FRVL,	"1673")
+	info(autosaveFields,	"VAL")
+}
+
+# Altitude Units
+record(mbbo, "$(s):$(ta):$(ss):1:AltitudeUnits$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(Aunt=3332),0xFFFF,1000)INT32_BE")
+	field(ZRST,	"Kilofeet")
+	field(ZRVL,	"1677")
+	field(ONST,	"Feet")
+	field(ONVL,	"1676")
+	info(autosaveFields,	"VAL")
+}
+
+# Barometric Pressure
+#record(ao, "$(s):$(ta):$(ss):1:BarometricPressure$(i)") 
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynFloat64")
+#	field(OUT,	"@asyn(modmem.1,$(bPr=3338),1000)FLOAT32_BE")
+#	field(EGU,	"psi")
+#	field(PREC,	"1")
+#	field(DRVL,	"10.0")
+#	field(DRVH,	"16.0")
+#	info(autosaveFields,	"VAL")
+#}
+
+# Process Value Filter
+record(ao, "$(s):$(ta):$(ss):1:PrcsFilter$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(PvF=3330),1000)FLOAT32_BE")
+	field(EGU,	"s")
+	field(PREC,	"1")
+	field(DRVL,	"0.0")
+	field(DRVH,	"60.0")
+	info(autosaveFields,	"VAL")
+}

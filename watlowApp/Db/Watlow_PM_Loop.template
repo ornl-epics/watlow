@@ -1,0 +1,544 @@
+####  Macro Definitions  ####
+# (s) - Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+# (i)	- Channel or Index
+# (rEn)	- Remote Enable
+# (rty)	- Remote Setpoint Type
+# (CnM)	- Control Mode
+# (AtSP)- Autotune Setpoint
+# (AUt)	- Autotune
+# (CSP)	- Write Setpoint
+# (idS)	- Idel Setpoint
+# (hPb)	- Heat Proportional Band
+# (hhy)	- Heat Hysteresis
+# (CPb)	- Cool Proportional Band
+# (Chy)	- Cool Hysteresis
+# (Cti)	- Time Integral
+# (Ctd)	- Time Derivative
+# (Cdb)	- Dead Band
+# (oSP)	- Manual Output
+# (oLE)	- Open Loop Error Status
+# (oLC)	- Open Loop Error Clear Request
+# (oPr)	- Output Power
+# (hAg)	- Heat Algorithm
+# (CAg)	- Cool Algorithm
+# (CCr)	- Cool Output Curve
+# (PdL)	- Peltier Delay
+# (tAgr)- Autotune Aggressiveness
+# (UFA)	- User Failure Action
+# (FAiL)- Input Error Failure
+# (MAn)	- Fixed Power
+# (LdE)	- Open Loop Detect Enable
+# (Ldt)	- Open Loop Detect Time
+# (Ldd)	- Open Loop Detect Deviation
+# (rPA)	- Ramp Action
+# (rSC)	- Ramp Scale
+# (rrt)	- Ramp Rate
+# (LSP)	- Minimum Setpoint
+# (hSP)	- Maximum Setpoint
+# (SPL)	- Minimum Manual Power
+# (SPh)	- Maximum Manual Power
+
+
+#=========== Control Loop Menu ===========
+
+# Remote Enable
+#record(mbbo, "$(s):$(ta):$(ss):1:RemoteEnable$(i)") 
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(OUT,	"@asynMask(modmem.1,$(rEn=2680),0xFF,1000)UINT16")
+#	field(ZRST,	"No")
+#	field(ZRVL,	"59")
+#	field(ONST,	"Yes")
+#	field(ONVL,	"106")
+#	info(autosaveFields,	"VAL")
+#}
+
+# Remote Setpoint Type
+#record(mbbo, "$(s):$(ta):$(ss):1:RemoteSPType$(i)") 
+#{
+#	field(SCAN,	"Passive")
+##	field(DOL,	"10")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(OUT,	"@asynMask(mod_enum.1,$(rty=2682),0xFF,1000)UINT16")
+#	field(ZRST,	"Auto")
+#	field(ZRVL,	"10")
+#	field(ONST,	"Manual")
+#	field(ONVL,	"54")
+#	info(autosaveFields,	"VAL")
+#}
+
+# Control Mode
+record(mbbo, "$(s):$(ta):$(ss):1:ControlMode$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"10")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(CnM=2360),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Auto")
+	field(ONVL,	"10")
+	field(TWST,	"Manual")
+	field(TWVL,	"54")
+}
+
+# Autotune Setpoint
+record(ao, "$(s):$(ta):$(ss):1:ATuneSetpoint$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"100")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(AtSP=2398),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(PREC,	"1")
+	field(DRVL,	"50")
+	field(DRVH,	"200")
+}
+
+# Autotune
+record(mbbo, "$(s):$(ta):$(ss):1:Autotune$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(AUt=2400),0xFF,1000)UINT16")
+	field(ZRST,	"No")
+	field(ZRVL,	"59")
+	field(ONST,	"Yes")
+	field(ONVL,	"106")
+}
+
+# Autotune Aggressiveness
+record(mbbo, "$(s):$(ta):$(ss):1:Aggressiveness$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"99")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(tAgr=2396),0xFF,1000)UINT16")
+	field(ZRST,	"Under Damped")
+	field(ZRVL,	"99")
+	field(ONST,	"Critical Damped")
+	field(ONVL,	"21")
+	field(TWST,	"Over Damped")
+	field(TWVL,	"69")
+}
+
+# Control Setpoint
+record(ao, "$(s):$(ta):$(ss):1:SetSetpoint$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(CSP=2640),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"1")
+}
+record(calcout, "$(s):$(ta):$(ss):1:SetSetpoint$(i)SyncMin") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MinSetpoint$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:SetSetpoint$(i).DRVL")
+}
+record(calcout, "$(s):$(ta):$(ss):1:SetSetpoint$(i)SyncMax") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MaxSetpoint$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:SetSetpoint$(i).DRVH")
+}
+
+# Idle Setpoint
+record(ao, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(idS=2656),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"1")
+}
+record(calcout, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)SyncMin") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MinSetpoint$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:IdleSetpoint$(i).DRVL")
+}
+record(calcout, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)SyncMax") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MaxSetpoint$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:IdleSetpoint$(i).DRVH")
+}
+
+# Heat Proportional Band
+record(ao, "$(s):$(ta):$(ss):1:HeatPID_P$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(hPb=2370),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Heat Hysteresis
+record(ao, "$(s):$(ta):$(ss):1:HeatHysteresis$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(hhy=2380),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Cool Proportional Band
+record(ao, "$(s):$(ta):$(ss):1:CoolPID_P$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(CPb=2372),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Cool Hysteresis
+record(ao, "$(s):$(ta):$(ss):1:CoolHysteresis$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Chy=2382),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+}
+
+# Time Integral
+record(ao, "$(s):$(ta):$(ss):1:PID_I$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Cti=2374),1000)FLOAT32_BE")
+	field(EGU,	"s")
+	field(PREC,	"0")
+	field(DRVL,	"0")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Time Derivative
+record(ao, "$(s):$(ta):$(ss):1:PID_D$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Ctd=2376),1000)FLOAT32_BE")
+	field(EGU,	"s")
+	field(PREC,	"0")
+	field(DRVL,	"0")
+	field(DRVH,	"9999")
+	info(autosaveFields,	"VAL")
+}
+
+# Dead Band
+record(ao, "$(s):$(ta):$(ss):1:DeadBand$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Cdb=2378),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"1")
+	info(autosaveFields,	"VAL")
+}
+
+# Manual Output/Open Loop Setpoint
+record(ao, "$(s):$(ta):$(ss):1:ManualOutput$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(oSP=2642),1000)FLOAT32_BE")
+	field(EGU,	"%")
+#	Limits are conditional determined on mode of heating/cooling?
+	field(DRVL,	"-100")
+	field(DRVH,	"100")
+	field(PREC,	"1")
+	info(autosaveFields,	"VAL")
+}
+
+# Open Loop Error Status
+record(mbbi, "$(s):$(ta):$(ss):1:OpenLoopError") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(mod_enum.1,$(oLE=2408),0xFFFF,1000)INT32_BE")
+	field(ZRST,	"None")
+	field(ZRVL,	"61")
+	field(ONST,	"Open Loop")
+	field(ONVL,	"1274")
+	field(TWST,	"Reversed Sensor")
+	field(TWVL,	"1275")
+}
+
+# Open Loop Error Clear Request
+record(ao, "$(s):$(ta):$(ss):1:OpenLoopClear") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynInt32")
+	field(OUT,	"@asynMask(modmem.1,$(oLC=2410),0xFF,1000)UINT16")
+}
+
+# Output Power
+record(ai, "$(s):$(ta):$(ss):1:OutputPwr$(i)") 
+{
+	field(SCAN,	"1 second")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(modmem.1,$(oPr=2388),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(PREC,	"1")
+}
+
+# Heat Algorithm
+record(mbbo, "$(s):$(ta):$(ss):1:HeatMethod$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(hAg=2364),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"PID")
+	field(ONVL,	"71")
+	field(TWST,	"On/Off")
+	field(TWVL,	"64")
+	info(autosaveFields,	"VAL")
+}
+
+# Cool Algorithm
+record(mbbo, "$(s):$(ta):$(ss):1:CoolMethod$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(CAg=2366),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"PID")
+	field(ONVL,	"71")
+	field(TWST,	"On/Off")
+	field(TWVL,	"64")
+	info(autosaveFields,	"VAL")
+}
+
+# Cool Output Curve
+record(mbbo, "$(s):$(ta):$(ss):1:CoolCurve$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(CCr=2368),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Non-linear Curve 1")
+	field(ONVL,	"214")
+	field(TWST,	"Non-linear Curve 2")
+	field(TWVL,	"215")
+}
+
+# Peltier Delay
+record(ao, "$(s):$(ta):$(ss):1:PeltierDelay$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(PdL=2414),1000)FLOAT32_BE")
+	field(EGU,	"s")
+	field(DRVL,	"0")
+	field(DRVH,	"5")
+	field(PREC,	"1")
+}
+
+# User Failure Action
+record(mbbo, "$(s):$(ta):$(ss):1:UserFailAction$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(UFA=2662),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Bumpless")
+	field(ONVL,	"14")
+	field(TWST,	"Fixed Power")
+	field(TWVL,	"33")
+	field(THST,	"User")
+	field(THVL,	"100")
+}
+
+# Input Error Failure
+record(mbbo, "$(s):$(ta):$(ss):1:InputErrorFailure$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"14")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(FAiL=2664),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Bumpless")
+	field(ONVL,	"14")
+	field(TWST,	"Fixed Power")
+	field(TWVL,	"54")
+	field(THST,	"User")
+	field(THVL,	"100")
+}
+
+# Fixed Power
+record(ao, "$(s):$(ta):$(ss):1:FixedPower$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(MAn=2660),1000)FLOAT32_BE")
+	field(PREC,	"1")
+}
+record(calcout, "$(s):$(ta):$(ss):1:FixedPower$(i)SyncMin") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MinManualPwr$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:FixedPower$(i).DRVL")
+}
+record(calcout, "$(s):$(ta):$(ss):1:FixedPower$(i)SyncMax") 
+{
+	field(INPA,	"$(s):$(ta):$(ss):1:MaxManualPwr$(i) CP")
+	field(CALC,	"A")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):1:FixedPower$(i).DRVH")
+}
+
+# Open Loop Detect Enable
+record(mbbo, "$(s):$(ta):$(ss):1:OpenLoopEnable$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(LdE=2402),0xFF,1000)UINT16")
+	field(ZRST,	"Disabled")
+	field(ZRVL,	"59")
+	field(ONST,	"Enabled")
+	field(ONVL,	"106")
+}
+
+# Open Loop Detect Time
+record(ao, "$(s):$(ta):$(ss):1:OpenLoopTime$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Ldt=2404),1000)UINT16")
+	field(EGU,	"s")
+	field(DRVL,	"0")
+	field(DRVH,	"3600")
+	field(PREC,	"0")
+}
+
+# Open Loop Detect Deviation
+record(ao, "$(s):$(ta):$(ss):1:OpenLoopDeviation$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(Ldd=1926),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+}
+
+# Ramp Action
+record(mbbo, "$(s):$(ta):$(ss):1:RampAction$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(rPA=2666),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Startup")
+	field(ONVL,	"88")
+	field(TWST,	"Setpoint Change")
+	field(TWVL,	"85")
+	field(THST,	"Both")
+	field(THVL,	"13")
+	info(autosaveFields,	"VAL")
+}
+
+# Ramp Scale
+record(mbbo, "$(s):$(ta):$(ss):1:RampScale$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(rSC=2668),0xFF,1000)UINT16")
+	field(ZRST,	"Hours")
+	field(ZRVL,	"39")
+	field(ONST,	"Minutes")
+	field(ONVL,	"57")
+	info(autosaveFields,	"VAL")
+}
+
+# Ramp Rate
+record(ao, "$(s):$(ta):$(ss):1:RampRate$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(rrt=2672),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Minimum Setpoint
+record(ao, "$(s):$(ta):$(ss):1:MinSetpoint$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"0")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(LSP=2644),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Maximum Setpoint
+record(ao, "$(s):$(ta):$(ss):1:MaxSetpoint$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"200")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(hSP=2646),1000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	info(autosaveFields,	"VAL")
+}
+
+# Minimum Manual Power
+record(ao, "$(s):$(ta):$(ss):1:MinManualPwr$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DOL,	"0")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(SPL=2648),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(DRVL,	"-100")
+	field(DRVH,	"100")
+	field(PREC,	"1")
+	info(autosaveFields,	"VAL")
+}
+
+# Maximum Manual Power
+record(ao, "$(s):$(ta):$(ss):1:MaxManualPwr$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(SPh=2650),1000)FLOAT32_BE")
+	field(EGU,	"%")
+	field(DRVL,	"-100")
+	field(DRVH,	"100")
+	field(PREC,	"1")
+	info(autosaveFields,	"VAL")
+}

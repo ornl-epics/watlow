@@ -1,0 +1,114 @@
+####  Macro Definitions  ####
+# (s)	- Beam Line
+# (ta)	- Target Area
+# (ss)	- Device Name
+# (i)	- Channel or Index
+# (DFn)	- Default Output Digtial Function
+# (Fnd)	- Output Digitial Function
+# (Fi)	- Function Instance
+# (oCt)	- Output Control
+# (otB)	- Output Time Base
+# (dLo)	- Output Low Power Scale
+# (dhi)	- Output High Power Scale
+# (oty)	- Output Type
+
+
+#=========== Output Menu (Instance 2 and 3) ===========
+
+# Output Digtial Function
+record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(Fnd=1038),0xFF,1000)UINT16")
+	field(ZRST,	"Off")
+	field(ZRVL,	"62")
+	field(ONST,	"Alarm")
+	field(ONVL,	"6")
+	field(TWST,	"Heat")
+	field(TWVL,	"36")
+	field(THST,	"Cool")
+	field(THVL,	"20")
+	field(FRST,	"Special Function Output 1")
+	field(FRVL,	"1532")
+	field(FVST,	"Special Function Output 2")
+	field(FVVL,	"1533")
+	field(SXST,	"Profile Event Out A")
+	field(SXVL,	"233")
+	field(SVST,	"Profile Event Out B")
+	field(SVVL,	"234")
+	field(EIST,	"Limit")
+	field(EIVL,	"126")
+	info(autosaveFields,	"VAL")
+}
+
+# Function Instance
+record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceD$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(mod_enum.1,$(Fid=1040),0xFF,1000)UINT16")
+	field(ZRST,	"1")
+	field(ZRVL,	"1")
+	field(ONST,	"2")
+	field(ONVL,	"2")
+	field(TWST,	"3")
+	field(TWVL,	"3")
+	field(THST,	"4")
+	field(THVL,	"4")
+	info(autosaveFields,	"VAL")
+}
+
+# Output Control
+#record(mbbo, "$(s):$(ta):$(ss):1:OutputControl$(i)") 
+#{
+#	field(SCAN,	"Passive")
+##	field(DOL,	"34")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(OUT,	"@asynMask(mod_enum.1,$(oCt=1032),0xFF,1000)UINT16")
+#	field(ZRST,	"Fixed Time Base")
+#	field(ZRVL,	"34")
+#	field(ONST,	"Variable Time Base")
+#	field(ONVL,	"103")
+#	info(autosaveFields,	"VAL")
+#}
+
+# Output Time Base
+record(ao, "$(s):$(ta):$(ss):1:OutputTimeBase$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(otB=1034),1000)FLOAT32_BE")
+	field(PREC,	"1")
+	field(EGU,	"s")
+	field(DRVL,	"5.0")
+	field(DRVH,	"60.0")
+	info(autosaveFields,	"VAL")
+}
+
+# Output Low Power Scale
+record(ao, "$(s):$(ta):$(ss):1:OutputLPScale$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(dLo=1046),1000)FLOAT32_BE")
+	field(PREC,	"1")
+	field(EGU,	"%")
+	field(DRVL,	"0")
+	field(DRVH,	"100")
+	info(autosaveFields,	"VAL")
+}
+
+# Output High Power Scale
+record(ao, "$(s):$(ta):$(ss):1:OutputHPScale$(i)") 
+{
+	field(SCAN,	"Passive")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(modmem.1,$(dhi=1048),1000)FLOAT32_BE")
+	field(PREC,	"1")
+	field(EGU,	"%")
+	field(DRVL,	"0")
+	field(DRVH,	"100")
+	info(autosaveFields,	"VAL")
+}
+
