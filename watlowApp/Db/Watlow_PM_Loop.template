@@ -42,13 +42,44 @@
 
 
 #=========== Control Loop Menu ===========
+# =========== Inputs
+# Open Loop Error Status
+record(mbbi, "$(s):$(ta):$(ss):$(mod):OpenLoopError") 
+{
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(watlow_CL_Enum_1.$(mod),$(oLE=0),0xFFFF,100)INT32_BE")
+	field(ZRST,	"None")
+	field(ZRVL,	"61")
+	field(ONST,	"Open Loop")
+	field(ONVL,	"1274")
+	field(TWST,	"Reversed Sensor")
+	field(TWVL,	"1275")
+}
 
+# Output Power
+record(ai, "$(s):$(ta):$(ss):$(mod):OutputPwr$(ch)") 
+{
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(watlow_CL_Num_1.$(mod),$(oPr=0),100)FLOAT32_BE")
+	field(EGU,	"%")
+	field(PREC,	"1")
+	field(ADEL,	"0.1")
+	field(MDEL,	"0.1")
+}
+
+
+
+# =========== Outputs
 # Remote Enable
-#record(mbbo, "$(s):$(ta):$(ss):1:RemoteEnable$(i)") 
+#record(mbbo, "$(s):$(ta):$(ss):$(mod):RemoteEnable$(ch)") 
 #{
 #	field(SCAN,	"Passive")
 #	field(DTYP,	"asynUInt32Digital")
-#	field(OUT,	"@asynMask(modmem.1,$(rEn=2680),0xFF,1000)UINT16")
+#	field(OUT,	"@asynMask(watlow.w.$(mod),$(rEn=2680),0xFF,100)UINT16")
 #	field(ZRST,	"No")
 #	field(ZRVL,	"59")
 #	field(ONST,	"Yes")
@@ -57,12 +88,12 @@
 #}
 
 # Remote Setpoint Type
-#record(mbbo, "$(s):$(ta):$(ss):1:RemoteSPType$(i)") 
+#record(mbbo, "$(s):$(ta):$(ss):$(mod):RemoteSPType$(ch)") 
 #{
 #	field(SCAN,	"Passive")
 ##	field(DOL,	"10")
 #	field(DTYP,	"asynUInt32Digital")
-#	field(OUT,	"@asynMask(mod_enum.1,$(rty=2682),0xFF,1000)UINT16")
+#	field(OUT,	"@asynMask(watlow.w.$(mod),$(rty=2682),0xFF,100)UINT16")
 #	field(ZRST,	"Auto")
 #	field(ZRVL,	"10")
 #	field(ONST,	"Manual")
@@ -71,12 +102,12 @@
 #}
 
 # Control Mode
-record(mbbo, "$(s):$(ta):$(ss):1:ControlMode$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):ControlMode$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"10")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(CnM=2360),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(CnM=2360),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Auto")
@@ -86,12 +117,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:ControlMode$(i)")
 }
 
 # Autotune Setpoint
-record(ao, "$(s):$(ta):$(ss):1:ATuneSetpoint$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):ATuneSetpoint$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"100")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(AtSP=2398),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(AtSP=2398),100)FLOAT32_BE")
 	field(EGU,	"%")
 	field(PREC,	"1")
 	field(DRVL,	"50")
@@ -99,11 +130,12 @@ record(ao, "$(s):$(ta):$(ss):1:ATuneSetpoint$(i)")
 }
 
 # Autotune
-record(mbbo, "$(s):$(ta):$(ss):1:Autotune$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):Autotune$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(AUt=2400),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(AUt=2400),0xFF,100)UINT16")
 	field(ZRST,	"No")
 	field(ZRVL,	"59")
 	field(ONST,	"Yes")
@@ -111,12 +143,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:Autotune$(i)")
 }
 
 # Autotune Aggressiveness
-record(mbbo, "$(s):$(ta):$(ss):1:Aggressiveness$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):Aggressiveness$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"99")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(tAgr=2396),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(tAgr=2396),0xFF,100)UINT16")
 	field(ZRST,	"Under Damped")
 	field(ZRVL,	"99")
 	field(ONST,	"Critical Damped")
@@ -126,106 +158,113 @@ record(mbbo, "$(s):$(ta):$(ss):1:Aggressiveness$(i)")
 }
 
 # Control Setpoint
-record(ao, "$(s):$(ta):$(ss):1:SetSetpoint$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):SetSetpoint$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(CSP=2640),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(CSP=2640),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"1")
 }
-record(calcout, "$(s):$(ta):$(ss):1:SetSetpoint$(i)SyncMin") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):SetSetpoint$(ch)SyncMin") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MinSetpoint$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MinSetpoint$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:SetSetpoint$(i).DRVL")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):SetSetpoint$(ch).DRVL")
 }
-record(calcout, "$(s):$(ta):$(ss):1:SetSetpoint$(i)SyncMax") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):SetSetpoint$(ch)SyncMax") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MaxSetpoint$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MaxSetpoint$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:SetSetpoint$(i).DRVH")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):SetSetpoint$(ch).DRVH")
 }
 
 # Idle Setpoint
-record(ao, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):IdleSetpoint$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(idS=2656),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(idS=2656),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"1")
 }
-record(calcout, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)SyncMin") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):IdleSetpoint$(ch)SyncMin") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MinSetpoint$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MinSetpoint$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:IdleSetpoint$(i).DRVL")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):IdleSetpoint$(ch).DRVL")
 }
-record(calcout, "$(s):$(ta):$(ss):1:IdleSetpoint$(i)SyncMax") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):IdleSetpoint$(ch)SyncMax") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MaxSetpoint$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MaxSetpoint$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:IdleSetpoint$(i).DRVH")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):IdleSetpoint$(ch).DRVH")
 }
 
 # Heat Proportional Band
-record(ao, "$(s):$(ta):$(ss):1:HeatPID_P$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):HeatPID_P$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(hPb=2370),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(hPb=2370),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Heat Hysteresis
-record(ao, "$(s):$(ta):$(ss):1:HeatHysteresis$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):HeatHysteresis$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(hhy=2380),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(hhy=2380),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Cool Proportional Band
-record(ao, "$(s):$(ta):$(ss):1:CoolPID_P$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):CoolPID_P$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(CPb=2372),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(CPb=2372),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Cool Hysteresis
-record(ao, "$(s):$(ta):$(ss):1:CoolHysteresis$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):CoolHysteresis$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Chy=2382),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Chy=2382),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 }
 
 # Time Integral
-record(ao, "$(s):$(ta):$(ss):1:PID_I$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):PID_I$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Cti=2374),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Cti=2374),100)FLOAT32_BE")
 	field(EGU,	"s")
 	field(PREC,	"0")
 	field(DRVL,	"0")
@@ -234,11 +273,12 @@ record(ao, "$(s):$(ta):$(ss):1:PID_I$(i)")
 }
 
 # Time Derivative
-record(ao, "$(s):$(ta):$(ss):1:PID_D$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):PID_D$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Ctd=2376),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Ctd=2376),100)FLOAT32_BE")
 	field(EGU,	"s")
 	field(PREC,	"0")
 	field(DRVL,	"0")
@@ -247,22 +287,24 @@ record(ao, "$(s):$(ta):$(ss):1:PID_D$(i)")
 }
 
 # Dead Band
-record(ao, "$(s):$(ta):$(ss):1:DeadBand$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):DeadBand$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Cdb=2378),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Cdb=2378),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"1")
 	info(autosaveFields,	"VAL")
 }
 
 # Manual Output/Open Loop Setpoint
-record(ao, "$(s):$(ta):$(ss):1:ManualOutput$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):ManualOutput$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(oSP=2642),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(oSP=2642),100)FLOAT32_BE")
 	field(EGU,	"%")
 #	Limits are conditional determined on mode of heating/cooling?
 	field(DRVL,	"-100")
@@ -271,44 +313,21 @@ record(ao, "$(s):$(ta):$(ss):1:ManualOutput$(i)")
 	info(autosaveFields,	"VAL")
 }
 
-# Open Loop Error Status
-record(mbbi, "$(s):$(ta):$(ss):1:OpenLoopError") 
-{
-	field(SCAN,	"1 second")
-	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(mod_enum.1,$(oLE=2408),0xFFFF,1000)INT32_BE")
-	field(ZRST,	"None")
-	field(ZRVL,	"61")
-	field(ONST,	"Open Loop")
-	field(ONVL,	"1274")
-	field(TWST,	"Reversed Sensor")
-	field(TWVL,	"1275")
-}
-
 # Open Loop Error Clear Request
-record(ao, "$(s):$(ta):$(ss):1:OpenLoopClear") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OpenLoopClear") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynInt32")
-	field(OUT,	"@asynMask(modmem.1,$(oLC=2410),0xFF,1000)UINT16")
-}
-
-# Output Power
-record(ai, "$(s):$(ta):$(ss):1:OutputPwr$(i)") 
-{
-	field(SCAN,	"1 second")
-	field(DTYP,	"asynFloat64")
-	field(INP,	"@asyn(modmem.1,$(oPr=2388),1000)FLOAT32_BE")
-	field(EGU,	"%")
-	field(PREC,	"1")
+	field(OUT,	"@asynMask(watlow.w.$(mod),$(oLC=2410),0xFF,100)UINT16")
 }
 
 # Heat Algorithm
-record(mbbo, "$(s):$(ta):$(ss):1:HeatMethod$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):HeatMethod$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(hAg=2364),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(hAg=2364),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"PID")
@@ -319,11 +338,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:HeatMethod$(i)")
 }
 
 # Cool Algorithm
-record(mbbo, "$(s):$(ta):$(ss):1:CoolMethod$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):CoolMethod$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(CAg=2366),0xFF,1000)UINT16")
+	field(PINI,	"YES")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(CAg=2366),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"PID")
@@ -334,11 +354,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:CoolMethod$(i)")
 }
 
 # Cool Output Curve
-record(mbbo, "$(s):$(ta):$(ss):1:CoolCurve$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):CoolCurve$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(CCr=2368),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(CCr=2368),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Non-linear Curve 1")
@@ -348,11 +369,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:CoolCurve$(i)")
 }
 
 # Peltier Delay
-record(ao, "$(s):$(ta):$(ss):1:PeltierDelay$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):PeltierDelay$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(PdL=2414),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(PdL=2414),100)FLOAT32_BE")
 	field(EGU,	"s")
 	field(DRVL,	"0")
 	field(DRVH,	"5")
@@ -360,11 +382,12 @@ record(ao, "$(s):$(ta):$(ss):1:PeltierDelay$(i)")
 }
 
 # User Failure Action
-record(mbbo, "$(s):$(ta):$(ss):1:UserFailAction$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):UserFailAction$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(UFA=2662),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(UFA=2662),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Bumpless")
@@ -376,12 +399,13 @@ record(mbbo, "$(s):$(ta):$(ss):1:UserFailAction$(i)")
 }
 
 # Input Error Failure
-record(mbbo, "$(s):$(ta):$(ss):1:InputErrorFailure$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):InputErrorFailure$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DOL,	"14")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(FAiL=2664),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(FAiL=2664),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Bumpless")
@@ -393,36 +417,38 @@ record(mbbo, "$(s):$(ta):$(ss):1:InputErrorFailure$(i)")
 }
 
 # Fixed Power
-record(ao, "$(s):$(ta):$(ss):1:FixedPower$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):FixedPower$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(MAn=2660),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(MAn=2660),100)FLOAT32_BE")
 	field(PREC,	"1")
 }
-record(calcout, "$(s):$(ta):$(ss):1:FixedPower$(i)SyncMin") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):FixedPower$(ch)SyncMin") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MinManualPwr$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MinManualPwr$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:FixedPower$(i).DRVL")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):FixedPower$(ch).DRVL")
 }
-record(calcout, "$(s):$(ta):$(ss):1:FixedPower$(i)SyncMax") 
+record(calcout, "$(s):$(ta):$(ss):$(mod):FixedPower$(ch)SyncMax") 
 {
-	field(INPA,	"$(s):$(ta):$(ss):1:MaxManualPwr$(i) CP")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):MaxManualPwr$(ch) CP")
 	field(CALC,	"A")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):$(ss):1:FixedPower$(i).DRVH")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):FixedPower$(ch).DRVH")
 }
 
 # Open Loop Detect Enable
-record(mbbo, "$(s):$(ta):$(ss):1:OpenLoopEnable$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):OpenLoopEnable$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(LdE=2402),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(LdE=2402),0xFF,100)UINT16")
 	field(ZRST,	"Disabled")
 	field(ZRVL,	"59")
 	field(ONST,	"Enabled")
@@ -430,11 +456,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:OpenLoopEnable$(i)")
 }
 
 # Open Loop Detect Time
-record(ao, "$(s):$(ta):$(ss):1:OpenLoopTime$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OpenLoopTime$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Ldt=2404),1000)UINT16")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Ldt=2404),100)UINT16")
 	field(EGU,	"s")
 	field(DRVL,	"0")
 	field(DRVH,	"3600")
@@ -442,21 +469,23 @@ record(ao, "$(s):$(ta):$(ss):1:OpenLoopTime$(i)")
 }
 
 # Open Loop Detect Deviation
-record(ao, "$(s):$(ta):$(ss):1:OpenLoopDeviation$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OpenLoopDeviation$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Ldd=1926),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Ldd=1926),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 }
 
 # Ramp Action
-record(mbbo, "$(s):$(ta):$(ss):1:RampAction$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):RampAction$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(rPA=2666),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(rPA=2666),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Startup")
@@ -469,11 +498,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:RampAction$(i)")
 }
 
 # Ramp Scale
-record(mbbo, "$(s):$(ta):$(ss):1:RampScale$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):RampScale$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(rSC=2668),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(rSC=2668),0xFF,100)UINT16")
 	field(ZRST,	"Hours")
 	field(ZRVL,	"39")
 	field(ONST,	"Minutes")
@@ -482,47 +512,48 @@ record(mbbo, "$(s):$(ta):$(ss):1:RampScale$(i)")
 }
 
 # Ramp Rate
-record(ao, "$(s):$(ta):$(ss):1:RampRate$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):RampRate$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(rrt=2672),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(rrt=2672),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Minimum Setpoint
-record(ao, "$(s):$(ta):$(ss):1:MinSetpoint$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):MinSetpoint$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"0")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(LSP=2644),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(LSP=2644),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Maximum Setpoint
-record(ao, "$(s):$(ta):$(ss):1:MaxSetpoint$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):MaxSetpoint$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"200")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(hSP=2646),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(hSP=2646),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	info(autosaveFields,	"VAL")
 }
 
 # Minimum Manual Power
-record(ao, "$(s):$(ta):$(ss):1:MinManualPwr$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):MinManualPwr$(ch)") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"0")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(SPL=2648),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(SPL=2648),100)FLOAT32_BE")
 	field(EGU,	"%")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")
@@ -531,11 +562,12 @@ record(ao, "$(s):$(ta):$(ss):1:MinManualPwr$(i)")
 }
 
 # Maximum Manual Power
-record(ao, "$(s):$(ta):$(ss):1:MaxManualPwr$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):MaxManualPwr$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(SPh=2650),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(SPh=2650),100)FLOAT32_BE")
 	field(EGU,	"%")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")

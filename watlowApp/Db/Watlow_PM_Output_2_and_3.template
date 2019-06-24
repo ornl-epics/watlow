@@ -16,11 +16,12 @@
 #=========== Output Menu (Instance 2 and 3) ===========
 
 # Output Digtial Function
-record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputFunction$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Fnd=1038),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Fnd=1038),0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Alarm")
@@ -43,11 +44,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction$(i)")
 }
 
 # Function Instance
-record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceD$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):FunctionInstanceD$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Fid=1040),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Fid=1040),0xFF,100)UINT16")
 	field(ZRST,	"1")
 	field(ZRVL,	"1")
 	field(ONST,	"2")
@@ -60,12 +62,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceD$(i)")
 }
 
 # Output Control
-#record(mbbo, "$(s):$(ta):$(ss):1:OutputControl$(i)") 
+#record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputControl$(ch)") 
 #{
 #	field(SCAN,	"Passive")
 ##	field(DOL,	"34")
 #	field(DTYP,	"asynUInt32Digital")
-#	field(OUT,	"@asynMask(mod_enum.1,$(oCt=1032),0xFF,1000)UINT16")
+#	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(oCt=1032),0xFF,100)UINT16")
 #	field(ZRST,	"Fixed Time Base")
 #	field(ZRVL,	"34")
 #	field(ONST,	"Variable Time Base")
@@ -74,11 +76,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceD$(i)")
 #}
 
 # Output Time Base
-record(ao, "$(s):$(ta):$(ss):1:OutputTimeBase$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OutputTimeBase$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(otB=1034),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(otB=1034),100)FLOAT32_BE")
 	field(PREC,	"1")
 	field(EGU,	"s")
 	field(DRVL,	"5.0")
@@ -87,11 +90,12 @@ record(ao, "$(s):$(ta):$(ss):1:OutputTimeBase$(i)")
 }
 
 # Output Low Power Scale
-record(ao, "$(s):$(ta):$(ss):1:OutputLPScale$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OutputLPScale$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(dLo=1046),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(dLo=1046),100)FLOAT32_BE")
 	field(PREC,	"1")
 	field(EGU,	"%")
 	field(DRVL,	"0")
@@ -100,11 +104,12 @@ record(ao, "$(s):$(ta):$(ss):1:OutputLPScale$(i)")
 }
 
 # Output High Power Scale
-record(ao, "$(s):$(ta):$(ss):1:OutputHPScale$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):OutputHPScale$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(dhi=1048),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(dhi=1048),100)FLOAT32_BE")
 	field(PREC,	"1")
 	field(EGU,	"%")
 	field(DRVL,	"0")

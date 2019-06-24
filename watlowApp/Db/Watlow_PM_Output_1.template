@@ -6,12 +6,12 @@
 #=========== Output Menu Instance 1 ===========
 
 # Output Type
-record(mbbo, "$(s):$(ta):$(ss):1:OutputType1") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputType1") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"112")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,840,0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),840,0xFF,100)UINT16")
 	field(ZRST,	"Volts")
 	field(ZRVL,	"104")
 	field(ONST,	"Milliampere")
@@ -20,12 +20,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:OutputType1")
 }
 
 # Output Function
-record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction1") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputFunction1") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"36")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,842,0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),842,0xFF,100)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Heat")
@@ -46,11 +46,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:OutputFunction1")
 }
 
 # Retransmit Source
-record(mbbo, "$(s):$(ta):$(ss):1:RetransmitSource1") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):RetransmitSource1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,844,0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),844,0xFF,100)UINT16")
 	field(ZRST,	"Analog Input")
 	field(ZRVL,	"142")
 	field(ONST,	"Set Point")
@@ -63,11 +64,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:RetransmitSource1")
 }
 
 # Output Function Instance
-record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceA1") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):FunctionInstanceA1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,846,0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),846,0xFF,100)UINT16")
 	field(ZRST,	"1")
 	field(ZRVL,	"1")
 	field(ONST,	"2")
@@ -80,12 +82,13 @@ record(mbbo, "$(s):$(ta):$(ss):1:FunctionInstanceA1")
 }
 
 # Scale Low
-record(ao, "$(s):$(ta):$(ss):1:AOScaleLow1") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AOScaleLow1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DOL,	"4")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,856,1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),856,100)FLOAT32_BE")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")
@@ -93,12 +96,12 @@ record(ao, "$(s):$(ta):$(ss):1:AOScaleLow1")
 }
 
 # Scale High
-record(ao, "$(s):$(ta):$(ss):1:AOScaleHigh1") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AOScaleHigh1") 
 {
 	field(SCAN,	"Passive")
-	field(DOL,	"20")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,858,1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),858,100)FLOAT32_BE")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")
@@ -106,11 +109,12 @@ record(ao, "$(s):$(ta):$(ss):1:AOScaleHigh1")
 }
 
 # Range Low
-record(ao, "$(s):$(ta):$(ss):1:AORangeLow1") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AORangeLow1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,860,1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),860,100)FLOAT32_BE")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
@@ -118,11 +122,12 @@ record(ao, "$(s):$(ta):$(ss):1:AORangeLow1")
 }
 
 # Range High
-record(ao, "$(s):$(ta):$(ss):1:AORangeHigh1") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AORangeHigh1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,862,1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),862,100)FLOAT32_BE")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
@@ -130,11 +135,12 @@ record(ao, "$(s):$(ta):$(ss):1:AORangeHigh1")
 }
 
 # Calibration Offset
-record(ao, "$(s):$(ta):$(ss):1:AOCalOffset1") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AOCalOffset1") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,852,1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),852,100)FLOAT32_BE")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")

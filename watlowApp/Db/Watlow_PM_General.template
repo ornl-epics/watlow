@@ -8,82 +8,108 @@
 
 #=========== Lock/Factory Menu ===========
 
-# Operations Security
-record(ao, "$(s):$(ta):$(ss):1:OperationsSecurity")
-{
-	field(SCAN,	"Passive")
-	field(DTYP,	"asynInt32")
-	field(OUT,	"@asyn(modmem.1,2302,1000)INT32_BE")
-	field(DRVL,	"1")
-	field(DRVH,	"3")
-}
+## Operations Security
+#record(ao, "$(s):$(ta):$(ss):$(mod):OperationsSecurity")
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynInt32")
+#	field(OUT,	"@asyn(watlow_Glb_Num_1.$(mod),2302,1000)INT32_BE")
+#	field(DRVL,	"1")
+#	field(DRVH,	"3")
+#}
 
-# Read Lock
-record(ao, "$(s):$(ta):$(ss):1:ReadLock")
-{
-	field(SCAN,	"Passive")
-	field(DTYP,	"asynInt32")
-	field(OUT,	"@asyn(modmem.1,2318,1000)INT32_BE")
-	field(DRVL,	"1")
-	field(DRVH,	"5")
-}
+## Read Lock
+#record(ao, "$(s):$(ta):$(ss):$(mod):ReadLock")
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynInt32")
+#	field(OUT,	"@asyn(watlow_Glb_Num_1.$(mod),2318,1000)INT32_BE")
+#	field(DRVL,	"1")
+#	field(DRVH,	"5")
+#}
 
-# Write Lock
-record(ao, "$(s):$(ta):$(ss):1:WriteLock")
-{
-	field(SCAN,	"Passive")
-	field(DTYP,	"asynInt32")
-	field(OUT,	"@asyn(modmem.1,2314,1000)INT32_BE")
-	field(DRVL,	"0")
-	field(DRVH,	"5")
-}
+## Write Lock
+#record(ao, "$(s):$(ta):$(ss):$(mod):WriteLock")
+#{
+#	field(SCAN,	"Passive")
+#	field(DTYP,	"asynInt32")
+#	field(OUT,	"@asyn(watlow_Glb_Num_1.$(mod),2314,1000)INT32_BE")
+#	field(DRVL,	"0")
+#	field(DRVH,	"5")
+#}
 
 # Software Revision
-record(ai, "$(s):$(ta):$(ss):1:SoftwareRev")
+record(ai, "$(s):$(ta):$(ss):$(mod):SoftwareRev")
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,4,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),4,100)INT32_BE")
+# 	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),4,16,200)INT16")
 }
 
 # Serial Number
-record(ai, "$(s):$(ta):$(ss):1:SerialNumber") 
+record(ai, "$(s):$(ta):$(ss):$(mod):SerialNumber") 
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,12,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),12,100)INT32_BE")
+#	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),12,16,200)INT16")
 }
 
 # Software Build Number
-record(ai, "$(s):$(ta):$(ss):1:SoftwareBuild") 
+record(ai, "$(s):$(ta):$(ss):$(mod):SoftwareBuild") 
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,8,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),8,100)INT32_BE")
+#	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),8,16,200)INT16")
 }
 
 # Date of Manufacture
-record(ai, "$(s):$(ta):$(ss):1:MakeDate") 
+record(ai, "$(s):$(ta):$(ss):$(mod):MakeDate") 
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,14,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),14,100)INT32_BE")
+#	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),14,16,200)INT16")
 }
 
 # Hardware ID
-record(ai, "$(s):$(ta):$(ss):1:HardwareID") 
+record(ai, "$(s):$(ta):$(ss):$(mod):HardwareID") 
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,0,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),0,100)INT32_BE")
+#	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),0,16,200)INT16")
 }
 
 # Firmware ID
-record(ai, "$(s):$(ta):$(ss):1:FirmwareID") 
+record(ai, "$(s):$(ta):$(ss):$(mod):FirmwareID") 
 {
+	field(SCAN,	"I/O Intr")
 	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
-	field(INP,	"@asyn(modmem.1,2,1000)INT32_BE")
+	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),2,100)INT32_BE")
+#	field(INP,	"@asyn(watlow_Glb_Num_1.$(mod),2,16,200)INT16")
+}
+
+# Device Status
+record(mbbi, "$(s):$(ta):$(ss):$(mod):DeviceStatus") 
+{
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(INP,	"@asynMask(watlow.enum.w.$(mod),30,0xFF,100)UINT16")
+	field(ZRST,	"Nominal")
+	field(ZRVL,	"138")
+	field(ONST,	"Fault")
+	field(ONVL,	"32")
+#	info(autosaveFields,	"VAL")
 }
 
 
@@ -91,23 +117,25 @@ record(ai, "$(s):$(ta):$(ss):1:FirmwareID")
 #=========== Global Menu ===========
 
 # Units
-#record(mbbi, "$(s):$(ta):$(ss):1:Units")
-#{
-#	field(SCAN,	"10 second")
-#	field(DTYP,	"asynUInt32Digital")
-#	field(INP,	"@asynMask(mod_enum.1,2308,0xFF,1000)UINT16")
-#	field(ZRST,	"F")
-#	field(ZRVL,	"30")
-#	field(ONST,	"C")
-#	field(ONVL,	"15")
-#}
-
-# Ramp Type
-record(mbbo, "$(s):$(ta):$(ss):1:RampType") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):Units")
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,4414,0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2308,0xFF,100)UINT16")
+	field(ZRST,	"°F")
+	field(ZRVL,	"30")
+	field(ONST,	"°C")
+	field(ONVL,	"15")
+}
+
+# Ramp Type
+record(mbbo, "$(s):$(ta):$(ss):$(mod):RampType") 
+{
+	field(SCAN,	"Passive")
+	field(PINI,	"YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),4414,0xFF,100)UINT16")
 	field(ZRST,	"Rate")
 	field(ZRVL,	"81")
 	field(ONST,	"Time")
@@ -118,32 +146,32 @@ record(mbbo, "$(s):$(ta):$(ss):1:RampType")
 #=========== Force Controller Units to C  ===========
 
 # Force Units on Global Menu
-record(mbbo, "$(s):$(ta):$(ss):1:ForceUnits")
-{
-	field(DOL,	"0")
-	field(SCAN,	"Passive")
-	field(VAL,	"0")
-	field(PINI, "YES")
-	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,2308,0xFF,1000)UINT16")
-	field(ZRST,	"F")
-	field(ZRVL,	"30")
-	field(ONST,	"C")
-	field(ONVL,	"15")
-}
+#record(mbbo, "$(s):$(ta):$(ss):$(mod):ForceUnits")
+#{
+#	field(DOL,	"0")
+#	field(SCAN,	"Passive")
+#	field(VAL,	"0")
+#	field(PINI, "YES")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2308,0xFF,1000)UINT16")
+#	field(ZRST,	"F")
+#	field(ZRVL,	"30")
+#	field(ONST,	"C")
+#	field(ONVL,	"15")
+#}
 
 
 # Force Units on COM Menu
-record(mbbo, "$(s):$(ta):$(ss):1:ForceUnitsCom")
-{
-#	field(DOL,	"30")
-	field(VAL,	"0")
-	field(PINI, "YES")
-	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,2990,0xFF,1000)UINT16")
-	field(ZRST,	"F")
-	field(ZRVL,	"30")
-	field(ONST,	"C")
-	field(ONVL,	"15")
-}
+#record(mbbo, "$(s):$(ta):$(ss):$(mod):ForceUnitsCom")
+#{
+##	field(DOL,	"30")
+#	field(VAL,	"0")
+#	field(PINI, "YES")
+#	field(DTYP,	"asynUInt32Digital")
+#	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2990,0xFF,1000)UINT16")
+#	field(ZRST,	"F")
+#	field(ZRVL,	"30")
+#	field(ONST,	"C")
+#	field(ONVL,	"15")
+#}
 

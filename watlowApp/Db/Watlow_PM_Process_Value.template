@@ -16,58 +16,53 @@
 
 
 #=========== Process Value Menu ===========
-
+# =========== Inputs
 # Process Source Value A
-record(ai, "$(s):$(ta):$(ss):1:PrcsSrcVA$(i)") 
+record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVA$(ch)") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(INP,	"@asyn(modmem.1,$(PSvA=3310),1000)FLOAT32_BE")
+	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),$(PSvA=0),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	field(ADEL,	"0.1")
+	field(MDEL,	"0.1")
 }
 
 # Process Source Value B
-record(ai, "$(s):$(ta):$(ss):1:PrcsSrcVB$(i)") 
+record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVB$(ch)") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(INP,	"@asyn(modmem.1,$(PSvB=3312),1000)FLOAT32_BE")
+	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),$(PSvB=2),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	field(ADEL,	"0.1")
-}
-
-# Process Offset
-record(ao, "$(s):$(ta):$(ss):1:PrcsOffset$(i)") 
-{
-	field(SCAN,	"Passive")
-	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(PoFS=3324),1000)FLOAT32_BE")
-	field(EGU,	"°")
-	field(PREC,	"3")
-	field(ADEL,	"0.1")
-	info(autosaveFields,	"VAL")
+	field(MDEL,	"0.1")
 }
 
 # Process Output Value
-record(ai, "$(s):$(ta):$(ss):1:PrcsOutput$(i)") 
+record(ai, "$(s):$(ta):$(ss):$(mod):PrcsOutput$(ch)") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(INP,	"@asyn(modmem.1,$(Pov=3322),1000)FLOAT32_BE")
+	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),$(Pov=12),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	field(ADEL,	"0.1")
+	field(MDEL,	"0.1")
 }
 
 # Process Output Error
-record(mbbi, "$(s):$(ta):$(ss):1:PrcsOutputError$(i)") 
+record(mbbi, "$(s):$(ta):$(ss):$(mod):PrcsOutputError$(ch)") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(mod_enum.1,$(PoE=3332),0xFFFF,1000)INT32_BE")
+	field(INP,	"@asynMask(watlow_Prc_Enum_1.$(mod),$(PoE=0),0xFF,100)UINT16")
 	field(ZRST,	"None")
 	field(ZRVL,	"61")
 	field(ONST,	"Open")
@@ -94,12 +89,27 @@ record(mbbi, "$(s):$(ta):$(ss):1:PrcsOutputError$(i)")
 	field(ELVL,	"127")
 }
 
-# Process Function
-record(mbbo, "$(s):$(ta):$(ss):1:PrcsFunction$(i)") 
+# =========== Outputs
+# Process Offset
+record(ao, "$(s):$(ta):$(ss):$(mod):PrcsOffset$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
+	field(DTYP,	"asynFloat64")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(PoFS=3324),100)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+	info(autosaveFields,	"VAL")
+}
+
+# Process Function
+record(mbbo, "$(s):$(ta):$(ss):$(mod):PrcsFunction$(ch)") 
+{
+	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(PFn=3332),0xFFFF,1000)INT32_BE")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(PFn=3332),0xFFFF,100)INT32_BE")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Sensor Backup")
@@ -120,11 +130,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:PrcsFunction$(i)")
 }
 
 # Pressure Units
-record(mbbo, "$(s):$(ta):$(ss):1:PressureUnits$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):PressureUnits$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Punt=3332),0xFFFF,1000)INT32_BE")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Punt=3332),0xFFFF,100)INT32_BE")
 	field(ZRST,	"Pounds per Square Inch")
 	field(ZRVL,	"1671")
 	field(ONST,	"Pascal")
@@ -139,11 +150,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:PressureUnits$(i)")
 }
 
 # Altitude Units
-record(mbbo, "$(s):$(ta):$(ss):1:AltitudeUnits$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):AltitudeUnits$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Aunt=3332),0xFFFF,1000)INT32_BE")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Aunt=3332),0xFFFF,100)INT32_BE")
 	field(ZRST,	"Kilofeet")
 	field(ZRVL,	"1677")
 	field(ONST,	"Feet")
@@ -152,11 +164,11 @@ record(mbbo, "$(s):$(ta):$(ss):1:AltitudeUnits$(i)")
 }
 
 # Barometric Pressure
-#record(ao, "$(s):$(ta):$(ss):1:BarometricPressure$(i)") 
+#record(ao, "$(s):$(ta):$(ss):$(mod):BarometricPressure$(ch)") 
 #{
 #	field(SCAN,	"Passive")
 #	field(DTYP,	"asynFloat64")
-#	field(OUT,	"@asyn(modmem.1,$(bPr=3338),1000)FLOAT32_BE")
+#	field(OUT,	"@asyn(watlow.w.$(mod),$(bPr=3338),100)FLOAT32_BE")
 #	field(EGU,	"psi")
 #	field(PREC,	"1")
 #	field(DRVL,	"10.0")
@@ -165,11 +177,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:AltitudeUnits$(i)")
 #}
 
 # Process Value Filter
-record(ao, "$(s):$(ta):$(ss):1:PrcsFilter$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):PrcsFilter$(ch)") 
 {
 	field(SCAN,	"Passive")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(PvF=3330),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(PvF=3330),100)FLOAT32_BE")
 	field(EGU,	"s")
 	field(PREC,	"1")
 	field(DRVL,	"0.0")

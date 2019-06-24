@@ -26,24 +26,27 @@
 # (dEC)	- Display Precision
 
 #=========== Analog Input Menu ===========
-
+# =========== Inputs
 # Analog Input #
-record(ai, "$(s):$(ta):$(ss):1:AnalogInput$(i)") 
+record(ai, "$(s):$(ta):$(ss):$(mod):AnalogInput$(ch)") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
-	field(INP,	"@asyn(modmem.1,$(Ain=360),1000)FLOAT32_BE")
+	field(INP,	"@asyn(watlow_An_Num_1.$(mod),$(Ain=0),100)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 	field(ADEL,	"0.1")
+	field(MDEL,	"0.1")
 }
 
 # Analog Input Error #
-record(mbbi, "$(s):$(ta):$(ss):1:InputError$(i)") 
+record(mbbi, "$(s):$(ta):$(ss):$(mod):InputError$(ch)") 
 {
-	field(SCAN,	"5 second")
+	field(SCAN,	"I/O Intr")
+	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(mod_enum.1,$(iEr=362),0xFF,1000)UINT16")
+	field(INP,	"@asynMask(watlow_An_Enum_1.$(mod),$(iEr=0),0xFF,100)UINT16")
 	field(ZRST,	"None")
 	field(ZRVL,	"61")
 	field(ONST,	"Open")
@@ -64,23 +67,24 @@ record(mbbi, "$(s):$(ta):$(ss):1:InputError$(i)")
 	field(EIVL,	"246")
 }
 
+# =========== Outputs
 # Calibration Offset #
-record(ao, "$(s):$(ta):$(ss):1:AICalOffset$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):AICalOffset$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP, "asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(iCA=360),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(iCA=360),1000)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
 }
 
 # Sensor Type
-record(mbbo, "$(s):$(ta):$(ss):1:SensorType$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):SensorType$(ch)") 
 {
 	field(SCAN, "Passive")
 	field(DOL,	"95")
 	field(DTYP, "asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(SEn=368),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(SEn=368),0xFF,1000)UINT16")
 	field(ZRST, "Off")
 	field(ZRVL, "62")
 	field(ONST, "Thermocouple")
@@ -103,12 +107,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:SensorType$(i)")
 }
 
 # TC Linearization (Type)
-record(mbbo, "$(s):$(ta):$(ss):1:TCType$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):TCType$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DOL,	"48")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Lin=370),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Lin=370),0xFF,1000)UINT16")
 	field(ZRST,	"J")
 	field(ZRVL,	"46")
 	field(ONST,	"F")
@@ -135,11 +139,11 @@ record(mbbo, "$(s):$(ta):$(ss):1:TCType$(i)")
 }
 
 # RTD Leads
-record(mbbo, "$(s):$(ta):$(ss):1:RTDLeads$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):RTDLeads$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(rtL=372),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(rtL=372),0xFF,1000)UINT16")
 	field(ZRST,	"2")
 	field(ZRVL,	"1")
 	field(ONST,	"3")
@@ -147,11 +151,11 @@ record(mbbo, "$(s):$(ta):$(ss):1:RTDLeads$(i)")
 }
 
 # Units
-record(mbbo, "$(s):$(ta):$(ss):1:AIUnits$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):AIUnits$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(Unt=442),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(Unt=442),0xFF,1000)UINT16")
 	field(ZRST,	"Process")
 	field(ZRVL,	"75")
 	field(ONST,	"Power")
@@ -164,12 +168,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:AIUnits$(i)")
 }
 
 # Scale Low
-record(ao, "$(s):$(ta):$(ss):1:ScaleLow$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):ScaleLow$(ch)") 
 {
 #	Conditional set if SEn = 56, 104 or 112
 	field(SCAN,"Passive")
 	field(DTYP, "asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(SLo=388),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(SLo=388),1000)FLOAT32_BE")
 	field(PREC, "1")
 	field(DRVL, "-100")
 	field(DRVH, "1000")
@@ -177,12 +181,12 @@ record(ao, "$(s):$(ta):$(ss):1:ScaleLow$(i)")
 }
 
 # Scale High
-record(ao, "$(s):$(ta):$(ss):1:ScaleHigh$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):ScaleHigh$(ch)") 
 {
 #	Conditional set if SEn = 56, 104 or 112
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(Shi=390),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(Shi=390),1000)FLOAT32_BE")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"1000")
@@ -190,12 +194,12 @@ record(ao, "$(s):$(ta):$(ss):1:ScaleHigh$(i)")
 }
 
 # Range Low
-record(ao, "$(s):$(ta):$(ss):1:RangeLow$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):RangeLow$(ch)") 
 {
 #	Conditional set if SEn = 56, 104 or 112
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(rLo=392),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(rLo=392),1000)FLOAT32_BE")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
@@ -203,12 +207,12 @@ record(ao, "$(s):$(ta):$(ss):1:RangeLow$(i)")
 }
 
 # Range High
-record(ao, "$(s):$(ta):$(ss):1:RangeHigh$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):RangeHigh$(ch)") 
 {
 #	Conditional set if SEn = 56, 104 or 112
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(rhi=394),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(rhi=394),1000)FLOAT32_BE")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
@@ -216,11 +220,11 @@ record(ao, "$(s):$(ta):$(ss):1:RangeHigh$(i)")
 }
 
 # Process Error Enable
-record(mbbo, "$(s):$(ta):$(ss):1:ProcessErrorEnable$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):ProcessErrorEnable$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(PEE=418),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(PEE=418),0xFF,1000)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"Low")
@@ -228,56 +232,22 @@ record(mbbo, "$(s):$(ta):$(ss):1:ProcessErrorEnable$(i)")
 }
 
 # Process Error Low 
-record(ao, "$(s):$(ta):$(ss):1:ProcessErrorLow$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):ProcessErrorLow$(ch)") 
 {
 	field(SCAN,"Passive")
 	field(DTYP,"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(PEL=420),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(PEL=420),1000)FLOAT32_BE")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"1000")
 }
 
-# Thermistor Curve
-#record(mbbo, "$(s):$(ta):$(ss):1:ThermistorCurve$(i)") 
-#{
-#Conditional set if SEn = 229
-#field(SCAN,	"Passive")
-#field(DTYP,	"asynUInt32Digital")
-#field(OUT,	"@asynMask(mod_enum.1,$(tC=434),0xFFFF,1000)INT32_BE")
-#field(ZRST,	"Curve A")
-#field(ZRVL,	"1451")
-#field(ONST,	"Curve B")
-#field(ONVL,	"1452")
-#field(TWST,	"Curve C")
-#field(TWVL,	"1453")
-#field(THST,	"Custom Curve")
-#field(THVL,	"180")
-#}
-
-# Resistance Range
-#record(mbbo, "$(s):$(ta):$(ss):1:ResistanceRange$(i)") 
-#{
-#Conditional set if SEn = 229
-#field(SCAN,	"Passive")
-#field(DTYP,	"asynUInt32Digital")
-#field(OUT,	"@asynMask(mod_enum.1,$(rr=432),0xFFFF,1000)INT32_BE")
-#field(ZRST,	"5k")
-#field(ZRVL,	"1448")
-#field(ONST,	"10k")
-#field(ONVL,	"1360")
-#field(TWST,	"20k")
-#field(TWVL,	"1361")
-#field(THST,	"40k")
-#field(THVL,	"1449")
-#}
-
 # Filter
-record(ao, "$(s):$(ta):$(ss):1:Filter$(i)") 
+record(ao, "$(s):$(ta):$(ss):$(mod):Filter$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynFloat64")
-	field(OUT,	"@asyn(modmem.1,$(FiL=386),1000)FLOAT32_BE")
+	field(OUT,	"@asyn(watlow.w.$(mod),$(FiL=386),1000)FLOAT32_BE")
 	field(EGU,	"s")
 	field(PREC,	"1")
 	field(DRVL,	"0")
@@ -286,11 +256,11 @@ record(ao, "$(s):$(ta):$(ss):1:Filter$(i)")
 }
 
 # Error Latching
-record(mbbo, "$(s):$(ta):$(ss):1:ErrorLatching$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):ErrorLatching$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(iEL=414),0xFF,1000)UINT16")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(iEL=414),0xFF,1000)UINT16")
 	field(ZRST,	"Off")
 	field(ZRVL,	"62")
 	field(ONST,	"On")
@@ -298,12 +268,12 @@ record(mbbo, "$(s):$(ta):$(ss):1:ErrorLatching$(i)")
 }
 
 # Display Precision
-record(mbbo, "$(s):$(ta):$(ss):1:DisplayPrecision$(i)") 
+record(mbbo, "$(s):$(ta):$(ss):$(mod):DisplayPrecision$(ch)") 
 {
 	field(SCAN,	"Passive")
 	field(DOL,	"94")
 	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(mod_enum.1,$(dEC=398),0xFFFF,1000)INT32_BE")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),$(dEC=398),0xFFFF,1000)INT32_BE")
 	field(ZRST,	"Whole")
 	field(ZRVL,	"105")
 	field(ONST,	"Tenths")
