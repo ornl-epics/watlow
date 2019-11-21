@@ -6,16 +6,18 @@ include $(TOP)/configure/CONFIG
 # Install databases, templates & substitutions like this
 #DB += mytemplate.template
 DB += Watlow_PM_Alarm.template
-DB += Watlow_PM_Analog_Input.template
 DB += Watlow_PM_General.template
 DB += Watlow_PM_Limits.template
-DB += Watlow_PM_Linearization.template
 DB += Watlow_PM_Loop.template
 DB += Watlow_PM_Monitor.template
 DB += Watlow_PM_Output_1.template
 DB += Watlow_PM_Output_2_and_3.template
-DB += Watlow_PM_Process_Value.template
 DB += Watlow_PM.template
+
+# Only process the templates below as required by the application.
+#DB += Watlow_PM_Analog_Input.template
+#DB += Watlow_PM_Linearization.template
+#DB += Watlow_PM_Process_Value.template
 
 
 # If <anyname>.db template is not named <anyname>*.template add

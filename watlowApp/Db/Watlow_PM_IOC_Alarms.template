@@ -1,0 +1,87 @@
+####  Macro Definitions  ####
+#  (s) - Beam Line
+# (ta) - Target Area
+# (ss) - Device Name
+
+
+
+
+# =============   Top Level Alarm Handling   =============
+# Disable top level alarm handling
+record(bo, "$(s):$(ta):Watlow:AlarmControl")
+{
+	field(DESC,	"Disable Alarms")
+	field(PINI,	"YES")
+	field(VAL,	"0")
+	field(OMSL,	"supervisory")
+	field(ZNAM,	"Alarm Enabled")
+	field(ONAM,	"Alarm Disabled")
+	field(ZSV,	"NO_ALARM")
+	field(OSV,	"MINOR")
+	field(ASG,	"ALWAYS")
+	info(autosaveFields, "VAL")
+}
+#
+## Top level alarm summary record.
+
+record(calcout, "$(s):$(ta):$(ss):$(mod):AlarmSummaryCalc")
+{
+	field(INPA,	"$(s):$(ta):Watlow:AlarmControl CP")
+	field(INPB,	"1")
+	field(CALC,	"A=B")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):Watlow:AlarmSummary PP")
+}
+
+
+record(bi, "$(s):$(ta):Watlow:AlarmSummary")
+{
+	field(SCAN,	"Passive")
+	field(ZNAM,	"No Alarm")
+	field(ONAM,	"Alarm")
+	field(OSV,	"MAJOR")
+	field(PINI,	"YES")
+}
+
+
+
+couple of issues to think about:
+
+	1.	There are globals PV's that are not associated with individual modules.  How to handle.
+	2.	Module alarms should be based upon whether or not the module is active.  I think using the 
+		Control Mode PV (CG2:SE:Furnace:4:ControlMode1) would be a good indicator.  Use a calcout 
+		record to determine if the alarms should be processed.
+
+		record(calcout, "$(s):$(ta):$(ss):$(mod):CheckControlMode")
+		{
+			field(INPA,	"$(s):$(ta):$(ss):$(mod):ControlMode$(ch)")
+			field(INPB,	"0")
+			field(CALC,	"A#B")
+			field(OOPT,	"Every Time")
+			field(OUT,	"$(s):$(ta):$(ss):$(mod):ProcessAlarms PP")
+
+		record(calcout, "$(s):$(ta):$(ss):$(mod):ProcessAlarms")
+		{
+			field(INPA,	"$(s):$(ta):$(ss):$(mod):DeviceStatus CP")
+			field(INPB,	"$(s):$(ta):$(ss):$(mod):AlarmState1 CP")
+			field(INPC,	"$(s):$(ta):$(ss):$(mod):AlarmState2 CP")
+			field(INPD,	"$(s):$(ta):$(ss):$(mod):AlarmState3 CP")
+			field(INPE,	"$(s):$(ta):$(ss):$(mod):AlarmState4 CP")
+			field(INPF,	"$(s):$(ta):$(ss):$(mod):LimitState CP")
+			field(INPG,	"$(s):$(ta):$(ss):$(mod):OpenLoopError1 CP")
+			field(INPH,	"138")
+			field(INPI,	"61")
+			field(INPJ,	"62")
+			field(CALC,	"A#H||B#I||C#I||D#I||E#I||F#I||F#J||G#I")
+			field(DOPT,	"Use CALC")
+			field(OOPT,	"Every Time")
+			field(OUT,	"$(s):$(ta):Watlow:AlarmSummary PP")
+
+# Device Status:	OK (138), Fail (32)
+# Alarm State:	Startup (88), None (61), Blocked (12), Alarm low (8), Alarm high (7), Error (28)
+# Limit State:	Off (62), None (61), Limit High (51), Limit Low (52), Error (28)
+# Open Loop Error Status:	None (61), Open Loop (1274), Reversed Sensor (1275)
+
+
+

@@ -20,7 +20,7 @@
 # Process Source Value A
 record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVA$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),0,2000)FLOAT32_BE")
@@ -33,7 +33,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVA$(ch)")
 # Process Source Value B
 record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVB$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),2,2000)FLOAT32_BE")
@@ -46,7 +46,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PrcsSrcVB$(ch)")
 # Process Output Value
 record(ai, "$(s):$(ta):$(ss):$(mod):PrcsOutput$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),12,2000)FLOAT32_BE")
@@ -59,7 +59,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PrcsOutput$(ch)")
 # Process Output Error
 record(mbbi, "$(s):$(ta):$(ss):$(mod):PrcsOutputError$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_Prc_Enum_1.$(mod),12,0xFF,2000)UINT16")
@@ -94,7 +94,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):PrcsOutputError$(ch)")
 # Process Offset
 record(ai, "$(s):$(ta):$(ss):$(mod):PrcsOffset$(ch)RB") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),0,2000)FLOAT32_BE")
@@ -105,7 +105,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PrcsOffset$(ch)RB")
 # Process Value Filter
 record(ai, "$(s):$(ta):$(ss):$(mod):PrcsFilter$(ch)RB") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_Prc_Num_1.$(mod),6,2000)FLOAT32_BE")
@@ -116,7 +116,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PrcsFilter$(ch)RB")
 # Process Function
 record(mbbi, "$(s):$(ta):$(ss):$(mod):PrcsFunction$(ch)RB") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_Prc_Enum_1.$(mod),0,0xFFFF,2000)INT32_BE")
@@ -131,7 +131,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):PrcsFunction$(ch)RB")
 # Pressure Units
 record(mbbi, "$(s):$(ta):$(ss):$(mod):PressureUnits$(ch)RB") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_Prc_Enum_1.$(mod),14,0xFFFF,2000)INT32_BE")
@@ -150,7 +150,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):PressureUnits$(ch)RB")
 # Altitude Units
 record(mbbi, "$(s):$(ta):$(ss):$(mod):AltitudeUnits$(ch)RB") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_Prc_Enum_1.$(mod),16,0xFFFF,2000)INT32_BE")

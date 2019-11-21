@@ -16,7 +16,7 @@
 # Heat Power
 record(ai, "$(s):$(ta):$(ss):$(mod):HeatPower$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_CL_Num_1.$(mod),14,2000)FLOAT32_BE")
@@ -24,12 +24,13 @@ record(ai, "$(s):$(ta):$(ss):$(mod):HeatPower$(ch)")
 	field(PREC,	"1")
 	field(ADEL,	"1")
 	field(MDEL,	"1")
+	info(archive, "Monitor, 00:00:01, VAL")
 }
 
 # Cool Power
 record(ai, "$(s):$(ta):$(ss):$(mod):CoolPower$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_CL_Num_1.$(mod),16,2000)FLOAT32_BE")
@@ -42,7 +43,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):CoolPower$(ch)")
 # Filtered Process Value
 record(ai, "$(s):$(ta):$(ss):$(mod):ProcessValue$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AI_Num_1.$(mod),$(PvA=42),2000)FLOAT32_BE")
@@ -50,12 +51,13 @@ record(ai, "$(s):$(ta):$(ss):$(mod):ProcessValue$(ch)")
 	field(PREC,	"3")
 	field(ADEL,	"0.1")
 	field(MDEL,	"0.1")
+	info(archive, "Monitor, 00:00:01, VAL")
 }
 
 # Control Mode Active
 record(mbbi, "$(s):$(ta):$(ss):$(mod):ControlModeActive$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 #	field(NOBT,	"16")
 	field(DTYP,	"asynUInt32Digital")
@@ -71,7 +73,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):ControlModeActive$(ch)")
 # Read Closed Loop Setpoint. Same as Set Point Active
 record(ai, "$(s):$(ta):$(ss):$(mod):ReadClosedLoopSV$(ch)")
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_CL_Num_2.$(mod),12,2000)FLOAT32_BE")
@@ -84,7 +86,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):ReadClosedLoopSV$(ch)")
 # Autotune Status
 record(mbbi, "$(s):$(ta):$(ss):$(mod):AutotuneStatus$(ch)") 
 {
-	field(SCAN,	"I/O Intr")
+	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_CL_Enum_1.$(mod),52,0xFF,2000)UINT16")
@@ -102,9 +104,9 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AutotuneStatus$(ch)")
 	field(FVVL,	"123")
 	field(SXST,	"Waiting: cross 3 negative")
 	field(SXVL,	"150")
-	field(SVST,	"Measuring maximum peak")
+	field(SVST,	"Measuring Max peak")
 	field(SVVL,	"151")
-	field(EIST,	"Measuring minimum peak")
+	field(EIST,	"Measuring Min peak")
 	field(EIVL,	"152")
 	field(NIST,	"Calculating")
 	field(NIVL,	"153")
