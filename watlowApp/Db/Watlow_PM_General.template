@@ -7,46 +7,6 @@
 
 
 
-
-# =============   Top Level Alarm Handling   =============
-# Disable top level alarm handling
-record(bo, "$(s):$(ta):Watlow:AlarmControl")
-{
-	field(DESC,	"Disable Alarms")
-	field(PINI,	"YES")
-	field(VAL,	"0")
-	field(OMSL,	"supervisory")
-	field(ZNAM,	"Alarm Enabled")
-	field(ONAM,	"Alarm Disabled")
-	field(ZSV,	"NO_ALARM")
-	field(OSV,	"MINOR")
-	field(ASG,	"ALWAYS")
-	info(autosaveFields, "VAL")
-}
-#
-## Top level alarm summary record.
-
-record(calcout, "$(s):$(ta):$(ss):$(mod):AlarmSummaryCalc")
-{
-	field(INPA,	"$(s):$(ta):Watlow:AlarmControl CP")
-	field(INPB,	"1")
-	field(CALC,	"A=B")
-	field(DOPT,	"Use CALC")
-	field(OOPT,	"Every Time")
-	field(OUT,	"$(s):$(ta):Watlow:AlarmSummary PP")
-}
-
-
-record(bi, "$(s):$(ta):Watlow:AlarmSummary")
-{
-	field(SCAN,	"Passive")
-	field(ZNAM,	"No Alarm")
-	field(ONAM,	"Alarm")
-	field(OSV,	"MAJOR")
-	field(PINI,	"YES")
-}
-
-
 #=========== Lock/Factory Menu ===========
 
 ## Operations Security
@@ -155,20 +115,9 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):DeviceStatus")
 
 
 
-#=========== Global Menu ===========
 
-# Units
-record(mbbo, "$(s):$(ta):$(ss):$(mod):Units")
-{
-	field(SCAN,	"Passive")
-	field(PINI,	"YES")
-	field(DTYP,	"asynUInt32Digital")
-	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2308,0xFF,2000)UINT16")
-	field(ZRST,	"°F")
-	field(ZRVL,	"30")
-	field(ONST,	"°C")
-	field(ONVL,	"15")
-}
+
+#=========== Global Menu ===========
 
 # Ramp Type
 record(mbbo, "$(s):$(ta):$(ss):$(mod):RampType") 
@@ -184,38 +133,91 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):RampType")
 #	info(autosaveFields,	"VAL")
 }
 
-#=========== Force Controller Units to C  ===========
+# Units
+record(mbbo, "$(s):$(ta):$(ss):$(mod):Units")
+{
+	field(SCAN,	"Passive")
+	field(PINI,	"YES")
+	field(DTYP,	"asynUInt32Digital")
+	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2308,0xFF,2000)UINT16")
+	field(ZRST,	"°F")
+	field(ZRVL,	"30")
+	field(ONST,	"°C")
+	field(ONVL,	"15")
+}
 
-# Force Units on Global Menu
-#record(mbbo, "$(s):$(ta):$(ss):$(mod):ForceUnits")
-#{
-#	field(DOL,	"0")
-#	field(SCAN,	"Passive")
-#	field(VAL,	"0")
-#	field(PINI, "YES")
-#	field(DTYP,	"asynUInt32Digital")
-#	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2308,0xFF,2000)UINT16")
-#	field(ZRST,	"F")
-#	field(ZRVL,	"30")
-#	field(ONST,	"C")
-#	field(ONVL,	"15")
-#}
+#=========== Module Level Alarm Handling  ===========
+# Conditions for an alarm for each module:
+##	1. If the master alarm disable control is set to Enable (0) process next step.
+##	2. If the module's Control Mode is not set to Off (0) process next step.
+##	3. First check the communication status.  Set the communciations status indicator.
+##	4. Next, check all status conditions and alarms of the module along with the communication status.
 
 
-# Force Units on COM Menu
-#record(mbbo, "$(s):$(ta):$(ss):$(mod):ForceUnitsCom")
-#{
-##	field(DOL,	"30")
-#	field(VAL,	"0")
-#	field(PINI, "YES")
-#	field(DTYP,	"asynUInt32Digital")
-#	field(OUT,	"@asynMask(watlow.enum.w.$(mod),2990,0xFF,2000)UINT16")
-#	field(ZRST,	"F")
-#	field(ZRVL,	"30")
-#	field(ONST,	"C")
-#	field(ONVL,	"15")
-#}
+# Process the communication status check.
+record(calcout, "$(s):$(ta):$(ss):$(mod):CommsAlarmCalc")
+{
+	field(PINI,	"YES")
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):ControlMode$(ch)RB.SERV CP")
+	field(CALC,	"A==3")
+	field(OOPT,	"Every Time")
+	field(DOPT,	"Use CALC")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):CommStatus PP")
+}
 
+# Update the communication status indication.
+record(mbbi, "$(s):$(ta):$(ss):$(mod):CommStatusInd") 
+{
+	field(ZRST,	"Nominal")
+	field(ONST,	"Fault")
+#	field(OSV,	"MAJOR")
+}
+
+# Is the module in an operation mode or is it off
+record(calcout, "$(s):$(ta):$(ss):$(mod):CheckControlMode")
+{
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):ControlModeRB")
+	field(INPB,	"0")
+	field(CALC,	"A#B")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):PrcsModAlarms PP")
+}
+
+# If the module is in an operation mode check the status of the alarms and process the module master alarm
+record(calcout, "$(s):$(ta):$(ss):$(mod):PrcsModAlarms")
+{
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):DeviceStatus CP")
+	field(INPB,	"$(s):$(ta):$(ss):$(mod):AlarmState1 CP")
+	field(INPC,	"$(s):$(ta):$(ss):$(mod):AlarmState2 CP")
+	field(INPD,	"$(s):$(ta):$(ss):$(mod):AlarmState3 CP")
+	field(INPE,	"$(s):$(ta):$(ss):$(mod):AlarmState4 CP")
+	field(INPF,	"$(s):$(ta):$(ss):$(mod):LimitState CP")
+	field(INPG,	"$(s):$(ta):$(ss):$(mod):OpenLoopError1 CP")
+	field(INPH,	"138")
+	field(INPI,	"61")
+	field(INPJ,	"62")
+	field(INPK,	"$(s):$(ta):$(ss):$(mod):CommStatusInd CP")
+	field(INPL,	"1")
+	field(CALC,	"A#H||B#I||C#I||D#I||E#I||F#I||F#J||G#I||K=L")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):ModAlarmSummary PP")
+}
+# Device Status:	OK (138), Fail (32)
+# Alarm State:	Startup (88), None (61), Blocked (12), Alarm low (8), Alarm high (7), Error (28)
+# Limit State:	Off (62), None (61), Limit High (51), Limit Low (52), Error (28)
+# Open Loop Error Status:	None (61), Open Loop (1274), Reversed Sensor (1275)
+
+# Master alarm state for the module
+record(bi, "$(s):$(ta):$(ss):$(mod):ModAlarmSummary")
+{
+	field(PINI,	"YES")
+	field(SCAN,	"Passive")
+	field(ZNAM,	"No Alarm")
+	field(ONAM,	"Alarm")
+	field(OSV,	"MAJOR")
+	info(archive, "Monitor, 00:00:01, VAL")
+}
 
 
 
