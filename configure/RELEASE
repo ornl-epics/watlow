@@ -32,11 +32,7 @@
 # EPICS_BASE should appear last so earlier modules can override stuff:
 ASYN = /home/controls/epics/asyn/master
 MODBUS = /home/controls/epics/modbus/master
-#WATLOW = /home/controls/epics/watlow/master
 EPICS_BASE = /home/controls/epics/base/master
-#AUTOSAVE=/home/controls/epics/autosave/master
-#BUSY=/home/controls/epics/busy/master
-#DEVIOCSTATS=/home/controls/epics/devIocStats/master
 
 # Set RULES here if you want to use build rules from somewhere
 # other than EPICS_BASE:

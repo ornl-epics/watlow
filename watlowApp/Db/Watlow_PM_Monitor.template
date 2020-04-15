@@ -23,8 +23,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):HeatPower$(ch)")
 	field(EGU,	"%")
 	field(PREC,	"1")
 	field(ADEL,	"1")
-	field(MDEL,	"1")
-	info(archive, "Monitor, 00:00:01, VAL")
+	info(archive, "Monitor, 00:00:10, VAL")
 }
 
 # Cool Power
@@ -36,8 +35,6 @@ record(ai, "$(s):$(ta):$(ss):$(mod):CoolPower$(ch)")
 	field(INP,	"@asyn(watlow_CL_Num_1.$(mod),16,2000)FLOAT32_BE")
 	field(EGU,	"%")
 	field(PREC,	"1")
-	field(ADEL,	"1")
-	field(MDEL,	"1")
 }
 
 # Filtered Process Value
@@ -49,9 +46,8 @@ record(ai, "$(s):$(ta):$(ss):$(mod):ProcessValue$(ch)")
 	field(INP,	"@asyn(watlow_AI_Num_1.$(mod),$(PvA=42),2000)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
-	field(ADEL,	"0.1")
 	field(MDEL,	"0.1")
-	info(archive, "Monitor, 00:00:01, VAL")
+	info(archive, "Monitor, 00:00:10, VAL")
 }
 
 # Control Mode Active
@@ -59,7 +55,6 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):ControlModeActive$(ch)")
 {
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")
-#	field(NOBT,	"16")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_CL_Enum_1.$(mod),2,0xFF,2000)UINT16")
 	field(ZRST,	"Off")
@@ -70,7 +65,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):ControlModeActive$(ch)")
 	field(TWVL,	"54")
 }
 
-# Read Closed Loop Setpoint. Same as Set Point Active
+# Read Active Closed Loop Setpoint. Same as Set Point Active
 record(ai, "$(s):$(ta):$(ss):$(mod):ReadClosedLoopSV$(ch)")
 {
 	field(SCAN,	"1 second")
@@ -79,8 +74,9 @@ record(ai, "$(s):$(ta):$(ss):$(mod):ReadClosedLoopSV$(ch)")
 	field(INP,	"@asyn(watlow_CL_Num_2.$(mod),12,2000)FLOAT32_BE")
 	field(EGU,	"°")
 	field(PREC,	"3")
-	field(ADEL,	"0.1")
 	field(MDEL,	"0.1")
+	field(ADEL,	"0.1")
+	info(archive, "Monitor, 00:00:10, VAL")
 }
 
 # Autotune Status
@@ -115,3 +111,5 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AutotuneStatus$(ch)")
 	field(ELST,	"Timeout")
 	field(ELVL,	"118")
 }
+
+

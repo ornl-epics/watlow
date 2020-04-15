@@ -8,7 +8,7 @@
 # Output Type RB
 record(mbbi, "$(s):$(ta):$(ss):$(mod):OutputType1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_AO_Enum_1.$(mod),0,0xFF,2000)UINT16")
@@ -21,7 +21,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):OutputType1RB")
 # Output Function RB
 record(mbbi, "$(s):$(ta):$(ss):$(mod):OutputFunction1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_AO_Enum_1.$(mod),2,0xFF,2000)UINT16")
@@ -46,7 +46,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):OutputFunction1RB")
 # Retransmit Source RB
 record(mbbi, "$(s):$(ta):$(ss):$(mod):RetransmitSource1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_AO_Enum_1.$(mod),4,0xFF,2000)UINT16")
@@ -63,7 +63,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):RetransmitSource1RB")
 # Output Function Instance RB
 record(mbbi, "$(s):$(ta):$(ss):$(mod):FunctionInstanceA1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
 	field(INP,	"@asynMask(watlow_AO_Enum_1.$(mod),6,0xFF,2000)UINT16")
@@ -80,7 +80,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):FunctionInstanceA1RB")
 # Calibration Offset RB
 record(ai, "$(s):$(ta):$(ss):$(mod):AOCalOffset1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AO_Num_1.$(mod),0,2000)FLOAT32_BE")
@@ -90,7 +90,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):AOCalOffset1RB")
 # Scale Low RB
 record(ai, "$(s):$(ta):$(ss):$(mod):AOScaleLow1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AO_Num_1.$(mod),4,2000)FLOAT32_BE")
@@ -100,7 +100,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):AOScaleLow1RB")
 # Scale High RB
 record(ai, "$(s):$(ta):$(ss):$(mod):AOScaleHigh1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AO_Num_1.$(mod),6,2000)FLOAT32_BE")
@@ -110,7 +110,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):AOScaleHigh1RB")
 # Range Low RB
 record(ai, "$(s):$(ta):$(ss):$(mod):AORangeLow1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AO_Num_1.$(mod),8,2000)FLOAT32_BE")
@@ -120,7 +120,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):AORangeLow1RB")
 # Range High RB
 record(ai, "$(s):$(ta):$(ss):$(mod):AORangeHigh1RB") 
 {
-	field(SCAN,	"1 second")
+	field(SCAN,	"10 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynFloat64")
 	field(INP,	"@asyn(watlow_AO_Num_1.$(mod),10,2000)FLOAT32_BE")
@@ -141,7 +141,7 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputType1")
 	field(ZRVL,	"104")
 	field(ONST,	"Milliampere")
 	field(ONVL,	"112")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):OutputType1RB")
 }
 
 # Output Function
@@ -167,7 +167,7 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):OutputFunction1")
 	field(SXVL,	"234")
 	field(SVST,	"Retransmit")
 	field(SVVL,	"213")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):OutputFunction1RB")
 }
 
 # Retransmit Source
@@ -185,7 +185,7 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):RetransmitSource1")
 	field(TWVL,	"22")
 	field(THST,	"Process Value")
 	field(THVL,	"241")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):RetransmitSource1RB")
 }
 
 # Output Function Instance
@@ -203,7 +203,7 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):FunctionInstanceA1")
 	field(TWVL,	"3")
 	field(THST,	"4")
 	field(THVL,	"4")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):FunctionInstanceA1RB")
 }
 
 # Scale Low
@@ -216,7 +216,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AOScaleLow1")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AOScaleLow1RB")
 }
 
 # Scale High
@@ -229,7 +229,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AOScaleHigh1")
 	field(PREC,	"1")
 	field(DRVL,	"-100")
 	field(DRVH,	"100")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AOScaleHigh1RB")
 }
 
 # Range Low
@@ -242,7 +242,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AORangeLow1")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AORangeLow1RB")
 }
 
 # Range High
@@ -255,7 +255,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AORangeHigh1")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AORangeHigh1RB")
 }
 
 # Calibration Offset
@@ -268,7 +268,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AOCalOffset1")
 	field(PREC,	"3")
 	field(DRVL,	"-1999")
 	field(DRVH,	"9999")
-	info(autosaveFields,	"VAL")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AOCalOffset1RB")
 }
 
 
