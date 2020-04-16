@@ -68,6 +68,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):OutputPwr$(ch)")
 	field(EGU,	"%")
 	field(PREC,	"1")
 	field(MDEL,	"0.1")
+	field(ADEL,	"0.5")
 	info(archive, "Monitor, 00:00:10, VAL")
 
 }
