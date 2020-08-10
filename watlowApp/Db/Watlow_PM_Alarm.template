@@ -262,6 +262,38 @@ record(ao, "$(s):$(ta):$(ss):$(mod):AlarmHighSP$(ch)")
 	field(FLNK,	"$(s):$(ta):$(ss):$(mod):AlarmHighSP$(ch)RB")
 }
 
+# Process Clear Alarm Request
+record(bi, "$(s):$(ta):$(ss):$(mod):ClearAlarmButton$(ch)")
+{
+	field(DESC,	"Begins process to Clear the Alarm")
+	field(PINI,	"YES")
+	field(VAL,	"0")
+	field(ZNAM,	"Clear Alarm")
+	field(ONAM,	"Clearing Alarm")
+	field(ASG,	"ALWAYS")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):ClearAlarmCalc$(ch) PP")
+}
+
+record(calcout, "$(s):$(ta):$(ss):$(mod):ClearAlarmCalc$(ch)")
+{
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):ClearAlarmButton$(ch)")
+	field(CALC,	"A=1")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):ProcessClearAlarm$(ch) PP")
+}
+
+# Process Clear Alarm
+record(seq, "$(s):$(ta):$(ss):$(mod):ProcessClearAlarm$(ch)") 
+{
+	field(DO1,	"0")
+	field(LNK1,	"$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch) PP")
+	field(DLY2,	"1")
+	field(DO2,	"255")
+	field(LNK2,	"$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch) PP")
+	field(LNK3,	"$(s):$(ta):$(ss):$(mod):ClearAlarmButton$(ch) PP")
+}
+
 # Clear Alarm
 record(ao, "$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch)") 
 {
@@ -269,14 +301,37 @@ record(ao, "$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch)")
 	field(OUT,	"@asynMask(watlow.w.$(mod),$(ACLr=1904),0xFF,2000)UINT16")
 }
 
-# Process Clear Alarm
-record(seq, "$(s):$(ta):$(ss):$(mod):ProcessClearAlarm$(ch)") 
+
+# Process Silence Alarm Request
+record(bi, "$(s):$(ta):$(ss):$(mod):SilenceAlarmButton$(ch)")
+{
+	field(DESC,	"Begins process to Silence the Alarm")
+	field(PINI,	"YES")
+	field(VAL,	"0")
+	field(ZNAM,	"Silence Alarm")
+	field(ONAM,	"Silencing Alarm")
+	field(ASG,	"ALWAYS")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):SilenceAlarmCalc$(ch) PP")
+}
+
+record(calcout, "$(s):$(ta):$(ss):$(mod):SilenceAlarmCalc$(ch)")
+{
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):SilenceAlarmButton$(ch)")
+	field(CALC,	"A=1")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):ProcessSilenceAlarm$(ch) PP")
+}
+
+# Process Silence Alarm
+record(seq, "$(s):$(ta):$(ss):$(mod):ProcessSilenceAlarm$(ch)") 
 {
 	field(DO1,	"0")
+	field(LNK1,	"$(s):$(ta):$(ss):$(mod):SilenceAlarm$(ch) PP")
+	field(DLY2,	"1")
 	field(DO2,	"255")
-	field(LNK1,	"$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch) PP")
-	field(LNK2,	"$(s):$(ta):$(ss):$(mod):ClearAlarm$(ch) PP")
-	field(DLY2,	"0.25")
+	field(LNK2,	"$(s):$(ta):$(ss):$(mod):SilenceAlarm$(ch) PP")
+	field(LNK3,	"$(s):$(ta):$(ss):$(mod):SilenceAlarmButton$(ch) PP")
 }
 
 # Alarm Silence Request
@@ -289,15 +344,6 @@ record(mbbo, "$(s):$(ta):$(ss):$(mod):SilenceAlarm$(ch)")
 	field(ZRVL,	"1010")
 }
 
-# Process Silence Alarm
-record(seq, "$(s):$(ta):$(ss):$(mod):ProcessSilenceAlarm$(ch)") 
-{
-	field(DO1,	"0")
-	field(DO2,	"255")
-	field(LNK1,	"$(s):$(ta):$(ss):$(mod):SilenceAlarm$(ch) PP")
-	field(LNK2,	"$(s):$(ta):$(ss):$(mod):SilenceAlarm$(ch) PP")
-	field(DLY2,	"0.25")
-}
 
 # Alarm Type
 record(mbbo, "$(s):$(ta):$(ss):$(mod):AlarmType$(ch)") 

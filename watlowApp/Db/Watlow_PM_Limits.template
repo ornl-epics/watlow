@@ -166,6 +166,40 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):LimitIntegrateRB")
 
 
 # =========== Outputs
+# Process Clear Limit Error
+record(bi, "$(s):$(ta):$(ss):$(mod):ClearLimitButton")
+{
+	field(DESC,	"Begins process to Clears Limit Errors")
+	field(PINI,	"YES")
+	field(VAL,	"0")
+	field(ZNAM,	"Clear Error")
+	field(ONAM,	"Clearing Error")
+	field(ASG,	"ALWAYS")
+	field(FLNK,	"$(s):$(ta):$(ss):$(mod):ClearLimitCalc PP")
+}
+
+record(calcout, "$(s):$(ta):$(ss):$(mod):ClearLimitCalc")
+{
+	field(INPA,	"$(s):$(ta):$(ss):$(mod):ClearLimitButton")
+	field(CALC,	"A=1")
+	field(DOPT,	"Use CALC")
+	field(OOPT,	"Every Time")
+	field(OUT,	"$(s):$(ta):$(ss):$(mod):ProcessClearLimit PP")
+}
+
+
+record(seq, "$(s):$(ta):$(ss):$(mod):ProcessClearLimit") 
+{
+	field(DOL1,	"0")
+	field(LNK1,	"$(s):$(ta):$(ss):$(mod):ClearLimitError PP")
+	field(DLY2,	"1")
+	field(DOL2,	"255")
+	field(LNK2,	"$(s):$(ta):$(ss):$(mod):ClearLimitError PP")
+	field(DOL3,	"0")
+	field(LNK3,	"$(s):$(ta):$(ss):$(mod):ClearLimitButton PP")
+}
+
+
 # Limit Clear Request
 record(ao, "$(s):$(ta):$(ss):$(mod):ClearLimitError") 
 {
