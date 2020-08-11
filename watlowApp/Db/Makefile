@@ -14,6 +14,8 @@ DB += Watlow_PM_Output_1.template
 DB += Watlow_PM_Output_2_and_3.template
 DB += Watlow_PM.template
 DB += Watlow_PM_IOC_Alarms.template
+DB += Watlow_PM_Loop_PID.template
+DB += pid_set_window.template
 
 # Only process the templates below as required by the application.
 #DB += Watlow_PM_Analog_Input.template

@@ -15,7 +15,7 @@ record(bo, "$(s):$(ta):Watlow:AlarmControl")
 {
 	field(DESC,	"Disable Alarms")
 	field(PINI,	"YES")
-	field(VAL,	"0")
+	field(VAL,	"1")
 	field(OMSL,	"supervisory")
 	field(ZNAM,	"Alarm Enabled")
 	field(ONAM,	"Alarm Disabled")
