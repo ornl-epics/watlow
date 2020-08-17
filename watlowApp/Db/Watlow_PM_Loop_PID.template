@@ -53,6 +53,7 @@ record(ai, "$(s):$(ta):$(ss):$(mod):ATuneSetpoint$(ch)RB")
 record(ao, "$(s):$(ta):$(ss):$(mod):Autotune$(ch)") 
 {
 	field(ASG,	"$(ASG=BEAMLINE)")
+	field(PINI,	"YES")
 	field(DTYP,	"asynInt32")
 	field(OUT,	"@asynMask(watlow.w.$(mod),$(AUt=2400),0xFF,2000)UINT16")
 }
@@ -210,14 +211,12 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PID_D$(ch)RB")
 
 
 
-
-
 #########################################################
 # Instantiate a software PID table for this control loop. 
 # The input PV is set to the Loop input PV, whatever that is
 # on the controller.
 
-substitute "PV=$(s):$(ta):$(ss):$(mod):ProcessValue1"
+substitute "PV=$(s):$(ta):$(ss):$(mod):ActiveSV$(ch)"
 substitute "UNITS=K"
 
 substitute "P_LINK=$(s):$(ta):$(ss):$(mod):HeatPID_P$(ch)"
@@ -228,26 +227,40 @@ substitute "P=0"
 substitute "I=0"
 substitute "D=0"
 
+substitute "Prb=0"
+substitute "Irb=0"
+substitute "Drb=0"
+
 substitute "W=1"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=2"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=3"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=4"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=5"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=6"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=7"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=8"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=9"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 substitute "W=10"
 include "pid_set_window.template"
+include "Update_PID_Set.template"
 
 
 

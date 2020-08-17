@@ -24,6 +24,7 @@
 # (AdL)	- Alarm Delay
 
 
+
 # =========== Alarm Menu Instance ===========
 # =========== Inputs
 # Alarm State
@@ -32,7 +33,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AlarmState$(ch)")
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(watlow_Al_Enum_1.$(mod),$(ASt=10),0xFF,2000)UINT16")
+	field(INP,	"@asynMask(watlow_Al_Enum_$(ch).$(mod),$(ASt=1896),0xFF,2000)UINT16")
 	field(ZRST,	"Startup")
 	field(ZRVL,	"88")
 	field(ONST,	"None")
@@ -54,7 +55,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AlarmClearable$(ch)")
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(watlow_Al_Enum_1.$(mod),$(ACL=16),0xFF,2000)UINT16")
+	field(INP,	"@asynMask(watlow_Al_Enum_$(ch).$(mod),$(ACL=1902),0xFF,2000)UINT16")
 	field(ZRST,	"No")
 	field(ZRVL,	"59")
 	field(ONST,	"Yes")
@@ -67,7 +68,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AlarmSilenced$(ch)")
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(watlow_Al_Enum_1.$(mod),$(ASh=14),0xFF,2000)UINT16")
+	field(INP,	"@asynMask(watlow_Al_Enum_$(ch).$(mod),$(ASh=1900),0xFF,2000)UINT16")
 	field(ZRST,	"No")
 	field(ZRVL,	"59")
 	field(ONST,	"Yes")
@@ -80,7 +81,7 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):AlarmLatched$(ch)")
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")
 	field(DTYP,	"asynUInt32Digital")
-	field(INP,	"@asynMask(watlow_Al_Enum_1.$(mod),$(ALt=12),0xFF,2000)UINT16")
+	field(INP,	"@asynMask(watlow_Al_Enum_$(ch).$(mod),$(ALt=1898),0xFF,2000)UINT16")
 	field(ZRST,	"No")
 	field(ZRVL,	"59")
 	field(ONST,	"Yes")

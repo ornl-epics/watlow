@@ -167,14 +167,21 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):CommStatusInd")
 # Check all Alarm States
 # Alarm State:	Startup (88), None (61), Blocked (12), Alarm low (8), Alarm high (7), Error (28)
 # If all Alarm State records equal 61 then ModAlarms should be set to , else 1.
+######
+# Initially the calc record was using the Watlow register values for the representation to perform
+# the calculation.  After monitoring the PVs it was discoverd that the index value of the enum
+# is what is being reported.  Therefore, the calculation was changed to the index value.
 record(calc, "$(s):$(ta):$(ss):$(mod):ModAlarmStates")
 {
 	field(INPA,	"$(s):$(ta):$(ss):$(mod):AlarmState1 CP")
 	field(INPB,	"$(s):$(ta):$(ss):$(mod):AlarmState2 CP")
 	field(INPC,	"$(s):$(ta):$(ss):$(mod):AlarmState3 CP")
 	field(INPD,	"$(s):$(ta):$(ss):$(mod):AlarmState4 CP")
-	field(INPE,	"61")
-	field(CALC,	"(A=E)AND(B=E)AND(C=E)AND(D=E)?0:1")
+	field(INPE,	"$(s):$(ta):$(ss):$(mod):AlarmType1 CP")
+	field(INPF,	"$(s):$(ta):$(ss):$(mod):AlarmType2 CP")
+	field(INPG,	"$(s):$(ta):$(ss):$(mod):AlarmType3 CP")
+	field(INPH,	"$(s):$(ta):$(ss):$(mod):AlarmType4 CP")
+	field(CALC,	"(A>2 && E#0)||(B>2 && F#0)||(C>2 && G#0)||(D>2 && H#0)?1:0")
 }
 
 # If the module is in an operation mode check the status of the alarms and process the module master alarm
@@ -189,10 +196,8 @@ record(calcout, "$(s):$(ta):$(ss):$(mod):PrcsModAlarms")
 	field(INPC,	"$(s):$(ta):$(ss):$(mod):LimitState CP")
 	field(INPD,	"$(s):$(ta):$(ss):$(mod):OpenLoopError1 CP")
 	field(INPE,	"$(s):$(ta):$(ss):$(mod):CommStatusInd CP")
-	field(INPF,	"61")
-	field(INPG,	"62")
-	field(INPH,	"32")
-	field(CALC,	"(A=0)?0:(B=1||C>1||D>0||E=1)+1")
+	field(INPF,	"$(s):$(ta):$(ss):$(mod):ModAlarmStates CP")
+	field(CALC,	"(A=0)?0:(B=1||C#1||D#0||E=1||F=1)+1")
 	field(DOPT,	"Use CALC")
 	field(OOPT,	"Every Time")
 	field(OUT,	"$(s):$(ta):$(ss):$(mod):ModAlarmSummary PP")

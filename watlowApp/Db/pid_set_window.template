@@ -137,6 +137,22 @@ record(calcout, "$(s):$(ta):$(ss):$(mod):PID:Set$(W):CalcWriteEnable") {
 }
 
 # ///
+# /// Sequence record to trigger a PID write. 
+# ///
+record(seq, "$(s):$(ta):$(ss):$(mod):PID:Set$(W):PIDWrite") {
+	field(DESC,     "Write PID Values")
+	field(DOL1,     "$(s):$(ta):$(ss):$(mod):PID:Set$(W):PSet")
+	field(LNK1,     "$(P_LINK) PP")
+	field(DLY1,     "0.1")
+	field(DOL2,     "$(s):$(ta):$(ss):$(mod):PID:Set$(W):ISet")
+	field(LNK2,     "$(I_LINK) PP")
+	field(DLY2,     "0.1")
+	field(DOL3,     "$(s):$(ta):$(ss):$(mod):PID:Set$(W):DSet")
+	field(LNK3,     "$(D_LINK) PP")
+	field(DLY3,     "0.1")
+}
+
+# ///
 # /// The P that will be written by the seq record PIDWrite
 # ///
 record(ai, "$(s):$(ta):$(ss):$(mod):PID:Set$(W):PSet") {
@@ -175,21 +191,11 @@ record(ai, "$(s):$(ta):$(ss):$(mod):PID:Set$(W):DSet") {
 	info(autosaveFields, "VAL")
 }
 
-# ///
-# /// Sequence record to trigger a PID write. 
-# ///
-record(seq, "$(s):$(ta):$(ss):$(mod):PID:Set$(W):PIDWrite") {
-	field(DESC,	"Write PID Values")
-	field(DOL1,	"$(s):$(ta):$(ss):$(mod):PID:Set$(W):PSet")
-	field(LNK1,	"$(P_LINK) PP")
-	field(DLY1,	"0.1")
-	field(DOL2,	"$(s):$(ta):$(ss):$(mod):PID:Set$(W):ISet")
-	field(LNK2,	"$(I_LINK) PP")
-	field(DLY2,	"0.1")
-	field(DOL3,	"$(s):$(ta):$(ss):$(mod):PID:Set$(W):DSet")
-	field(LNK3,	"$(D_LINK) PP")
-	field(DLY3,	"0.1")
-}
+
+
+
+
+
 
 
 

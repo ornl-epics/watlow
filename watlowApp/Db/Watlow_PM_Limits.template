@@ -53,6 +53,22 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):LimitOutput")
 	field(ONVL,	"63")
 }
 
+# =========== From the Analog Database Inputs
+# Must read this input to show the value the Limit is functioning on.
+# Analog Input #
+record(ai, "$(s):$(ta):$(ss):$(mod):AnalogInput2") 
+{
+	field(SCAN,	"1 second")
+	field(PINI,	"YES")
+	field(DTYP,	"asynFloat64")
+	field(INP,	"@asyn(watlow_AI_Num_1.$(mod),$(Ain=0),2000)FLOAT32_BE")
+	field(EGU,	"°")
+	field(PREC,	"3")
+	field(ADEL,	"0.1")
+	field(MDEL,	"0.1")
+}
+
+
 # =========== Read Backs
 # Low Trip Setpoint
 record(ai, "$(s):$(ta):$(ss):$(mod):LowTripSPRB") 
@@ -192,7 +208,7 @@ record(seq, "$(s):$(ta):$(ss):$(mod):ProcessClearLimit")
 {
 	field(DOL1,	"0")
 	field(LNK1,	"$(s):$(ta):$(ss):$(mod):ClearLimitError PP")
-	field(DLY2,	"1")
+	field(DLY2,	"2")
 	field(DOL2,	"255")
 	field(LNK2,	"$(s):$(ta):$(ss):$(mod):ClearLimitError PP")
 	field(DOL3,	"0")

@@ -68,8 +68,8 @@ record(mbbi, "$(s):$(ta):$(ss):$(mod):ControlModeActive$(ch)")
 	field(TWVL,	"54")
 }
 
-# Read Active Closed Loop Setpoint. Same as Set Point Active
-record(ai, "$(s):$(ta):$(ss):$(mod):ReadClosedLoopSV$(ch)")
+# Read Active Closed Loop Setpoint. Active Set Point Active
+record(ai, "$(s):$(ta):$(ss):$(mod):ActiveSV$(ch)")
 {
 	field(SCAN,	"1 second")
 	field(PINI,	"YES")

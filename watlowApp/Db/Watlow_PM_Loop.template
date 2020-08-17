@@ -778,6 +778,7 @@ record(ao, "$(s):$(ta):$(ss):$(mod):MaxManualPwr$(ch)")
 record(ao, "$(s):$(ta):$(ss):$(mod):OpenLoopClear$(ch)") 
 {
 	field(DTYP,	"asynInt32")
+	field(PINI,	"YES")
 	field(OUT,	"@asynMask(watlow.w.$(mod),$(oLC=2410),0xFF,2000)UINT16")
 }
 
