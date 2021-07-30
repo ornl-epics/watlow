@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Module Configuration</name>
+  <width>1800</width>
+  <height>950</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <x>110</x>
+    <y>31</y>
+    <width>770</width>
+    <height>820</height>
+    <line_width>0</line_width>
+    <background_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>Watlow PM Series PID Controller: Module C$(C)</text>
+    <x>230</x>
+    <width>770</width>
+    <height>31</height>
+    <font>
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>General</name>
+        <file>Watlow_General_Menu.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Analog Input</name>
+        <file>Watlow_Analog_Input.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Alarms</name>
+        <file>Watlow_Alarms.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Limits</name>
+        <file>Watlow_Limits.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Linearization</name>
+        <file>Watlow_Linearization.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Control Loop</name>
+        <file>Watlow_Control_Loop.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Out: 1 and 4</name>
+        <file>Watlow_Output_1_and_4.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Out: 2 and 3</name>
+        <file>Watlow_Output_2_and_3.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Process</name>
+        <file>Watlow_Process_Value.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <x>10</x>
+    <y>30</y>
+    <width>1140</width>
+    <height>870</height>
+    <selected_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </selected_color>
+    <deselected_color>
+      <color name="Button_Background" red="210" green="210" blue="210">
+      </color>
+    </deselected_color>
+  </widget>
+  <widget type="databrowser" version="2.0.0">
+    <name>Data Browser</name>
+    <file>Watlow Module.plt</file>
+    <x>1150</x>
+    <y>31</y>
+    <width>640</width>
+    <height>509</height>
+  </widget>
+</display>

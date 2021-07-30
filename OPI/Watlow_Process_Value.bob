@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>PV</name>
+  <width>770</width>
+  <height>820</height>
+  <widget type="group" version="2.0.0">
+    <name>Status</name>
+    <x>107</x>
+    <y>10</y>
+    <width>404</width>
+    <height>180</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Source Value A Label_1</name>
+      <text>Source Value A:</text>
+      <x>10</x>
+      <y>12</y>
+      <width>125</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Source Value A_1</name>
+      <pv_name>$(S)PrcsSrcVA1</pv_name>
+      <x>140</x>
+      <y>12</y>
+      <width>108</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Source Value B Label_1</name>
+      <text>Source Value B:</text>
+      <x>10</x>
+      <y>38</y>
+      <width>125</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="Visible" prop_id="visible" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)PrcsFunction1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Source Value B_1</name>
+      <pv_name>$(S)PrcsSrcVB1</pv_name>
+      <x>140</x>
+      <y>38</y>
+      <width>108</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Visible" prop_id="visible" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)PrcsFunction1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Output Value Label_1</name>
+      <text>Output Value:</text>
+      <x>10</x>
+      <y>64</y>
+      <width>125</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Output Value_1</name>
+      <pv_name>$(S)PrcsOutput1</pv_name>
+      <x>140</x>
+      <y>64</y>
+      <width>108</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Output Error Label_1</name>
+      <text>Output Error:</text>
+      <x>10</x>
+      <y>116</y>
+      <width>125</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Output Error_1</name>
+      <pv_name>$(S)PrcsOutputError1</pv_name>
+      <x>140</x>
+      <y>116</y>
+      <width>140</width>
+      <format>6</format>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Process Parameters</name>
+    <x>3</x>
+    <y>200</y>
+    <width>600</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Process Function Label_1</name>
+      <text>Process Function:</text>
+      <x>10</x>
+      <y>33</y>
+      <width>120</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Process Function_1</name>
+      <pv_name>$(S)PrcsFunction1</pv_name>
+      <x>135</x>
+      <y>33</y>
+      <width>200</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Prcs Offset Label_1</name>
+      <text>Offset:</text>
+      <x>10</x>
+      <y>59</y>
+      <width>120</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Prcs Offset_1</name>
+      <pv_name>$(S)PrcsOffset1</pv_name>
+      <x>135</x>
+      <y>59</y>
+      <width>108</width>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Prcs Filter Label_1</name>
+      <text>Filter:</text>
+      <x>10</x>
+      <y>85</y>
+      <width>120</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Prcs Filter_1</name>
+      <pv_name>$(S)PrcsFilter1</pv_name>
+      <x>135</x>
+      <y>85</y>
+      <width>108</width>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Pressure Units Label_1</name>
+      <text>Pressure Units:</text>
+      <x>10</x>
+      <y>111</y>
+      <width>120</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Pressure Units_1</name>
+      <pv_name>$(S)PressureUnits1</pv_name>
+      <x>135</x>
+      <y>111</y>
+      <width>200</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt;2">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)PrcsFunction1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Altitude Units Label_1</name>
+      <text>Altitude Units:</text>
+      <x>10</x>
+      <y>137</y>
+      <width>120</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Altitude Units_1</name>
+      <pv_name>$(S)AltitudeUnits1</pv_name>
+      <x>135</x>
+      <y>137</y>
+      <width>145</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt;2">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)PrcsFunction1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Software_18</name>
+      <text>Software</text>
+      <x>160</x>
+      <y>6</y>
+      <width>150</width>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Software_19</name>
+      <text>Device</text>
+      <x>390</x>
+      <y>6</y>
+      <width>150</width>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process FunctionRB</name>
+      <pv_name>$(S)PrcsFunction1RB</pv_name>
+      <x>360</x>
+      <y>33</y>
+      <width>200</width>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PrcsFunction1</pv_name>
+          <pv_name>$(S)PrcsFunction1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Prcs OffsetRB</name>
+      <pv_name>$(S)PrcsOffset1RB</pv_name>
+      <x>360</x>
+      <y>59</y>
+      <width>108</width>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PrcsOffset1</pv_name>
+          <pv_name>$(S)PrcsOffset1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Prcs FilterRB</name>
+      <pv_name>$(S)PrcsFilter1RB</pv_name>
+      <x>360</x>
+      <y>85</y>
+      <width>108</width>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PrcsFilter1</pv_name>
+          <pv_name>$(S)PrcsFilter1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Pressure UnitsRB</name>
+      <pv_name>$(S)PressureUnits1RB</pv_name>
+      <x>360</x>
+      <y>111</y>
+      <width>200</width>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PressureUnits1</pv_name>
+          <pv_name>$(S)PressureUnits1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Altitude UnitsRB</name>
+      <pv_name>$(S)AltitudeUnits1RB</pv_name>
+      <x>360</x>
+      <y>137</y>
+      <width>145</width>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)AltitudeUnits1</pv_name>
+          <pv_name>$(S)AltitudeUnits1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+</display>

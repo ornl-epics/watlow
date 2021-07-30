@@ -1,0 +1,2683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Linearization</name>
+  <width>770</width>
+  <height>820</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Linearization #1</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 1: Status</name>
+            <x>27</x>
+            <y>10</y>
+            <width>559</width>
+            <height>128</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Source Value A Label_1</name>
+              <text>Source Value A:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Source Value A</name>
+              <pv_name>$(S)SrcValueA1</pv_name>
+              <x>160</x>
+              <y>12</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Value Label_1</name>
+              <text>Output Value:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>140</width>
+              <visible>false</visible>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Value_1</name>
+              <pv_name>$(S)OutputValue1</pv_name>
+              <x>160</x>
+              <y>38</y>
+              <width>110</width>
+              <visible>false</visible>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Error Label_1</name>
+              <text>Output Error:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Value_2</name>
+              <pv_name>$(S)LinError1</pv_name>
+              <x>160</x>
+              <y>64</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 1: Configuration</name>
+            <x>27</x>
+            <y>140</y>
+            <width>559</width>
+            <height>148</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Function Label_1</name>
+              <text>Function:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Lin Function_1</name>
+              <pv_name>$(S)LinearizationFunction1</pv_name>
+              <x>80</x>
+              <y>33</y>
+              <width>200</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units Label_1</name>
+              <text>Units:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Lin Units_1</name>
+              <pv_name>$(S)LinUnits1</pv_name>
+              <x>80</x>
+              <y>59</y>
+              <width>200</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Lin Offset Label</name>
+              <text>Offset:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Linearization Offset</name>
+              <pv_name>$(S)LinOffset1</pv_name>
+              <x>80</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_4</name>
+              <text>Software</text>
+              <x>110</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_5</name>
+              <text>Device</text>
+              <x>320</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Lin FunctionRB</name>
+              <pv_name>$(S)LinearizationFunction1RB</pv_name>
+              <x>307</x>
+              <y>33</y>
+              <width>200</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                  <pv_name>$(S)LinearizationFunction1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Lin UnitsRB</name>
+              <pv_name>$(S)LinUnits1RB</pv_name>
+              <x>307</x>
+              <y>59</y>
+              <width>200</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinUnits1</pv_name>
+                  <pv_name>$(S)LinUnits1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Linearization OffsetRB</name>
+              <pv_name>$(S)LinOffset1RB</pv_name>
+              <x>307</x>
+              <y>85</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOffset1</pv_name>
+                  <pv_name>$(S)LinOffset1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 1: I/O Table</name>
+            <x>3</x>
+            <y>290</y>
+            <width>620</width>
+            <height>358</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_1_1</name>
+              <text>Point 1:</text>
+              <x>7</x>
+              <y>63</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In1_1</name>
+              <pv_name>$(S)LinInput1_1</pv_name>
+              <x>72</x>
+              <y>63</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out1_1</name>
+              <pv_name>$(S)LinOutput1_1</pv_name>
+              <x>198</x>
+              <y>63</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_2_1</name>
+              <text>Point 2:</text>
+              <x>7</x>
+              <y>89</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In2_1</name>
+              <pv_name>$(S)LinInput2_1</pv_name>
+              <x>72</x>
+              <y>89</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out2_1</name>
+              <pv_name>$(S)LinOutput2_1</pv_name>
+              <x>198</x>
+              <y>89</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_3_1</name>
+              <text>Point 3:</text>
+              <x>7</x>
+              <y>115</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In3_1</name>
+              <pv_name>$(S)LinInput3_1</pv_name>
+              <x>72</x>
+              <y>115</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out3_1</name>
+              <pv_name>$(S)LinOutput3_1</pv_name>
+              <x>198</x>
+              <y>115</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_4_1</name>
+              <text>Point 4:</text>
+              <x>7</x>
+              <y>141</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In4_1</name>
+              <pv_name>$(S)LinInput4_1</pv_name>
+              <x>72</x>
+              <y>141</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out4_1</name>
+              <pv_name>$(S)LinOutput4_1</pv_name>
+              <x>198</x>
+              <y>141</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_5_1</name>
+              <text>Point 5:</text>
+              <x>7</x>
+              <y>167</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In5_1</name>
+              <pv_name>$(S)LinInput5_1</pv_name>
+              <x>72</x>
+              <y>167</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out5_1</name>
+              <pv_name>$(S)LinOutput5_1</pv_name>
+              <x>198</x>
+              <y>167</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_6_1</name>
+              <text>Point 6:</text>
+              <x>7</x>
+              <y>193</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In6_1</name>
+              <pv_name>$(S)LinInput6_1</pv_name>
+              <x>72</x>
+              <y>193</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out6_1</name>
+              <pv_name>$(S)LinOutput6_1</pv_name>
+              <x>198</x>
+              <y>193</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_7_1</name>
+              <text>Point 7:</text>
+              <x>7</x>
+              <y>219</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In7_1</name>
+              <pv_name>$(S)LinInput7_1</pv_name>
+              <x>72</x>
+              <y>219</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out7_1</name>
+              <pv_name>$(S)LinOutput7_1</pv_name>
+              <x>198</x>
+              <y>219</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_8_1</name>
+              <text>Point 8:</text>
+              <x>7</x>
+              <y>245</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In8_1</name>
+              <pv_name>$(S)LinInput8_1</pv_name>
+              <x>72</x>
+              <y>245</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out8_1</name>
+              <pv_name>$(S)LinOutput8_1</pv_name>
+              <x>198</x>
+              <y>245</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_9_1</name>
+              <text>Point 9:</text>
+              <x>7</x>
+              <y>271</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In9_1</name>
+              <pv_name>$(S)LinInput9_1</pv_name>
+              <x>72</x>
+              <y>271</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out9_1</name>
+              <pv_name>$(S)LinOutput9_1</pv_name>
+              <x>198</x>
+              <y>271</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_10_1</name>
+              <text>Point 10:</text>
+              <x>7</x>
+              <y>297</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In10_1</name>
+              <pv_name>$(S)LinInput10_1</pv_name>
+              <x>72</x>
+              <y>297</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out10_1</name>
+              <pv_name>$(S)LinOutput10_1</pv_name>
+              <x>198</x>
+              <y>297</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Label</name>
+              <text>Input</text>
+              <x>97</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Label_1</name>
+              <text>Output</text>
+              <x>219</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Middle</name>
+              <x>189</x>
+              <y>39</y>
+              <width>1</width>
+              <height>280</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="1.0" y="280.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Top</name>
+              <x>70</x>
+              <y>54</y>
+              <width>236</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="236.0" y="1.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_2</name>
+              <text>Software</text>
+              <x>114</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_3</name>
+              <text>Device</text>
+              <x>378</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Label_2</name>
+              <text>Input</text>
+              <x>361</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Label_3</name>
+              <text>Output</text>
+              <x>483</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Middle_2</name>
+              <x>453</x>
+              <y>39</y>
+              <width>1</width>
+              <height>280</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="1.0" y="280.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Top_2</name>
+              <x>335</x>
+              <y>54</y>
+              <width>236</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="236.0" y="1.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In1RB</name>
+              <pv_name>$(S)LinInput1_1RB</pv_name>
+              <x>336</x>
+              <y>63</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput1_1</pv_name>
+                  <pv_name>$(S)LinInput1_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out1RB</name>
+              <pv_name>$(S)LinOutput1_1RB</pv_name>
+              <x>462</x>
+              <y>63</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput1_1</pv_name>
+                  <pv_name>$(S)LinOutput1_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In2RB</name>
+              <pv_name>$(S)LinInput2_1RB</pv_name>
+              <x>336</x>
+              <y>89</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput2_1</pv_name>
+                  <pv_name>$(S)LinInput2_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out2RB</name>
+              <pv_name>$(S)LinOutput2_1RB</pv_name>
+              <x>462</x>
+              <y>89</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput2_1</pv_name>
+                  <pv_name>$(S)LinOutput2_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In3RB</name>
+              <pv_name>$(S)LinInput3_1RB</pv_name>
+              <x>336</x>
+              <y>115</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput3_1</pv_name>
+                  <pv_name>$(S)LinInput3_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out3RB</name>
+              <pv_name>$(S)LinOutput3_1RB</pv_name>
+              <x>462</x>
+              <y>115</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput3_1</pv_name>
+                  <pv_name>$(S)LinOutput3_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In4RB</name>
+              <pv_name>$(S)LinInput4_1RB</pv_name>
+              <x>336</x>
+              <y>141</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput4_1</pv_name>
+                  <pv_name>$(S)LinInput4_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out4RB</name>
+              <pv_name>$(S)LinOutput4_1RB</pv_name>
+              <x>462</x>
+              <y>141</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput4_1</pv_name>
+                  <pv_name>$(S)LinOutput4_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In5RB</name>
+              <pv_name>$(S)LinInput5_1RB</pv_name>
+              <x>336</x>
+              <y>167</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput5_1</pv_name>
+                  <pv_name>$(S)LinInput5_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out5RB</name>
+              <pv_name>$(S)LinOutput5_1RB</pv_name>
+              <x>462</x>
+              <y>167</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput5_1</pv_name>
+                  <pv_name>$(S)LinOutput5_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In6RB</name>
+              <pv_name>$(S)LinInput6_1RB</pv_name>
+              <x>336</x>
+              <y>193</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput6_1</pv_name>
+                  <pv_name>$(S)LinInput6_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out6RB</name>
+              <pv_name>$(S)LinOutput6_1RB</pv_name>
+              <x>462</x>
+              <y>193</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput6_1</pv_name>
+                  <pv_name>$(S)LinOutput6_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In7RB</name>
+              <pv_name>$(S)LinInput7_1RB</pv_name>
+              <x>336</x>
+              <y>219</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput7_1</pv_name>
+                  <pv_name>$(S)LinInput7_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out7RB</name>
+              <pv_name>$(S)LinOutput7_1RB</pv_name>
+              <x>462</x>
+              <y>219</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput7_1</pv_name>
+                  <pv_name>$(S)LinOutput7_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In8RB</name>
+              <pv_name>$(S)LinInput8_1RB</pv_name>
+              <x>336</x>
+              <y>245</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput8_1</pv_name>
+                  <pv_name>$(S)LinInput8_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out8RB</name>
+              <pv_name>$(S)LinOutput8_1RB</pv_name>
+              <x>462</x>
+              <y>245</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput8_1</pv_name>
+                  <pv_name>$(S)LinOutput8_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In9RB</name>
+              <pv_name>$(S)LinInput9_1RB</pv_name>
+              <x>336</x>
+              <y>271</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput9_1</pv_name>
+                  <pv_name>$(S)LinInput9_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out9RB</name>
+              <pv_name>$(S)LinOutput9_1RB</pv_name>
+              <x>462</x>
+              <y>271</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="state" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput9_1</pv_name>
+                  <pv_name>$(S)LinOutput9_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In10RB</name>
+              <pv_name>$(S)LinInput10_1RB</pv_name>
+              <x>336</x>
+              <y>297</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput10_1</pv_name>
+                  <pv_name>$(S)LinInput10_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out10RB</name>
+              <pv_name>$(S)LinOutput10_1RB</pv_name>
+              <x>462</x>
+              <y>297</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput10_1</pv_name>
+                  <pv_name>$(S)LinOutput10_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Linearization #2</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 2: Status</name>
+            <x>27</x>
+            <y>10</y>
+            <width>559</width>
+            <height>128</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Source Value A Label_2</name>
+              <text>Source Value A:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Source Value A_2</name>
+              <pv_name>$(S)SrcValueA2</pv_name>
+              <x>160</x>
+              <y>12</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Value Label_2</name>
+              <text>Output Value:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>140</width>
+              <visible>false</visible>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Value_2</name>
+              <pv_name>$(S)OutputValue2</pv_name>
+              <x>160</x>
+              <y>38</y>
+              <width>110</width>
+              <visible>false</visible>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Error Label_2</name>
+              <text>Output Error:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Value_4</name>
+              <pv_name>$(S)LinError2</pv_name>
+              <x>160</x>
+              <y>64</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 2: Configuration</name>
+            <x>27</x>
+            <y>140</y>
+            <width>559</width>
+            <height>148</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Function Label_2</name>
+              <text>Function:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Lin Function_2</name>
+              <pv_name>$(S)LinearizationFunction2</pv_name>
+              <x>80</x>
+              <y>33</y>
+              <width>200</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Units Label_2</name>
+              <text>Units:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Lin Units_2</name>
+              <pv_name>$(S)LinUnits2</pv_name>
+              <x>80</x>
+              <y>59</y>
+              <width>200</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Lin Offset Label_1</name>
+              <text>Offset:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Linearization Offset_2</name>
+              <pv_name>$(S)LinOffset2</pv_name>
+              <x>80</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Lin FunctionRB_2</name>
+              <pv_name>$(S)LinearizationFunction2RB</pv_name>
+              <x>307</x>
+              <y>33</y>
+              <width>200</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                  <pv_name>$(S)LinearizationFunction2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Lin UnitsRB_2</name>
+              <pv_name>$(S)LinUnits2RB</pv_name>
+              <x>307</x>
+              <y>59</y>
+              <width>200</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinUnits2</pv_name>
+                  <pv_name>$(S)LinUnits2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Linearization OffsetRB_2</name>
+              <pv_name>$(S)LinOffset2RB</pv_name>
+              <x>307</x>
+              <y>85</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOffset2</pv_name>
+                  <pv_name>$(S)LinOffset2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_8</name>
+              <text>Software</text>
+              <x>110</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_9</name>
+              <text>Device</text>
+              <x>320</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Linearization 2: I/O Table</name>
+            <x>3</x>
+            <y>290</y>
+            <width>620</width>
+            <height>358</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="textentry" version="3.0.0">
+              <name>In1_2</name>
+              <pv_name>$(S)LinInput1_2</pv_name>
+              <x>72</x>
+              <y>63</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out1_2</name>
+              <pv_name>$(S)LinOutput1_2</pv_name>
+              <x>198</x>
+              <y>63</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_2_2</name>
+              <text>Point 2:</text>
+              <x>7</x>
+              <y>89</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In2_2</name>
+              <pv_name>$(S)LinInput2_2</pv_name>
+              <x>72</x>
+              <y>89</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out2_2</name>
+              <pv_name>$(S)LinOutput2_2</pv_name>
+              <x>198</x>
+              <y>89</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_3_2</name>
+              <text>Point 3:</text>
+              <x>7</x>
+              <y>115</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In3_2</name>
+              <pv_name>$(S)LinInput3_2</pv_name>
+              <x>72</x>
+              <y>115</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out3_2</name>
+              <pv_name>$(S)LinOutput3_2</pv_name>
+              <x>198</x>
+              <y>115</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_4_2</name>
+              <text>Point 4:</text>
+              <x>7</x>
+              <y>141</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In4_2</name>
+              <pv_name>$(S)LinInput4_2</pv_name>
+              <x>72</x>
+              <y>141</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out4_2</name>
+              <pv_name>$(S)LinOutput4_2</pv_name>
+              <x>198</x>
+              <y>141</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_5_2</name>
+              <text>Point 5:</text>
+              <x>7</x>
+              <y>167</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In5_2</name>
+              <pv_name>$(S)LinInput5_2</pv_name>
+              <x>72</x>
+              <y>167</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out5_2</name>
+              <pv_name>$(S)LinOutput5_2</pv_name>
+              <x>198</x>
+              <y>167</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_6_2</name>
+              <text>Point 6:</text>
+              <x>7</x>
+              <y>193</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In6_2</name>
+              <pv_name>$(S)LinInput6_2</pv_name>
+              <x>72</x>
+              <y>193</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out6_2</name>
+              <pv_name>$(S)LinOutput6_2</pv_name>
+              <x>198</x>
+              <y>193</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_7_2</name>
+              <text>Point 7:</text>
+              <x>7</x>
+              <y>219</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In7_2</name>
+              <pv_name>$(S)LinInput7_2</pv_name>
+              <x>72</x>
+              <y>219</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out7_2</name>
+              <pv_name>$(S)LinOutput7_2</pv_name>
+              <x>198</x>
+              <y>219</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_8_2</name>
+              <text>Point 8:</text>
+              <x>7</x>
+              <y>245</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In8_2</name>
+              <pv_name>$(S)LinInput8_2</pv_name>
+              <x>72</x>
+              <y>245</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out8_2</name>
+              <pv_name>$(S)LinOutput8_2</pv_name>
+              <x>198</x>
+              <y>245</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_9_2</name>
+              <text>Point 9:</text>
+              <x>7</x>
+              <y>271</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In9_2</name>
+              <pv_name>$(S)LinInput9_2</pv_name>
+              <x>72</x>
+              <y>271</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out9_2</name>
+              <pv_name>$(S)LinOutput9_2</pv_name>
+              <x>198</x>
+              <y>271</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_10_2</name>
+              <text>Point 10:</text>
+              <x>7</x>
+              <y>297</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>In10_2</name>
+              <pv_name>$(S)LinInput10_2</pv_name>
+              <x>72</x>
+              <y>297</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Point Label_1_2</name>
+              <text>Point 1:</text>
+              <x>7</x>
+              <y>63</y>
+              <width>60</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Out10_2</name>
+              <pv_name>$(S)LinOutput10_2</pv_name>
+              <x>198</x>
+              <y>297</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)LinearizationFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Label_1</name>
+              <text>Input</text>
+              <x>97</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Label_2</name>
+              <text>Output</text>
+              <x>219</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_2</name>
+              <x>70</x>
+              <y>54</y>
+              <width>236</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="236.0" y="1.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_3</name>
+              <x>189</x>
+              <y>39</y>
+              <width>1</width>
+              <height>280</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="1.0" y="280.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_11</name>
+              <text>Software</text>
+              <x>114</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_10</name>
+              <text>Device</text>
+              <x>378</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Label_5</name>
+              <text>Input</text>
+              <x>361</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Label_6</name>
+              <text>Output</text>
+              <x>483</x>
+              <y>33</y>
+              <width>60</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Middle_4</name>
+              <x>453</x>
+              <y>39</y>
+              <width>1</width>
+              <height>280</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="1.0" y="280.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline Top_4</name>
+              <x>335</x>
+              <y>54</y>
+              <width>236</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="236.0" y="1.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In1RB</name>
+              <pv_name>$(S)LinInput1_2RB</pv_name>
+              <x>336</x>
+              <y>63</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput1_2</pv_name>
+                  <pv_name>$(S)LinInput1_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out1RB</name>
+              <pv_name>$(S)LinOutput1_2RB</pv_name>
+              <x>462</x>
+              <y>63</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput1_2</pv_name>
+                  <pv_name>$(S)LinOutput1_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In2RB</name>
+              <pv_name>$(S)LinInput2_2RB</pv_name>
+              <x>336</x>
+              <y>89</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput2_2</pv_name>
+                  <pv_name>$(S)LinInput2_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out2RB</name>
+              <pv_name>$(S)LinOutput2_2RB</pv_name>
+              <x>462</x>
+              <y>89</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput2_2</pv_name>
+                  <pv_name>$(S)LinOutput2_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In3RB</name>
+              <pv_name>$(S)LinInput3_2RB</pv_name>
+              <x>336</x>
+              <y>115</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput3_2</pv_name>
+                  <pv_name>$(S)LinInput3_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out3RB</name>
+              <pv_name>$(S)LinOutput3_2RB</pv_name>
+              <x>462</x>
+              <y>115</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput3_2</pv_name>
+                  <pv_name>$(S)LinOutput3_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In4RB</name>
+              <pv_name>$(S)LinInput4_2RB</pv_name>
+              <x>336</x>
+              <y>141</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput4_2</pv_name>
+                  <pv_name>$(S)LinInput4_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out4RB</name>
+              <pv_name>$(S)LinOutput4_2RB</pv_name>
+              <x>462</x>
+              <y>141</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput4_2</pv_name>
+                  <pv_name>$(S)LinOutput4_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In5RB</name>
+              <pv_name>$(S)LinInput5_1RB</pv_name>
+              <x>336</x>
+              <y>167</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput5_1</pv_name>
+                  <pv_name>$(S)LinInput5_1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out5RB</name>
+              <pv_name>$(S)LinOutput5_2RB</pv_name>
+              <x>462</x>
+              <y>167</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput5_2</pv_name>
+                  <pv_name>$(S)LinOutput5_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In6RB</name>
+              <pv_name>$(S)LinInput6_2RB</pv_name>
+              <x>336</x>
+              <y>193</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput6_2</pv_name>
+                  <pv_name>$(S)LinInput6_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out6RB</name>
+              <pv_name>$(S)LinOutput6_2RB</pv_name>
+              <x>462</x>
+              <y>193</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput6_2</pv_name>
+                  <pv_name>$(S)LinOutput6_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In7RB</name>
+              <pv_name>$(S)LinInput7_2RB</pv_name>
+              <x>336</x>
+              <y>219</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput7_2</pv_name>
+                  <pv_name>$(S)LinInput7_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out7RB</name>
+              <pv_name>$(S)LinOutput7_2RB</pv_name>
+              <x>462</x>
+              <y>219</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput7_2</pv_name>
+                  <pv_name>$(S)LinOutput7_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In8RB</name>
+              <pv_name>$(S)LinInput8_2RB</pv_name>
+              <x>336</x>
+              <y>245</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput8_2</pv_name>
+                  <pv_name>$(S)LinInput8_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out8RB</name>
+              <pv_name>$(S)LinOutput8_2RB</pv_name>
+              <x>462</x>
+              <y>245</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput8_2</pv_name>
+                  <pv_name>$(S)LinOutput8_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In9RB</name>
+              <pv_name>$(S)LinInput9_2RB</pv_name>
+              <x>336</x>
+              <y>271</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput9_2</pv_name>
+                  <pv_name>$(S)LinInput9_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out9RB</name>
+              <pv_name>$(S)LinOutput9_2RB</pv_name>
+              <x>462</x>
+              <y>271</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="state" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput9_2</pv_name>
+                  <pv_name>$(S)LinOutput9_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>In10RB</name>
+              <pv_name>$(S)LinInput10_2RB</pv_name>
+              <x>336</x>
+              <y>297</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinInput10_2</pv_name>
+                  <pv_name>$(S)LinInput10_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Out10RB</name>
+              <pv_name>$(S)LinOutput10_2RB</pv_name>
+              <x>462</x>
+              <y>297</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)LinOutput10_2</pv_name>
+                  <pv_name>$(S)LinOutput10_2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>5</x>
+    <y>5</y>
+    <width>630</width>
+    <height>700</height>
+  </widget>
+</display>

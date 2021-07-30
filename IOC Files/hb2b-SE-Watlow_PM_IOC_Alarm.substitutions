@@ -1,0 +1,22 @@
+file Watlow_PM_IOC_Alarms.template
+{
+pattern	{  s, ta,      ss}
+		{HB2B, SE, Watlow}
+}
+
+file save_restoreStatus.db
+{
+pattern {P}
+        {HB2B:CS:Watlow:}
+}
+
+file ioc_sns.db
+{
+pattern {IOCNAME}
+        {HB2B:CS:Watlow}
+}
+
+
+
+
+

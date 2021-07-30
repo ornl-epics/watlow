@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Limits</name>
+  <width>770</width>
+  <height>820</height>
+  <widget type="group" version="2.0.0">
+    <name>Limits Status</name>
+    <x>103</x>
+    <y>9</y>
+    <width>354</width>
+    <height>168</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Limit State Label</name>
+      <text>Limit State:</text>
+      <x>10</x>
+      <y>12</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit State</name>
+      <pv_name>$(S)LimitState</pv_name>
+      <x>160</x>
+      <y>12</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Limit Status Label</name>
+      <text>Limit Status:</text>
+      <x>10</x>
+      <y>38</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit Status</name>
+      <pv_name>$(S)LimitStatus</pv_name>
+      <x>160</x>
+      <y>38</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Background" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pvInt0 == 32">
+            <value>
+              <color name="MAJOR" red="255" green="0" blue="0">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pvInt0 == 1667">
+            <value>
+              <color red="240" green="240" blue="240" alpha="254">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitStatus</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Limits Output Label</name>
+      <text>Limit Output:</text>
+      <x>10</x>
+      <y>64</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit Output</name>
+      <pv_name>$(S)LimitOutput</pv_name>
+      <x>160</x>
+      <y>64</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Background" prop_id="background_color" out_exp="false">
+          <exp bool_exp="pvInt0 == 32">
+            <value>
+              <color name="MAJOR" red="255" green="0" blue="0">
+              </color>
+            </value>
+          </exp>
+          <exp bool_exp="pvInt0 == 1667">
+            <value>
+              <color red="240" green="240" blue="240" alpha="254">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitStatus</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Limits Clear Req</name>
+      <text>Limit Clear Error:</text>
+      <x>10</x>
+      <y>100</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Clear Error</name>
+      <pv_name>$(S)ClearLimitButton</pv_name>
+      <x>160</x>
+      <y>100</y>
+      <width>110</width>
+      <height>20</height>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </on_color>
+      <show_led>false</show_led>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <labels_from_pv>true</labels_from_pv>
+      <actions execute_as_one="true">
+      </actions>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 == 1">
+            <value>true</value>
+          </exp>
+          <pv_name>$(S)LimitStatus</pv_name>
+        </rule>
+      </rules>
+      <tooltip>$(pv_name)
+$(actions)</tooltip>
+      <show_confirm_dialog>false</show_confirm_dialog>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Limits Configuration</name>
+    <x>3</x>
+    <y>184</y>
+    <width>584</width>
+    <height>340</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Limit Sides Label</name>
+      <text>Limit Sides:</text>
+      <x>10</x>
+      <y>59</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Limit Sides</name>
+      <pv_name>$(S)LimitSides</pv_name>
+      <x>180</x>
+      <y>59</y>
+      <width>125</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Low Limit Label</name>
+      <text>Low Limit Setpoint:</text>
+      <x>10</x>
+      <y>85</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Low Limit</name>
+      <pv_name>$(S)LowTripSP</pv_name>
+      <x>180</x>
+      <y>85</y>
+      <width>110</width>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0==1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)LimitSides</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>High Limit Label</name>
+      <text>High Limit Setpoint:</text>
+      <x>10</x>
+      <y>111</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>High Limit</name>
+      <pv_name>$(S)HighTripSP</pv_name>
+      <x>180</x>
+      <y>111</y>
+      <width>110</width>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &gt; 1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)LimitSides</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Min Low Label</name>
+      <text>Minimum Low Limit:</text>
+      <x>10</x>
+      <y>137</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Min Low Limit</name>
+      <pv_name>$(S)MinLimitSP</pv_name>
+      <x>180</x>
+      <y>137</y>
+      <width>110</width>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Max High Limit</name>
+      <text>Maximum High Limit:</text>
+      <x>10</x>
+      <y>163</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Max High Limit</name>
+      <pv_name>$(S)MaxLimitSP</pv_name>
+      <x>180</x>
+      <y>163</y>
+      <width>110</width>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Limit Hysteresis Label</name>
+      <text>Limit Hysteresis:</text>
+      <x>10</x>
+      <y>189</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Limit Hysteresis</name>
+      <pv_name>$(S)LimitHysteresis</pv_name>
+      <x>180</x>
+      <y>189</y>
+      <width>110</width>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Source Function Label</name>
+      <text>Source Function A:</text>
+      <x>10</x>
+      <y>215</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Source Function</name>
+      <pv_name>$(S)LimitSourceFnA</pv_name>
+      <x>180</x>
+      <y>215</y>
+      <width>125</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Source Instance Label</name>
+      <text>Source Instance A:</text>
+      <x>10</x>
+      <y>241</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Source Instance</name>
+      <pv_name>$(S)LimitSrcInstance</pv_name>
+      <x>180</x>
+      <y>241</y>
+      <width>110</width>
+      <visible>false</visible>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Limits Integrate</name>
+      <text>Integrate with System:</text>
+      <x>10</x>
+      <y>267</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Limit Integrate</name>
+      <pv_name>$(S)LimitIntegrate</pv_name>
+      <x>180</x>
+      <y>267</y>
+      <width>125</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+      </items>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Software_2</name>
+      <text>Software</text>
+      <x>166</x>
+      <y>6</y>
+      <width>150</width>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Software_3</name>
+      <text>Device</text>
+      <x>348</x>
+      <y>6</y>
+      <width>150</width>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit SidesRB</name>
+      <pv_name>$(S)LimitSidesRB</pv_name>
+      <x>359</x>
+      <y>59</y>
+      <width>125</width>
+      <height>22</height>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Text" red="0" green="0" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitSides</pv_name>
+          <pv_name>$(S)LimitSidesRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Low LimitRB</name>
+      <pv_name>$(S)LowTripSPRB</pv_name>
+      <x>359</x>
+      <y>85</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LowTripSP</pv_name>
+          <pv_name>$(S)LowTripSPRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>High LimitRB</name>
+      <pv_name>$(S)HighTripSPRB</pv_name>
+      <x>359</x>
+      <y>111</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)HighTripSP</pv_name>
+          <pv_name>$(S)HighTripSPRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Min Low LimitRB</name>
+      <pv_name>$(S)MinLimitSPRB</pv_name>
+      <x>359</x>
+      <y>137</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)MinLimitSP</pv_name>
+          <pv_name>$(S)MinLimitSPRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Max High LimitRB</name>
+      <pv_name>$(S)MaxLimitSPRB</pv_name>
+      <x>359</x>
+      <y>163</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)MaxLimitSP</pv_name>
+          <pv_name>$(S)MaxLimitSPRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit Hysteresis_RB</name>
+      <pv_name>$(S)LimitHysteresisRB</pv_name>
+      <x>359</x>
+      <y>189</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitHysteresis</pv_name>
+          <pv_name>$(S)LimitHysteresisRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Source FunctionRB</name>
+      <pv_name>$(S)LimitSourceFnARB</pv_name>
+      <x>359</x>
+      <y>215</y>
+      <width>125</width>
+      <height>22</height>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitSourceFnA</pv_name>
+          <pv_name>$(S)LimitSourceFnARB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Source InstanceRB</name>
+      <pv_name>$(S)LimitSrcInstanceRB</pv_name>
+      <x>359</x>
+      <y>241</y>
+      <width>110</width>
+      <visible>false</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitSrcInstance</pv_name>
+          <pv_name>$(S)LimitSrcInstanceRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Limit IntegrateRB</name>
+      <pv_name>$(S)LimitIntegrateRB</pv_name>
+      <x>359</x>
+      <y>267</y>
+      <width>125</width>
+      <height>22</height>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)LimitIntegrate</pv_name>
+          <pv_name>$(S)LimitIntegrateRB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Analog Input_2</name>
+      <pv_name>$(S)AnalogInput2</pv_name>
+      <x>359</x>
+      <y>33</y>
+      <width>110</width>
+      <height>22</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Analog Input Label_2</name>
+      <text>Scaled Analog Input (AI2):</text>
+      <x>10</x>
+      <y>33</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+</display>

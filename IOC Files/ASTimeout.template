@@ -1,0 +1,19 @@
+record(calc, "$(P):$(CBTO)") {
+	field(PINI,	"YES")
+    info(autosaveFields, "B")
+}
+
+record(seq, "$(P):$(CBSPF)") {
+   field(DOL2, "")
+   field(LNK2, "")      # removed the links to reset the setpoint
+}
+
+record(ai, "$(P):$(CBStlng)") {
+    info(autosaveFields, "VAL")
+}
+
+record(ai, "$(P):$(CBTol)") {
+    info(autosaveFields, "VAL")
+}
+
+

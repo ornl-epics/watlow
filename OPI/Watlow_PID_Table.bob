@@ -1,0 +1,2709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>PID Table</name>
+  <y>10</y>
+  <width>700</width>
+  <height>785</height>
+  <widget type="group" version="2.0.0">
+    <name>Heat Algorithm: PID</name>
+    <x>5</x>
+    <y>10</y>
+    <width>580</width>
+    <height>390</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Software_15</name>
+      <text>Device</text>
+      <x>360</x>
+      <y>5</y>
+      <width>150</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Software_14</name>
+      <text>Software</text>
+      <x>180</x>
+      <y>5</y>
+      <width>150</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+      <border_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Heat Algorithm Label_1</name>
+      <text>Heat Algorithm:</text>
+      <y>35</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Autotune Intitiate Label_1</name>
+      <text>Autotune:</text>
+      <y>61</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Autotune Aggressiveness Label_1</name>
+      <text>Autotune Aggressiveness:</text>
+      <y>87</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Autotune SP Label_1</name>
+      <text>Autotune Setpoint:</text>
+      <y>113</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Heat P Label_1</name>
+      <text>Heat Proportional Band:</text>
+      <y>152</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Time Integral Label_1</name>
+      <text>Time Integral:</text>
+      <y>191</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Time Derivative Label_1</name>
+      <text>Time Derivative:</text>
+      <y>217</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Loop SV</name>
+      <text>Loop SV:</text>
+      <y>256</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Heat Algortithm_1</name>
+      <pv_name>$(S)HeatMethod1</pv_name>
+      <x>175</x>
+      <y>35</y>
+      <width>160</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Autotune Initiate_1</name>
+      <actions execute_as_one="true">
+        <action type="write_pv">
+          <pv_name>$(S)Autotune1</pv_name>
+          <value>106</value>
+          <description>Initiate</description>
+        </action>
+      </actions>
+      <pv_name>$(S)Autotune1</pv_name>
+      <text>Initiate</text>
+      <x>175</x>
+      <y>61</y>
+      <width>75</width>
+      <height>20</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1 and pvInt1&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt2 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt3 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)CoolMethod1</pv_name>
+          <pv_name>$(S)AutotuneStatus1</pv_name>
+          <pv_name>$(S)ControlMode1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Aggressiveness_1</name>
+      <pv_name>$(S)Aggressiveness1</pv_name>
+      <x>175</x>
+      <y>87</y>
+      <width>160</width>
+      <height>22</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1 and pvInt1&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)CoolMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Autotune SP_1</name>
+      <pv_name>$(S)ATuneSetpoint1</pv_name>
+      <x>227</x>
+      <y>113</y>
+      <width>108</width>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1 and pvInt1&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)CoolMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Heat P SP_1</name>
+      <pv_name>$(S)HeatPID_P1</pv_name>
+      <x>227</x>
+      <y>152</y>
+      <width>108</width>
+      <visible>false</visible>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Time Integral_1</name>
+      <pv_name>$(S)PID_I1</pv_name>
+      <x>227</x>
+      <y>191</y>
+      <width>108</width>
+      <visible>false</visible>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1 and pvInt1&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)CoolMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Tiime Derivative_1</name>
+      <pv_name>$(S)PID_D1</pv_name>
+      <x>227</x>
+      <y>217</y>
+      <width>108</width>
+      <visible>false</visible>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0&lt;&gt;1 and pvInt1&lt;&gt;1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)CoolMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Closed Loop SP_1</name>
+      <pv_name>$(S)SetSetpoint1</pv_name>
+      <x>227</x>
+      <y>256</y>
+      <width>108</width>
+      <rules>
+        <rule name="In Autotune" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat AlgortithmRB</name>
+      <pv_name>$(S)HeatMethod1RB</pv_name>
+      <x>355</x>
+      <y>35</y>
+      <width>160</width>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+          <pv_name>$(S)HeatMethod1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Autotune Status_1</name>
+      <pv_name>$(S)AutotuneStatus1</pv_name>
+      <x>355</x>
+      <y>61</y>
+      <width>160</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>AggressivenessRB</name>
+      <pv_name>$(S)Aggressiveness1RB</pv_name>
+      <x>355</x>
+      <y>87</y>
+      <width>160</width>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)Aggressiveness1</pv_name>
+          <pv_name>$(S)Aggressiveness1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Autotune SPRB</name>
+      <pv_name>$(S)ATuneSetpoint1RB</pv_name>
+      <x>355</x>
+      <y>113</y>
+      <width>108</width>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)ATuneSetpoint1</pv_name>
+          <pv_name>$(S)ATuneSetpoint1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat P SPRB</name>
+      <pv_name>$(S)HeatPID_P1RB</pv_name>
+      <x>355</x>
+      <y>152</y>
+      <width>108</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)HeatPID_P1</pv_name>
+          <pv_name>$(S)HeatPID_P1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Time IntegralRB</name>
+      <pv_name>$(S)PID_I1RB</pv_name>
+      <x>355</x>
+      <y>191</y>
+      <width>108</width>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PID_I1</pv_name>
+          <pv_name>$(S)PID_I1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Tiime DerivativeRB</name>
+      <pv_name>$(S)PID_D1RB</pv_name>
+      <x>355</x>
+      <y>217</y>
+      <width>108</width>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="State" prop_id="border_color" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+            <value>
+              <color name="Attention" red="255" green="160" blue="0">
+              </color>
+            </value>
+          </exp>
+          <pv_name>$(S)PID_D1</pv_name>
+          <pv_name>$(S)PID_D1RB</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Loop SV</name>
+      <pv_name>$(S)SetSetpoint1RB</pv_name>
+      <x>355</x>
+      <y>256</y>
+      <width>108</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="polygon" version="2.0.0">
+      <name>Polygon_1</name>
+      <y>143</y>
+      <width>520</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </background_color>
+      <points>
+        <point x="520.0" y="0.0">
+        </point>
+        <point x="0.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="polygon" version="2.0.0">
+      <name>Polygon_2</name>
+      <y>182</y>
+      <width>520</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </background_color>
+      <points>
+        <point x="520.0" y="0.0">
+        </point>
+        <point x="0.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="polygon" version="2.0.0">
+      <name>Polygon_3</name>
+      <y>247</y>
+      <width>520</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Grid" red="128" green="128" blue="128">
+        </color>
+      </background_color>
+      <points>
+        <point x="520.0" y="0.0">
+        </point>
+        <point x="0.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Loop PV</name>
+      <text>Loop PV:</text>
+      <y>308</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Loop PV</name>
+      <pv_name>$(S)ProcessValue1</pv_name>
+      <x>355</x>
+      <y>308</y>
+      <width>108</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Active SP Label_1</name>
+      <text>Active SV:</text>
+      <y>282</y>
+      <width>165</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Closed Loop SP_2</name>
+      <pv_name>$(S)ActiveSV1</pv_name>
+      <x>355</x>
+      <y>282</y>
+      <width>108</width>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Autotune Cancel_3</name>
+      <actions execute_as_one="true">
+        <action type="write_pv">
+          <pv_name>$(S)Autotune1</pv_name>
+          <value>59</value>
+          <description>Cancel</description>
+        </action>
+      </actions>
+      <pv_name>$(S)Autotune1</pv_name>
+      <text>Cancel</text>
+      <x>260</x>
+      <y>61</y>
+      <width>75</width>
+      <height>20</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 == 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Output Power Label_1</name>
+      <text>Output Power:</text>
+      <y>334</y>
+      <width>165</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Output Power_1</name>
+      <pv_name>$(S)OutputPwr1</pv_name>
+      <x>355</x>
+      <y>334</y>
+      <width>108</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>PID Table</name>
+    <x>5</x>
+    <y>395</y>
+    <width>680</width>
+    <height>390</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Black" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <actions>
+    </actions>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_5</name>
+      <pv_name>$(S)PID:Set1:Low</pv_name>
+      <x>46</x>
+      <y>50</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_6</name>
+      <pv_name>$(S)PID:Set1:High</pv_name>
+      <x>126</x>
+      <y>50</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input</name>
+      <pv_name>$(S)PID:Set1:PSet</pv_name>
+      <x>231</x>
+      <y>50</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_1</name>
+      <pv_name>$(S)PID:Set1:ISet</pv_name>
+      <x>311</x>
+      <y>50</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_2</name>
+      <pv_name>$(S)PID:Set1:DSet</pv_name>
+      <x>391</x>
+      <y>50</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 1</name>
+      <pv_name>$(S)PID:Set1:Update</pv_name>
+      <x>552</x>
+      <y>50</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED</name>
+      <pv_name>$(S)PID:Set1:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>50</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_12</name>
+      <pv_name>$(S)PID:Set2:Low</pv_name>
+      <x>46</x>
+      <y>80</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_13</name>
+      <pv_name>$(S)PID:Set2:High</pv_name>
+      <x>126</x>
+      <y>80</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_7</name>
+      <pv_name>$(S)PID:Set2:PSet</pv_name>
+      <x>231</x>
+      <y>80</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_8</name>
+      <pv_name>$(S)PID:Set2:ISet</pv_name>
+      <x>311</x>
+      <y>80</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_9</name>
+      <pv_name>$(S)PID:Set2:DSet</pv_name>
+      <x>391</x>
+      <y>80</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 2</name>
+      <pv_name>$(S)PID:Set2:Update</pv_name>
+      <x>552</x>
+      <y>80</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_1</name>
+      <pv_name>$(S)PID:Set2:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>80</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_19</name>
+      <pv_name>$(S)PID:Set3:Low</pv_name>
+      <x>46</x>
+      <y>110</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_20</name>
+      <pv_name>$(S)PID:Set3:High</pv_name>
+      <x>126</x>
+      <y>110</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_14</name>
+      <pv_name>$(S)PID:Set3:PSet</pv_name>
+      <x>231</x>
+      <y>110</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_15</name>
+      <pv_name>$(S)PID:Set3:ISet</pv_name>
+      <x>311</x>
+      <y>110</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_16</name>
+      <pv_name>$(S)PID:Set3:DSet</pv_name>
+      <x>391</x>
+      <y>110</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 3</name>
+      <pv_name>$(S)PID:Set3:Update</pv_name>
+      <x>552</x>
+      <y>110</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_2</name>
+      <pv_name>$(S)PID:Set3:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>110</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_26</name>
+      <pv_name>$(S)PID:Set4:Low</pv_name>
+      <x>46</x>
+      <y>140</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_27</name>
+      <pv_name>$(S)PID:Set4:High</pv_name>
+      <x>126</x>
+      <y>140</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_21</name>
+      <pv_name>$(S)PID:Set4:PSet</pv_name>
+      <x>231</x>
+      <y>140</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_22</name>
+      <pv_name>$(S)PID:Set4:ISet</pv_name>
+      <x>311</x>
+      <y>140</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_23</name>
+      <pv_name>$(S)PID:Set4:DSet</pv_name>
+      <x>391</x>
+      <y>140</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 4</name>
+      <pv_name>$(S)PID:Set4:Update</pv_name>
+      <x>552</x>
+      <y>140</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_3</name>
+      <pv_name>$(S)PID:Set4:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>140</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_33</name>
+      <pv_name>$(S)PID:Set5:Low</pv_name>
+      <x>46</x>
+      <y>170</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_34</name>
+      <pv_name>$(S)PID:Set5:High</pv_name>
+      <x>126</x>
+      <y>170</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_28</name>
+      <pv_name>$(S)PID:Set5:PSet</pv_name>
+      <x>231</x>
+      <y>170</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_29</name>
+      <pv_name>$(S)PID:Set5:ISet</pv_name>
+      <x>311</x>
+      <y>170</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_30</name>
+      <pv_name>$(S)PID:Set5:DSet</pv_name>
+      <x>391</x>
+      <y>170</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 5</name>
+      <pv_name>$(S)PID:Set5:Update</pv_name>
+      <x>552</x>
+      <y>170</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_4</name>
+      <pv_name>$(S)PID:Set5:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>170</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_40</name>
+      <pv_name>$(S)PID:Set6:Low</pv_name>
+      <x>46</x>
+      <y>200</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_41</name>
+      <pv_name>$(S)PID:Set6:High</pv_name>
+      <x>126</x>
+      <y>200</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_35</name>
+      <pv_name>$(S)PID:Set6:PSet</pv_name>
+      <x>231</x>
+      <y>200</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_36</name>
+      <pv_name>$(S)PID:Set6:ISet</pv_name>
+      <x>311</x>
+      <y>200</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_37</name>
+      <pv_name>$(S)PID:Set6:DSet</pv_name>
+      <x>391</x>
+      <y>200</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 6</name>
+      <pv_name>$(S)PID:Set6:Update</pv_name>
+      <x>552</x>
+      <y>200</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_5</name>
+      <pv_name>$(S)PID:Set6:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>200</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_47</name>
+      <pv_name>$(S)PID:Set7:Low</pv_name>
+      <x>46</x>
+      <y>230</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_48</name>
+      <pv_name>$(S)PID:Set7:High</pv_name>
+      <x>126</x>
+      <y>230</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_42</name>
+      <pv_name>$(S)PID:Set7:PSet</pv_name>
+      <x>231</x>
+      <y>230</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_43</name>
+      <pv_name>$(S)PID:Set7:ISet</pv_name>
+      <x>311</x>
+      <y>230</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_44</name>
+      <pv_name>$(S)PID:Set7:DSet</pv_name>
+      <x>391</x>
+      <y>230</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 7</name>
+      <pv_name>$(S)PID:Set7:Update</pv_name>
+      <x>552</x>
+      <y>230</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_6</name>
+      <pv_name>$(S)PID:Set7:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>230</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_54</name>
+      <pv_name>$(S)PID:Set8:Low</pv_name>
+      <x>46</x>
+      <y>260</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_55</name>
+      <pv_name>$(S)PID:Set8:High</pv_name>
+      <x>126</x>
+      <y>260</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_49</name>
+      <pv_name>$(S)PID:Set8:PSet</pv_name>
+      <x>231</x>
+      <y>260</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_50</name>
+      <pv_name>$(S)PID:Set8:ISet</pv_name>
+      <x>311</x>
+      <y>260</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_51</name>
+      <pv_name>$(S)PID:Set8:DSet</pv_name>
+      <x>391</x>
+      <y>260</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 8</name>
+      <pv_name>$(S)PID:Set8:Update</pv_name>
+      <x>552</x>
+      <y>260</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_7</name>
+      <pv_name>$(S)PID:Set8:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>260</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_61</name>
+      <pv_name>$(S)PID:Set9:Low</pv_name>
+      <x>46</x>
+      <y>290</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_62</name>
+      <pv_name>$(S)PID:Set9:High</pv_name>
+      <x>126</x>
+      <y>290</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_56</name>
+      <pv_name>$(S)PID:Set9:PSet</pv_name>
+      <x>231</x>
+      <y>290</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_57</name>
+      <pv_name>$(S)PID:Set9:ISet</pv_name>
+      <x>311</x>
+      <y>290</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_58</name>
+      <pv_name>$(S)PID:Set9:DSet</pv_name>
+      <x>391</x>
+      <y>290</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 9</name>
+      <pv_name>$(S)PID:Set9:Update</pv_name>
+      <x>552</x>
+      <y>290</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_8</name>
+      <pv_name>$(S)PID:Set9:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>290</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_68</name>
+      <pv_name>$(S)PID:Set10:Low</pv_name>
+      <x>46</x>
+      <y>320</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_69</name>
+      <pv_name>$(S)PID:Set10:High</pv_name>
+      <x>126</x>
+      <y>320</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_63</name>
+      <pv_name>$(S)PID:Set10:PSet</pv_name>
+      <x>231</x>
+      <y>320</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_64</name>
+      <pv_name>$(S)PID:Set10:ISet</pv_name>
+      <x>311</x>
+      <y>320</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Input_65</name>
+      <pv_name>$(S)PID:Set10:DSet</pv_name>
+      <x>391</x>
+      <y>320</y>
+      <width>75</width>
+      <height>25</height>
+      <background_color>
+        <color name="WritePV_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="bool_button" version="2.0.0">
+      <name>Update Set 10</name>
+      <pv_name>$(S)PID:Set10:Update</pv_name>
+      <x>552</x>
+      <y>320</y>
+      <width>70</width>
+      <height>20</height>
+      <off_label>Update</off_label>
+      <off_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </off_color>
+      <on_label>Updating</on_label>
+      <show_led>false</show_led>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <enabled>false</enabled>
+      <show_confirm_dialog>2</show_confirm_dialog>
+      <confirm_message>Update the PID values in this set?</confirm_message>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_9</name>
+      <pv_name>$(S)PID:Set10:InWindow</pv_name>
+      <bit>0</bit>
+      <x>496</x>
+      <y>320</y>
+      <width>22</width>
+      <height>22</height>
+      <line_color>
+        <color red="150" green="150" blue="150">
+        </color>
+      </line_color>
+      <actions>
+      </actions>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt &lt;&gt; 0 ">
+            <value>false</value>
+          </exp>
+          <pv_name>$(S)HeatMethod1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_9</name>
+      <text>Active Range</text>
+      <x>50</x>
+      <width>155</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_44</name>
+      <text>Set #</text>
+      <x>6</x>
+      <y>22</y>
+      <width>40</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_2</name>
+      <text>1</text>
+      <x>11</x>
+      <y>50</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_3</name>
+      <text>PB</text>
+      <x>231</x>
+      <y>20</y>
+      <width>75</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_4</name>
+      <text>Ti</text>
+      <x>311</x>
+      <y>20</y>
+      <width>75</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_5</name>
+      <text>Td</text>
+      <x>391</x>
+      <y>20</y>
+      <width>75</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_7</name>
+      <text>Active Set</text>
+      <x>467</x>
+      <y>20</y>
+      <width>80</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_10</name>
+      <text>Low</text>
+      <x>46</x>
+      <y>20</y>
+      <width>75</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_11</name>
+      <text>High</text>
+      <x>126</x>
+      <y>20</y>
+      <width>75</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_13</name>
+      <text>2</text>
+      <x>11</x>
+      <y>80</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_14</name>
+      <text>3</text>
+      <x>11</x>
+      <y>110</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_15</name>
+      <text>4</text>
+      <x>11</x>
+      <y>140</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_16</name>
+      <text>5</text>
+      <x>11</x>
+      <y>170</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_17</name>
+      <text>6</text>
+      <x>11</x>
+      <y>200</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_18</name>
+      <text>7</text>
+      <x>11</x>
+      <y>230</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_19</name>
+      <text>8</text>
+      <x>11</x>
+      <y>260</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_20</name>
+      <text>9</text>
+      <x>11</x>
+      <y>290</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_21</name>
+      <text>10</text>
+      <x>11</x>
+      <y>320</y>
+      <width>19</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_8</name>
+      <text>Update Set</text>
+      <x>547</x>
+      <y>20</y>
+      <width>80</width>
+      <height>25</height>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+  </widget>
+</display>

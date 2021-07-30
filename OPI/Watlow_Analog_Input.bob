@@ -1,0 +1,1939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Analog Input</name>
+  <width>650</width>
+  <height>800</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Analog Input #1</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>AI 1: Status</name>
+            <x>3</x>
+            <y>14</y>
+            <width>584</width>
+            <height>103</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Analog Input Label</name>
+              <text>Scaled Analog Input:</text>
+              <x>15</x>
+              <y>10</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Analog Input</name>
+              <pv_name>$(S)AnalogInput1</pv_name>
+              <x>160</x>
+              <y>12</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Error Label</name>
+              <text>Input Error Status:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Input Error</name>
+              <pv_name>$(S)InputError1</pv_name>
+              <x>160</x>
+              <y>38</y>
+              <width>110</width>
+              <show_units>false</show_units>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>AI 1: Sensor Configuration</name>
+            <x>3</x>
+            <y>114</y>
+            <width>584</width>
+            <height>418</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Sensor Type Label_1</name>
+              <text>Sensor Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sensor Type_1</name>
+              <pv_name>$(S)SensorType1</pv_name>
+              <x>120</x>
+              <y>33</y>
+              <width>180</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>TC Type Label_1</name>
+              <text>TC Type:</text>
+              <x>10</x>
+              <y>72</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>TC Type_1</name>
+              <pv_name>$(S)TCType1</pv_name>
+              <x>160</x>
+              <y>72</y>
+              <width>125</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable on TC Selection" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)SensorType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+                <item>Item 8</item>
+                <item>Item 9</item>
+                <item>Item 10</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>RTD Leads Label_1</name>
+              <text>RTD Leads:</text>
+              <x>10</x>
+              <y>111</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>RTD Leads_1</name>
+              <pv_name>$(S)RTDLeads1</pv_name>
+              <x>160</x>
+              <y>112</y>
+              <width>125</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable on RTD Select" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;5 and pvInt0&lt;&gt;6">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)SensorType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_3</name>
+              <x>10</x>
+              <y>62</y>
+              <width>300</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="300.00001140607156" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_4</name>
+              <x>10</x>
+              <y>101</y>
+              <width>300</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="300.00001140607156" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Process Parameters</name>
+              <y>142</y>
+              <width>520</width>
+              <height>210</height>
+              <font>
+                <font family="PakTypeNaqsh" style="REGULAR" size="14.0">
+                </font>
+              </font>
+              <widget type="label" version="2.0.0">
+                <name>Unit Label_1</name>
+                <text>Unit:</text>
+                <x>10</x>
+                <y>13</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="combo" version="2.0.0">
+                <name>Unit_1</name>
+                <pv_name>$(S)AIUnits1</pv_name>
+                <x>142</x>
+                <y>13</y>
+                <width>125</width>
+                <height>22</height>
+                <background_color>
+                  <color name="Write_Background" red="128" green="255" blue="255">
+                  </color>
+                </background_color>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType1</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+                <items>
+                  <item>Item 0</item>
+                  <item>Item 1</item>
+                </items>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Range Low Label_1</name>
+                <text>Range Low:</text>
+                <x>10</x>
+                <y>54</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Range Low_1</name>
+                <pv_name>$(S)RangeLow1</pv_name>
+                <x>142</x>
+                <y>54</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType1</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Range High Label_1</name>
+                <text>Range High:</text>
+                <x>10</x>
+                <y>80</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Range High_1</name>
+                <pv_name>$(S)RangeHigh1</pv_name>
+                <x>142</x>
+                <y>80</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType1</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Scale Low Label_1</name>
+                <text>Scale Low:</text>
+                <x>10</x>
+                <y>122</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Scale Low_1</name>
+                <pv_name>$(S)ScaleLow1</pv_name>
+                <x>142</x>
+                <y>122</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType1</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Scale High Label_1</name>
+                <text>Scale High:</text>
+                <x>10</x>
+                <y>149</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Scale high_1</name>
+                <pv_name>$(S)ScaleHigh1</pv_name>
+                <x>142</x>
+                <y>149</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType1</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="polyline" version="2.0.0">
+                <name>Polyline_5</name>
+                <y>45</y>
+                <width>480</width>
+                <height>1</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="Grid" red="128" green="128" blue="128">
+                  </color>
+                </line_color>
+                <arrow_length>2</arrow_length>
+                <points>
+                  <point x="0.0" y="0.0">
+                  </point>
+                  <point x="480.0" y="0.0">
+                  </point>
+                </points>
+              </widget>
+              <widget type="polyline" version="2.0.0">
+                <name>Polyline_2</name>
+                <y>109</y>
+                <width>480</width>
+                <height>1</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="Grid" red="128" green="128" blue="128">
+                  </color>
+                </line_color>
+                <arrow_length>2</arrow_length>
+                <points>
+                  <point x="0.0" y="0.0">
+                  </point>
+                  <point x="480.0" y="0.0">
+                  </point>
+                </points>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>UnitRB</name>
+                <pv_name>$(S)AIUnits1RB</pv_name>
+                <x>329</x>
+                <y>13</y>
+                <width>125</width>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)AIUnits1</pv_name>
+                    <pv_name>$(S)AIUnits1RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Range LowRB</name>
+                <pv_name>$(S)RangeLow1RB</pv_name>
+                <x>329</x>
+                <y>54</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)RangeLow1</pv_name>
+                    <pv_name>$(S)RangeLow1RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Range HighRB</name>
+                <pv_name>$(S)RangeHigh1RB</pv_name>
+                <x>329</x>
+                <y>80</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)RangeHigh1</pv_name>
+                    <pv_name>$(S)RangeHigh1RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Scale LowRB</name>
+                <pv_name>$(S)ScaleLow1RB</pv_name>
+                <x>329</x>
+                <y>122</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)ScaleLow1</pv_name>
+                    <pv_name>$(S)ScaleLow1RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Scale HighRB</name>
+                <pv_name>$(S)ScaleHigh1RB</pv_name>
+                <x>329</x>
+                <y>149</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)ScaleHigh1</pv_name>
+                    <pv_name>$(S)ScaleHigh1RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Calibration Offset Label</name>
+              <text>Calibration Offset:</text>
+              <x>10</x>
+              <y>354</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Calibration Offset</name>
+              <pv_name>$(S)AICalOffset1</pv_name>
+              <x>160</x>
+              <y>354</y>
+              <width>125</width>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software Label</name>
+              <text>Software</text>
+              <x>143</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Device Label</name>
+              <text>Device</text>
+              <x>345</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_10</name>
+              <x>342</x>
+              <y>61</y>
+              <width>110</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="183.33334030371043" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_11</name>
+              <x>342</x>
+              <y>100</y>
+              <width>110</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="183.33334030371043" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Sensor TypeRB</name>
+              <pv_name>$(S)SensorType1RB</pv_name>
+              <x>347</x>
+              <y>33</y>
+              <width>180</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)SensorType1</pv_name>
+                  <pv_name>$(S)SensorType1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TC TypeRB</name>
+              <pv_name>$(S)TCType1RB</pv_name>
+              <x>347</x>
+              <y>72</y>
+              <width>125</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)TCType1</pv_name>
+                  <pv_name>$(S)TCType1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>RTD LeadsRB</name>
+              <pv_name>$(S)RTDLeads1RB</pv_name>
+              <x>347</x>
+              <y>112</y>
+              <width>125</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)RTDLeads1</pv_name>
+                  <pv_name>$(S)RTDLeads1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Calibration OffsetRB</name>
+              <pv_name>$(S)AICalOffset1RB</pv_name>
+              <x>347</x>
+              <y>354</y>
+              <width>125</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AICalOffset1</pv_name>
+                  <pv_name>$(S)AICalOffset1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>AI 1: Parameters</name>
+            <x>3</x>
+            <y>529</y>
+            <width>584</width>
+            <height>203</height>
+            <font>
+              <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Filter Label_1</name>
+              <text>Filter:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Filter_1</name>
+              <pv_name>$(S)Filter1</pv_name>
+              <x>160</x>
+              <y>33</y>
+              <width>110</width>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Display Precision Label</name>
+              <text>Display Precision:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Display Precision_1</name>
+              <pv_name>$(S)DisplayPrecision1</pv_name>
+              <x>160</x>
+              <y>59</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Error Latching Label_1</name>
+              <text>Error Latching:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Error Latching_1</name>
+              <pv_name>$(S)ErrorLatching1</pv_name>
+              <x>160</x>
+              <y>85</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Process Error Label_1</name>
+              <text>Process Error Enable:</text>
+              <x>10</x>
+              <y>111</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Process Error_1</name>
+              <pv_name>$(S)ProcessErrorEnable1</pv_name>
+              <x>160</x>
+              <y>111</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Prcs Error Low Label_1</name>
+              <text>Prcs Error Low Value:</text>
+              <x>10</x>
+              <y>137</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Prcs Error Low_1</name>
+              <pv_name>$(S)ProcessErrorLow1</pv_name>
+              <x>160</x>
+              <y>137</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorEnable1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_2</name>
+              <text>Software</text>
+              <x>143</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_3</name>
+              <text>Device</text>
+              <x>345</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>FilterRB</name>
+              <pv_name>$(S)Filter1RB</pv_name>
+              <x>364</x>
+              <y>33</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Filter1</pv_name>
+                  <pv_name>$(S)Filter1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Display PrecisionRB</name>
+              <pv_name>$(S)DisplayPrecision1RB</pv_name>
+              <x>364</x>
+              <y>59</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)DisplayPrecision1</pv_name>
+                  <pv_name>$(S)DisplayPrecision1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Error LatchingRB</name>
+              <pv_name>$(S)ErrorLatching1RB</pv_name>
+              <x>364</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ErrorLatching1</pv_name>
+                  <pv_name>$(S)ErrorLatching1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Process ErrorRB</name>
+              <pv_name>$(S)ProcessErrorEnable1RB</pv_name>
+              <x>364</x>
+              <y>111</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorEnable1</pv_name>
+                  <pv_name>$(S)ProcessErrorEnable1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Prcs Error LowRB</name>
+              <pv_name>$(S)ProcessErrorLow1RB</pv_name>
+              <x>364</x>
+              <y>137</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorLow1</pv_name>
+                  <pv_name>$(S)ProcessErrorLow1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Analog Input #2</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>AI 2: Status</name>
+            <x>3</x>
+            <y>14</y>
+            <width>584</width>
+            <height>103</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Analog Input Label_2</name>
+              <text>Scaled Analog Input:</text>
+              <x>15</x>
+              <y>10</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Analog Input_2</name>
+              <pv_name>$(S)AnalogInput2</pv_name>
+              <x>160</x>
+              <y>12</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Enable on Manual Mode" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ControlMode</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Input Error Label_2</name>
+              <text>Input Error Status:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Input Error_2</name>
+              <pv_name>$(S)InputError2</pv_name>
+              <x>160</x>
+              <y>38</y>
+              <width>110</width>
+              <show_units>false</show_units>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>AI 2: Sensor Configuration</name>
+            <x>3</x>
+            <y>114</y>
+            <width>584</width>
+            <height>418</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Sensor Type Label_2</name>
+              <text>Sensor Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sensor Type_2</name>
+              <pv_name>$(S)SensorType2</pv_name>
+              <x>120</x>
+              <y>33</y>
+              <width>180</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>TC Type Label_2</name>
+              <text>TC Type:</text>
+              <x>10</x>
+              <y>72</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>TC Type_2</name>
+              <pv_name>$(S)TCType2</pv_name>
+              <x>160</x>
+              <y>72</y>
+              <width>125</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable on TC Selection" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)SensorType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+                <item>Item 8</item>
+                <item>Item 9</item>
+                <item>Item 10</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>RTD Leads Label_2</name>
+              <text>RTD Leads:</text>
+              <x>10</x>
+              <y>112</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>RTD Leads_2</name>
+              <pv_name>$(S)RTDLeads2</pv_name>
+              <x>160</x>
+              <y>112</y>
+              <width>125</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable on RTD Select" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;5 and pvInt0&lt;&gt;6">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)SensorType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_6</name>
+              <x>10</x>
+              <y>62</y>
+              <width>300</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="1.0">
+                </point>
+                <point x="300.00001140607156" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_7</name>
+              <x>10</x>
+              <y>101</y>
+              <width>300</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="1.0">
+                </point>
+                <point x="300.00001140607156" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="group" version="2.0.0">
+              <name>Process Parameters</name>
+              <y>142</y>
+              <width>520</width>
+              <height>210</height>
+              <font>
+                <font family="PakTypeNaqsh" style="REGULAR" size="14.0">
+                </font>
+              </font>
+              <widget type="label" version="2.0.0">
+                <name>Unit Label_2</name>
+                <text>Unit:</text>
+                <x>10</x>
+                <y>13</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Range Low Label_2</name>
+                <text>Range Low:</text>
+                <x>10</x>
+                <y>54</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Range High Label_2</name>
+                <text>Range High:</text>
+                <x>10</x>
+                <y>80</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Scale Low Label_2</name>
+                <text>Scale Low:</text>
+                <x>10</x>
+                <y>122</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Scale High Label_2</name>
+                <text>Scale High:</text>
+                <x>10</x>
+                <y>149</y>
+                <width>120</width>
+                <horizontal_alignment>2</horizontal_alignment>
+                <vertical_alignment>1</vertical_alignment>
+              </widget>
+              <widget type="polyline" version="2.0.0">
+                <name>Polyline_9</name>
+                <x>6</x>
+                <y>45</y>
+                <width>480</width>
+                <height>1</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="Grid" red="128" green="128" blue="128">
+                  </color>
+                </line_color>
+                <arrow_length>2</arrow_length>
+                <points>
+                  <point x="0.0" y="0.0">
+                  </point>
+                  <point x="480.0" y="0.0">
+                  </point>
+                </points>
+              </widget>
+              <widget type="polyline" version="2.0.0">
+                <name>Polyline_8</name>
+                <x>6</x>
+                <y>109</y>
+                <width>480</width>
+                <height>1</height>
+                <line_width>1</line_width>
+                <line_color>
+                  <color name="Grid" red="128" green="128" blue="128">
+                  </color>
+                </line_color>
+                <arrow_length>2</arrow_length>
+                <points>
+                  <point x="0.0" y="0.0">
+                  </point>
+                  <point x="480.0" y="0.0">
+                  </point>
+                </points>
+              </widget>
+              <widget type="combo" version="2.0.0">
+                <name>Unit_2</name>
+                <pv_name>$(S)AIUnits2</pv_name>
+                <x>142</x>
+                <y>13</y>
+                <width>125</width>
+                <height>22</height>
+                <background_color>
+                  <color name="Write_Background" red="128" green="255" blue="255">
+                  </color>
+                </background_color>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType2</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+                <items>
+                  <item>Item 0</item>
+                  <item>Item 1</item>
+                </items>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Range Low_2</name>
+                <pv_name>$(S)RangeLow2</pv_name>
+                <x>142</x>
+                <y>54</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType2</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Range High_2</name>
+                <pv_name>$(S)RangeHigh2</pv_name>
+                <x>142</x>
+                <y>80</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType2</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Scale Low_2</name>
+                <pv_name>$(S)ScaleLow2</pv_name>
+                <x>142</x>
+                <y>122</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType2</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textentry" version="3.0.0">
+                <name>Scale High_2</name>
+                <pv_name>$(S)ScaleHigh2</pv_name>
+                <x>142</x>
+                <y>149</y>
+                <width>125</width>
+                <rules>
+                  <rule name="Enable" prop_id="enabled" out_exp="false">
+                    <exp bool_exp="pvInt0&lt;&gt;2 and pvInt0&lt;&gt;3 and pvInt0&lt;&gt;4 and pvInt0&lt;&gt;7">
+                      <value>false</value>
+                    </exp>
+                    <pv_name>$(S)SensorType2</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>UnitRB</name>
+                <pv_name>$(S)AIUnits2RB</pv_name>
+                <x>329</x>
+                <y>13</y>
+                <width>125</width>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)AIUnits2</pv_name>
+                    <pv_name>$(S)AIUnits2RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Range LowRB</name>
+                <pv_name>$(S)RangeLow2RB</pv_name>
+                <x>329</x>
+                <y>54</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)RangeLow2</pv_name>
+                    <pv_name>$(S)RangeLow2RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Range HighRB</name>
+                <pv_name>$(S)RangeHigh2RB</pv_name>
+                <x>329</x>
+                <y>80</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)RangeHigh2</pv_name>
+                    <pv_name>$(S)RangeHigh2RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Scale LowRB</name>
+                <pv_name>$(S)ScaleLow2RB</pv_name>
+                <x>329</x>
+                <y>122</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)ScaleLow2</pv_name>
+                    <pv_name>$(S)ScaleLow2RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>Scale HighRB</name>
+                <pv_name>$(S)ScaleHigh2RB</pv_name>
+                <x>329</x>
+                <y>149</y>
+                <width>125</width>
+                <wrap_words>false</wrap_words>
+                <rules>
+                  <rule name="State" prop_id="border_color" out_exp="false">
+                    <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                      <value>
+                        <color name="Attention" red="255" green="160" blue="0">
+                        </color>
+                      </value>
+                    </exp>
+                    <pv_name>$(S)ScaleHigh2</pv_name>
+                    <pv_name>$(S)ScaleHigh2RB</pv_name>
+                  </rule>
+                </rules>
+                <border_alarm_sensitive>false</border_alarm_sensitive>
+              </widget>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Calibration Offset_2</name>
+              <pv_name>$(S)AICalOffset2</pv_name>
+              <x>160</x>
+              <y>354</y>
+              <width>125</width>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Calibration Offset Label_2</name>
+              <text>Calibration Offset:</text>
+              <x>10</x>
+              <y>354</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_8</name>
+              <text>Software</text>
+              <x>143</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_9</name>
+              <text>Device</text>
+              <x>345</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Sensor TypeRB</name>
+              <pv_name>$(S)SensorType2RB</pv_name>
+              <x>347</x>
+              <y>33</y>
+              <width>180</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)SensorType2</pv_name>
+                  <pv_name>$(S)SensorType2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>TC TypeRB</name>
+              <pv_name>$(S)TCType2RB</pv_name>
+              <x>347</x>
+              <y>72</y>
+              <width>125</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)TCType2</pv_name>
+                  <pv_name>$(S)TCType2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>RTD LeadsRB</name>
+              <pv_name>$(S)RTDLeads2RB</pv_name>
+              <x>347</x>
+              <y>112</y>
+              <width>125</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)RTDLeads2</pv_name>
+                  <pv_name>$(S)RTDLeads2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Calibration OffsetRB</name>
+              <pv_name>$(S)AICalOffset2RB</pv_name>
+              <x>347</x>
+              <y>354</y>
+              <width>125</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AICalOffset2</pv_name>
+                  <pv_name>$(S)AICalOffset2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_15</name>
+              <x>342</x>
+              <y>61</y>
+              <width>110</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="183.33334030371043" y="0.0">
+                </point>
+              </points>
+            </widget>
+            <widget type="polyline" version="2.0.0">
+              <name>Polyline_16</name>
+              <x>342</x>
+              <y>100</y>
+              <width>110</width>
+              <height>1</height>
+              <line_width>1</line_width>
+              <line_color>
+                <color name="Grid" red="128" green="128" blue="128">
+                </color>
+              </line_color>
+              <arrow_length>2</arrow_length>
+              <points>
+                <point x="0.0" y="0.0">
+                </point>
+                <point x="183.33334030371043" y="0.0">
+                </point>
+              </points>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>AI 2: Parameters</name>
+            <x>3</x>
+            <y>529</y>
+            <width>584</width>
+            <height>203</height>
+            <font>
+              <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Filter Label_2</name>
+              <text>Filter:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Filter_2</name>
+              <pv_name>$(S)Filter2</pv_name>
+              <x>160</x>
+              <y>33</y>
+              <width>110</width>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Display Precision Label_2</name>
+              <text>Display Precision:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Precision_2</name>
+              <pv_name>$(S)DisplayPrecision2</pv_name>
+              <x>160</x>
+              <y>59</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Error Latching_2</name>
+              <text>Error Latching:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Error Latching_2</name>
+              <pv_name>$(S)ErrorLatching2</pv_name>
+              <x>160</x>
+              <y>85</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Process Error Enable Label_2</name>
+              <text>Process Error Enable:</text>
+              <x>10</x>
+              <y>111</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Process error Enable_2</name>
+              <pv_name>$(S)ProcessErrorEnable2</pv_name>
+              <x>160</x>
+              <y>111</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>PE Low Value Label_2</name>
+              <text>Prcs Error Low Value:</text>
+              <x>10</x>
+              <y>137</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>PE Low Value_2</name>
+              <pv_name>$(S)ProcessErrorLow2</pv_name>
+              <x>160</x>
+              <y>137</y>
+              <width>110</width>
+              <height>22</height>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0&lt;&gt;1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorEnable2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_10</name>
+              <text>Software</text>
+              <x>143</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_11</name>
+              <text>Device</text>
+              <x>345</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>FilterRB</name>
+              <pv_name>$(S)Filter2RB</pv_name>
+              <x>364</x>
+              <y>33</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Filter2</pv_name>
+                  <pv_name>$(S)Filter2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>PrecisionRB</name>
+              <pv_name>$(S)DisplayPrecision2RB</pv_name>
+              <x>364</x>
+              <y>59</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)DisplayPrecision2</pv_name>
+                  <pv_name>$(S)DisplayPrecision2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Error LatchingRB</name>
+              <pv_name>$(S)ErrorLatching2RB</pv_name>
+              <x>364</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ErrorLatching2</pv_name>
+                  <pv_name>$(S)ErrorLatching2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Process error EnableRB</name>
+              <pv_name>$(S)ProcessErrorEnable2RB</pv_name>
+              <x>364</x>
+              <y>111</y>
+              <width>110</width>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorEnable2</pv_name>
+                  <pv_name>$(S)ProcessErrorEnable2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>PE Low ValueRB</name>
+              <pv_name>$(S)ProcessErrorLow2RB</pv_name>
+              <x>364</x>
+              <y>137</y>
+              <width>110</width>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)ProcessErrorLow2</pv_name>
+                  <pv_name>$(S)ProcessErrorLow2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>5</x>
+    <y>5</y>
+    <width>590</width>
+    <height>775</height>
+  </widget>
+</display>

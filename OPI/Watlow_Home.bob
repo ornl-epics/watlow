@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Watlow Control Panel</name>
+  <macros>
+    <Mod1>CG2:SE:Watlow:1:</Mod1>
+    <Mod2>CG2:SE:Watlow:2:</Mod2>
+    <Mod3>CG2:SE:Watlow:3:</Mod3>
+    <Mod4>CG2:SE:Watlow:4:</Mod4>
+  </macros>
+  <x>160</x>
+  <y>30</y>
+  <width>1650</width>
+  <height>550</height>
+  <widget type="label" version="2.0.0">
+    <name>Title</name>
+    <text>Watlow PM Series PID Controller</text>
+    <x>229</x>
+    <width>621</width>
+    <height>31</height>
+    <font>
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Set Control Mode</name>
+    <text>Set Control Mode:</text>
+    <x>20</x>
+    <y>90</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Op Control Mode</name>
+    <text>Operating Control Mode:</text>
+    <x>20</x>
+    <y>120</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Closed Loop SP</name>
+    <text>Closed Loop Setpoint:</text>
+    <x>19</x>
+    <y>150</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Open Loop SP</name>
+    <text>Open Loop Setpoint:</text>
+    <x>19</x>
+    <y>180</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Heat Power</name>
+    <text>Heat Power:</text>
+    <x>20</x>
+    <y>210</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Cool Power</name>
+    <text>Cool Power:</text>
+    <x>20</x>
+    <y>240</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Process Value</name>
+    <text>Process Value:</text>
+    <x>20</x>
+    <y>270</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>CB Settling Time</name>
+    <text>Callback Settling Time:</text>
+    <x>19</x>
+    <y>380</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>CB Timeout</name>
+    <text>Callback Timeout:</text>
+    <x>20</x>
+    <y>350</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>CB Tolerance</name>
+    <text>Callback Tolerance:</text>
+    <x>20</x>
+    <y>320</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Alarm Status</name>
+    <text>Alarm Status:</text>
+    <x>19</x>
+    <y>445</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>C1</name>
+    <x>200</x>
+    <y>40</y>
+    <width>140</width>
+    <height>440</height>
+    <style>2</style>
+    <font>
+      <font family="PakTypeNaqsh" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>C1 Label</name>
+      <text>C1</text>
+      <x>20</x>
+      <height>28</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="153" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Set Control Mode_1</name>
+      <pv_name>$(Mod1)ControlMode1</pv_name>
+      <x>20</x>
+      <y>45</y>
+      <height>24</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)EnableState</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Op Control Mode_1</name>
+      <pv_name>$(Mod1)ControlModeActive1</pv_name>
+      <x>20</x>
+      <y>75</y>
+      <height>24</height>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Closed Loop SP_1</name>
+      <pv_name>$(Mod1)SetSetpoint1Set</pv_name>
+      <x>20</x>
+      <y>105</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Open Loop SP_1</name>
+      <pv_name>$(Mod1)ManualOutput1</pv_name>
+      <x>20</x>
+      <y>135</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 2">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat Power_1</name>
+      <pv_name>$(Mod1)HeatPower1</pv_name>
+      <x>20</x>
+      <y>165</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Cool Power_1</name>
+      <pv_name>$(Mod1)CoolPower1</pv_name>
+      <x>20</x>
+      <y>195</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process Value_1</name>
+      <pv_name>$(Mod1)ProcessValue1</pv_name>
+      <x>20</x>
+      <y>225</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_1</name>
+      <pv_name>$(Mod1)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>275</y>
+      <height>24</height>
+      <precision>1</precision>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_Timeout_1</name>
+      <pv_name>$(Mod1)SetSetpoint1TestTO.B</pv_name>
+      <x>20</x>
+      <y>305</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_SettleTime_1</name>
+      <pv_name>$(Mod1)SetSetpoint1Settling</pv_name>
+      <x>20</x>
+      <y>335</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>CB_Time_1</name>
+      <pv_name>$(Mod1)SetSetpoint1Time</pv_name>
+      <x>20</x>
+      <y>365</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="multi_state_led" version="2.0.0">
+      <name>Alarm State_1</name>
+      <pv_name>$(Mod1)ModAlarmSummary</pv_name>
+      <x>20</x>
+      <y>404</y>
+      <width>100</width>
+      <height>24</height>
+      <square>true</square>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod1)ControlMode1</pv_name>
+          <pv_name>$(Mod1)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <states>
+        <state>
+          <value>0</value>
+          <label>Offline</label>
+          <color>
+            <color name="Off" red="60" green="100" blue="60">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>1</value>
+          <label>No Alarm</label>
+          <color>
+            <color name="On" red="0" green="255" blue="0">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>2</value>
+          <label>Alarmed</label>
+          <color>
+            <color name="MAJOR" red="255" green="0" blue="0">
+            </color>
+          </color>
+        </state>
+      </states>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>C1 Details</name>
+    <actions>
+      <action type="open_display">
+        <file>Watlow_Module.bob</file>
+        <macros>
+          <C>1</C>
+          <S>$(Inst)1:</S>
+        </macros>
+        <target>replace</target>
+        <description>C1 Details</description>
+      </action>
+    </actions>
+    <x>200</x>
+    <y>497</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>C2</name>
+    <x>360</x>
+    <y>40</y>
+    <width>140</width>
+    <height>440</height>
+    <style>2</style>
+    <font>
+      <font family="PakTypeNaqsh" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>C2 Label</name>
+      <text>C2</text>
+      <x>20</x>
+      <height>28</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Set Control Mode_2</name>
+      <pv_name>$(Mod2)ControlMode1</pv_name>
+      <x>20</x>
+      <y>45</y>
+      <height>24</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)EnableState</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Op Control Mode_2</name>
+      <pv_name>$(Mod2)ControlModeActive1</pv_name>
+      <x>20</x>
+      <y>75</y>
+      <height>24</height>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Closed Loop SP_2</name>
+      <pv_name>$(Mod2)SetSetpoint1Set</pv_name>
+      <x>20</x>
+      <y>105</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Open Loop SP_2</name>
+      <pv_name>$(Mod2)ManualOutput1</pv_name>
+      <x>20</x>
+      <y>135</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 2">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat Power_2</name>
+      <pv_name>$(Mod2)HeatPower1</pv_name>
+      <x>20</x>
+      <y>165</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Cool Power_2</name>
+      <pv_name>$(Mod2)CoolPower1</pv_name>
+      <x>20</x>
+      <y>195</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process Value_2</name>
+      <pv_name>$(Mod2)ProcessValue1</pv_name>
+      <x>20</x>
+      <y>225</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_2</name>
+      <pv_name>$(Mod2)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>275</y>
+      <height>24</height>
+      <precision>1</precision>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_2</name>
+      <pv_name>$(Mod2)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>305</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_Timeout_2</name>
+      <pv_name>$(Mod2)SetSetpoint1TestTO.B</pv_name>
+      <x>20</x>
+      <y>335</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_SettleTime_2</name>
+      <pv_name>$(Mod2)SetSetpoint1Settling</pv_name>
+      <x>20</x>
+      <y>365</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="multi_state_led" version="2.0.0">
+      <name>Alarm State_2</name>
+      <pv_name>$(Mod2)ModAlarmSummary</pv_name>
+      <x>20</x>
+      <y>404</y>
+      <width>100</width>
+      <height>24</height>
+      <square>true</square>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod2)ControlMode1</pv_name>
+          <pv_name>$(Mod2)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <states>
+        <state>
+          <value>0</value>
+          <label>Offline</label>
+          <color>
+            <color name="Off" red="60" green="100" blue="60">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>1</value>
+          <label>No Alarm</label>
+          <color>
+            <color name="On" red="0" green="255" blue="0">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>2</value>
+          <label>Alarmed</label>
+          <color>
+            <color name="MAJOR" red="255" green="0" blue="0">
+            </color>
+          </color>
+        </state>
+      </states>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>C2 Details</name>
+    <actions>
+      <action type="open_display">
+        <file>Watlow_Module.bob</file>
+        <macros>
+          <C>2</C>
+          <S>$(Inst)2:</S>
+        </macros>
+        <target>replace</target>
+        <description>C2 Details</description>
+      </action>
+    </actions>
+    <x>360</x>
+    <y>497</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>C3</name>
+    <x>520</x>
+    <y>40</y>
+    <width>140</width>
+    <height>440</height>
+    <style>2</style>
+    <font>
+      <font family="PakTypeNaqsh" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>C3 Label</name>
+      <text>C3</text>
+      <x>20</x>
+      <height>28</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="102" green="128" blue="230">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Set Control Mode_3</name>
+      <pv_name>$(Mod3)ControlMode1</pv_name>
+      <x>20</x>
+      <y>45</y>
+      <height>24</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)EnableState</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Control Mode_3</name>
+      <pv_name>$(Mod3)ControlModeActive1</pv_name>
+      <x>20</x>
+      <y>75</y>
+      <height>24</height>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Closed Loop SP_3</name>
+      <pv_name>$(Mod3)SetSetpoint1Set</pv_name>
+      <x>20</x>
+      <y>105</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Open Loop SP_3</name>
+      <pv_name>$(Mod3)ManualOutput1</pv_name>
+      <x>20</x>
+      <y>135</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 2">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat Power_3</name>
+      <pv_name>$(Mod3)HeatPower1</pv_name>
+      <x>20</x>
+      <y>165</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Cool Power_3</name>
+      <pv_name>$(Mod3)CoolPower1</pv_name>
+      <x>20</x>
+      <y>195</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process Value_3</name>
+      <pv_name>$(Mod3)ProcessValue1</pv_name>
+      <x>20</x>
+      <y>225</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_3</name>
+      <pv_name>$(Mod3)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>275</y>
+      <height>24</height>
+      <precision>1</precision>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_3</name>
+      <pv_name>$(Mod3)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>305</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_Timeout_3</name>
+      <pv_name>$(Mod3)SetSetpoint1TestTO.B</pv_name>
+      <x>20</x>
+      <y>335</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_SettleTime_3</name>
+      <pv_name>$(Mod3)SetSetpoint1Settling</pv_name>
+      <x>20</x>
+      <y>365</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="multi_state_led" version="2.0.0">
+      <name>Alarm State_3</name>
+      <pv_name>$(Mod3)ModAlarmSummary</pv_name>
+      <x>20</x>
+      <y>404</y>
+      <width>100</width>
+      <height>24</height>
+      <square>true</square>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod3)ControlMode1</pv_name>
+          <pv_name>$(Mod3)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <states>
+        <state>
+          <value>0</value>
+          <label>Offline</label>
+          <color>
+            <color name="Off" red="60" green="100" blue="60">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>1</value>
+          <label>No Alarm</label>
+          <color>
+            <color name="On" red="0" green="255" blue="0">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>2</value>
+          <label>Alarmed</label>
+          <color>
+            <color name="MAJOR" red="255" green="0" blue="0">
+            </color>
+          </color>
+        </state>
+      </states>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>C3 Details</name>
+    <actions>
+      <action type="open_display">
+        <file>Watlow_Module.bob</file>
+        <macros>
+          <C>3</C>
+          <S>$(Inst)3:</S>
+        </macros>
+        <target>replace</target>
+        <description>C3 Details</description>
+      </action>
+    </actions>
+    <x>520</x>
+    <y>497</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>C4</name>
+    <x>680</x>
+    <y>40</y>
+    <width>140</width>
+    <height>440</height>
+    <style>2</style>
+    <font>
+      <font family="PakTypeNaqsh" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>C4 Label</name>
+      <text>C4</text>
+      <x>20</x>
+      <height>28</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="77" green="128" blue="77">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <border_width>1</border_width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Set Control Mode_4</name>
+      <pv_name>$(Mod4)ControlMode1</pv_name>
+      <x>20</x>
+      <y>45</y>
+      <height>24</height>
+      <background_color>
+        <color name="Write_Background" red="128" green="255" blue="255">
+        </color>
+      </background_color>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)EnableState</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <items>
+        <item>Item 0</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+      </items>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Op Control Mode_4</name>
+      <pv_name>$(Mod4)ControlModeActive1</pv_name>
+      <x>20</x>
+      <y>75</y>
+      <height>24</height>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Closed Loop SP_4</name>
+      <pv_name>$(Mod4)SetSetpoint1Set</pv_name>
+      <x>20</x>
+      <y>105</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Open Loop SP_4</name>
+      <pv_name>$(Mod4)ManualOutput1</pv_name>
+      <x>20</x>
+      <y>135</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 2">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat Power_4</name>
+      <pv_name>$(Mod4)HeatPower1</pv_name>
+      <x>20</x>
+      <y>165</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Cool Power_4</name>
+      <pv_name>$(Mod4)CoolPower1</pv_name>
+      <x>20</x>
+      <y>195</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process Value_4</name>
+      <pv_name>$(Mod4)ProcessValue1</pv_name>
+      <x>20</x>
+      <y>225</y>
+      <height>24</height>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 = 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_4</name>
+      <pv_name>$(Mod4)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>275</y>
+      <height>24</height>
+      <precision>1</precision>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB Tolerance_4</name>
+      <pv_name>$(Mod4)SetSetpoint1Tolerance</pv_name>
+      <x>20</x>
+      <y>305</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_Timeout_4</name>
+      <pv_name>$(Mod4)SetSetpoint1TestTO.B</pv_name>
+      <x>20</x>
+      <y>335</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>CB_SettleTime_4</name>
+      <pv_name>$(Mod4)SetSetpoint1Settling</pv_name>
+      <x>20</x>
+      <y>365</y>
+      <height>24</height>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 1">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="multi_state_led" version="2.0.0">
+      <name>Alarm State_4</name>
+      <pv_name>$(Mod4)ModAlarmSummary</pv_name>
+      <x>20</x>
+      <y>404</y>
+      <width>100</width>
+      <height>24</height>
+      <square>true</square>
+      <rules>
+        <rule name="Enabled" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pvInt0 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="pvInt1 &lt;&gt; 0">
+            <value>false</value>
+          </exp>
+          <pv_name>$(Mod4)ControlMode1</pv_name>
+          <pv_name>$(Mod4)AutotuneStatus1</pv_name>
+        </rule>
+      </rules>
+      <states>
+        <state>
+          <value>0</value>
+          <label>Offline</label>
+          <color>
+            <color name="Off" red="60" green="100" blue="60">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>1</value>
+          <label>No Alarm</label>
+          <color>
+            <color name="On" red="0" green="255" blue="0">
+            </color>
+          </color>
+        </state>
+        <state>
+          <value>2</value>
+          <label>Alarmed</label>
+          <color>
+            <color name="MAJOR" red="255" green="0" blue="0">
+            </color>
+          </color>
+        </state>
+      </states>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>C4 Details</name>
+    <actions>
+      <action type="open_display">
+        <file>Watlow_Module.bob</file>
+        <macros>
+          <C>4</C>
+          <S>$(Inst)4:</S>
+        </macros>
+        <target>replace</target>
+        <description>C4 Details</description>
+      </action>
+    </actions>
+    <x>680</x>
+    <y>497</y>
+    <width>140</width>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="databrowser" version="2.0.0">
+    <name>Data Browser</name>
+    <file>Watlow Panel.plt</file>
+    <x>850</x>
+    <y>40</y>
+    <width>790</width>
+    <height>460</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>CB Timeout_1</name>
+    <text>Callback Time:</text>
+    <x>19</x>
+    <y>406</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

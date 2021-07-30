@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>General</name>
+  <x>160</x>
+  <width>770</width>
+  <height>820</height>
+  <widget type="group" version="2.0.0">
+    <name>Control Loop 1</name>
+    <x>3</x>
+    <y>9</y>
+    <width>334</width>
+    <height>213</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Control Mode Label_1</name>
+      <text>Control Mode:</text>
+      <x>10</x>
+      <y>12</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Control Mode</name>
+      <pv_name>$(S)ControlModeActive1</pv_name>
+      <x>160</x>
+      <y>12</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Heat Power Label_1</name>
+      <text>Heat Power:</text>
+      <x>10</x>
+      <y>38</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Heat Power_1</name>
+      <pv_name>$(S)HeatPower1</pv_name>
+      <x>160</x>
+      <y>38</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Cool Power Label_1</name>
+      <text>Cool Power:</text>
+      <x>10</x>
+      <y>64</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Cool Power_1</name>
+      <pv_name>$(S)CoolPower1</pv_name>
+      <x>160</x>
+      <y>64</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Process Value Label_1</name>
+      <text>Active Process Value:</text>
+      <x>10</x>
+      <y>90</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Process Value_1</name>
+      <pv_name>$(S)ProcessValue1</pv_name>
+      <x>160</x>
+      <y>90</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Active SP Label_1</name>
+      <text>Active Setpoint Value:</text>
+      <x>10</x>
+      <y>116</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Closed Loop SP_1</name>
+      <pv_name>$(S)ActiveSV1</pv_name>
+      <x>160</x>
+      <y>116</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Autotune Status Label_1</name>
+      <text>Autotune Status:</text>
+      <x>10</x>
+      <y>142</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Autotune Status_1</name>
+      <pv_name>$(S)AutotuneStatus1</pv_name>
+      <x>160</x>
+      <y>142</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Hardware Information</name>
+    <x>3</x>
+    <y>219</y>
+    <width>334</width>
+    <height>313</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <widget type="label" version="2.0.0">
+      <name>Serial Number Label</name>
+      <text>Serial Number:</text>
+      <x>10</x>
+      <y>12</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Serial Number</name>
+      <pv_name>$(S)SerialNumber</pv_name>
+      <x>160</x>
+      <y>12</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Manufacture Date Label</name>
+      <text>Date Manufactured:</text>
+      <x>10</x>
+      <y>38</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Manufacture Date</name>
+      <pv_name>$(S)MakeDate</pv_name>
+      <x>160</x>
+      <y>38</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Revision Label</name>
+      <text>Software Revision:</text>
+      <x>10</x>
+      <y>64</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Revision</name>
+      <pv_name>$(S)SoftwareRev</pv_name>
+      <x>160</x>
+      <y>64</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Build Label</name>
+      <text>Software Build Number:</text>
+      <x>10</x>
+      <y>90</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Build</name>
+      <pv_name>$(S)SoftwareBuild</pv_name>
+      <x>160</x>
+      <y>90</y>
+      <width>110</width>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>HW ID Label</name>
+      <text>Hardware ID:</text>
+      <x>10</x>
+      <y>116</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>HW ID</name>
+      <pv_name>$(S)HardwareID</pv_name>
+      <x>160</x>
+      <y>116</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Firmware Label</name>
+      <text>Firmware ID:</text>
+      <x>10</x>
+      <y>142</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Firmware</name>
+      <pv_name>$(S)FirmwareID</pv_name>
+      <x>160</x>
+      <y>142</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>Polyline_4</name>
+      <x>10</x>
+      <y>170</y>
+      <width>280</width>
+      <height>1</height>
+      <line_color>
+        <color name="Header_Background" red="77" green="77" blue="77">
+        </color>
+      </line_color>
+      <arrow_length>2</arrow_length>
+      <points>
+        <point x="0.0" y="1.0">
+        </point>
+        <point x="280.0000106456668" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Units Label</name>
+      <text>Units:</text>
+      <x>10</x>
+      <y>181</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Units</name>
+      <pv_name>$(S)Units</pv_name>
+      <x>160</x>
+      <y>181</y>
+      <width>110</width>
+      <show_units>false</show_units>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Device Status Label</name>
+      <text>Device Status:</text>
+      <x>10</x>
+      <y>220</y>
+      <width>140</width>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED</name>
+      <pv_name>$(S)DeviceStatus</pv_name>
+      <x>160</x>
+      <y>220</y>
+      <width>110</width>
+      <height>22</height>
+      <off_color>
+        <color name="OK" red="0" green="255" blue="0">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <square>true</square>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Communication Status Label</name>
+      <text>Communication Status:</text>
+      <x>5</x>
+      <y>253</y>
+      <width>145</width>
+      <height>16</height>
+      <horizontal_alignment>2</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_1</name>
+      <pv_name>$(S)CommStatusInd</pv_name>
+      <x>160</x>
+      <y>253</y>
+      <width>110</width>
+      <height>22</height>
+      <off_color>
+        <color name="OK" red="0" green="255" blue="0">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="MAJOR" red="255" green="0" blue="0">
+        </color>
+      </on_color>
+      <square>true</square>
+      <labels_from_pv>true</labels_from_pv>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+</display>

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Outputs 2/3</name>
+  <width>770</width>
+  <height>820</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Output #2</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Output 2: Configuration</name>
+            <y>10</y>
+            <width>640</width>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Output Function Label_2</name>
+              <text>Function:</text>
+              <y>33</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Output Function_2</name>
+              <pv_name>$(S)OutputFunction2</pv_name>
+              <x>150</x>
+              <y>33</y>
+              <width>210</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Function Instance Label_2</name>
+              <text>Function Instance:</text>
+              <y>59</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Output Function Instance_2</name>
+              <pv_name>$(S)FunctionInstanceD2</pv_name>
+              <x>150</x>
+              <y>59</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Time Base Label_2</name>
+              <text>Time Base:</text>
+              <y>85</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Time Base_2</name>
+              <pv_name>$(S)OutputTimeBase2</pv_name>
+              <x>150</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Low Power Label_2</name>
+              <text>Low Power Scale:</text>
+              <y>111</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Low Power_2</name>
+              <pv_name>$(S)OutputLPScale2</pv_name>
+              <x>150</x>
+              <y>111</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>High Power Label_2</name>
+              <text>High Power Scale:</text>
+              <y>137</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>High Power_2</name>
+              <pv_name>$(S)OutputHPScale2</pv_name>
+              <x>150</x>
+              <y>137</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_18</name>
+              <text>Software</text>
+              <x>180</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_19</name>
+              <text>Device</text>
+              <x>410</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output FunctionRB</name>
+              <pv_name>$(S)OutputFunction2RB</pv_name>
+              <x>380</x>
+              <y>33</y>
+              <width>210</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction2</pv_name>
+                  <pv_name>$(S)OutputFunction2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Function InstanceRB</name>
+              <pv_name>$(S)FunctionInstanceD2RB</pv_name>
+              <x>380</x>
+              <y>59</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)FunctionInstanceD2</pv_name>
+                  <pv_name>$(S)FunctionInstanceD2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Time BaseRB</name>
+              <pv_name>$(S)OutputTimeBase2RB</pv_name>
+              <x>380</x>
+              <y>85</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputTimeBase2</pv_name>
+                  <pv_name>$(S)OutputTimeBase2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Low PowerRB</name>
+              <pv_name>$(S)OutputLPScale2RB</pv_name>
+              <x>380</x>
+              <y>111</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputLPScale2</pv_name>
+                  <pv_name>$(S)OutputLPScale2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>High PowerRB</name>
+              <pv_name>$(S)OutputHPScale2RB</pv_name>
+              <x>380</x>
+              <y>137</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputHPScale2</pv_name>
+                  <pv_name>$(S)OutputHPScale2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Output #3</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Output 3: Configuration</name>
+            <y>10</y>
+            <width>640</width>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="102" green="26" blue="51">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Output Function Label_3</name>
+              <text>Function:</text>
+              <y>33</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Output Function_3</name>
+              <pv_name>$(S)OutputFunction3</pv_name>
+              <x>150</x>
+              <y>33</y>
+              <width>210</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+                <item>Item 4</item>
+                <item>Item 5</item>
+                <item>Item 6</item>
+                <item>Item 7</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Function Instance Label_3</name>
+              <text>Function Instance:</text>
+              <y>59</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Output Function Instance_3</name>
+              <pv_name>$(S)FunctionInstanceD3</pv_name>
+              <x>150</x>
+              <y>59</y>
+              <width>110</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+                <item>Item 3</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Output Time Base Label_3</name>
+              <text>Time Base:</text>
+              <y>85</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Time Base_3</name>
+              <pv_name>$(S)OutputTimeBase3</pv_name>
+              <x>150</x>
+              <y>85</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Low Power Label_3</name>
+              <text>Low Power Scale:</text>
+              <y>111</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Low Power Label_3</name>
+              <pv_name>$(S)OutputLPScale3</pv_name>
+              <x>150</x>
+              <y>111</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>High Power Label_3</name>
+              <text>High Power Scale:</text>
+              <y>137</y>
+              <width>140</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>High Power_3</name>
+              <pv_name>$(S)OutputHPScale3</pv_name>
+              <x>150</x>
+              <y>137</y>
+              <width>110</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 2 and pvInt0 &lt;&gt; 3">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_22</name>
+              <text>Software</text>
+              <x>180</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_23</name>
+              <text>Device</text>
+              <x>410</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output FunctionRB</name>
+              <pv_name>$(S)OutputFunction3RB</pv_name>
+              <x>380</x>
+              <y>33</y>
+              <width>210</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputFunction3</pv_name>
+                  <pv_name>$(S)OutputFunction3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Output Function InstanceRB</name>
+              <pv_name>$(S)FunctionInstanceD3RB</pv_name>
+              <x>380</x>
+              <y>59</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)FunctionInstanceD3</pv_name>
+                  <pv_name>$(S)FunctionInstanceD3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Time BaseRB</name>
+              <pv_name>$(S)OutputTimeBase3RB</pv_name>
+              <x>380</x>
+              <y>85</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputTimeBase3</pv_name>
+                  <pv_name>$(S)OutputTimeBase3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Low Power LabelRB</name>
+              <pv_name>$(S)OutputLPScale3RB</pv_name>
+              <x>380</x>
+              <y>111</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputLPScale3</pv_name>
+                  <pv_name>$(S)OutputLPScale3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>High PowerRB</name>
+              <pv_name>$(S)OutputHPScale3RB</pv_name>
+              <x>380</x>
+              <y>137</y>
+              <width>110</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)OutputHPScale3</pv_name>
+                  <pv_name>$(S)OutputHPScale3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>5</x>
+    <y>5</y>
+    <width>645</width>
+    <height>260</height>
+  </widget>
+</display>

@@ -1,0 +1,3604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Alarms</name>
+  <width>1000</width>
+  <height>820</height>
+  <widget type="tabs" version="2.0.0">
+    <name>Tabs</name>
+    <tabs>
+      <tab>
+        <name>Alarm #1</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 1: Status</name>
+            <x>8</x>
+            <y>10</y>
+            <width>314</width>
+            <height>223</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm State Label_1</name>
+              <text>Alarm State:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm State_1</name>
+              <pv_name>$(S)AlarmState1</pv_name>
+              <x>140</x>
+              <y>12</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Background" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>
+                      <color name="MAJOR" red="255" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmState1</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Clearable Label_1</name>
+              <text>Alarm Clearable:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Clearable_1</name>
+              <pv_name>$(S)AlarmClearable1</pv_name>
+              <x>140</x>
+              <y>38</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Silenced Label_1</name>
+              <text>Alarm Silenced:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Silenced_1</name>
+              <pv_name>$(S)AlarmSilenced1</pv_name>
+              <x>140</x>
+              <y>64</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Latched Label_1</name>
+              <text>Alarm Latched:</text>
+              <x>10</x>
+              <y>90</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Latched_1</name>
+              <pv_name>$(S)AlarmLatched1</pv_name>
+              <x>140</x>
+              <y>90</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silence Alarm Label_1</name>
+              <text>Silence Alarm:</text>
+              <x>10</x>
+              <y>129</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Silence Alarm</name>
+              <pv_name>$(S)SilenceAlarmButton1</pv_name>
+              <x>140</x>
+              <y>129</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessSilenceAlarm1</pv_name>
+                  <value>0</value>
+                  <description>Silence Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState1</pv_name>
+                  <pv_name>$(S)Silencing1</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Clear Alarm Label_1</name>
+              <text>Clear Alarm:</text>
+              <x>12</x>
+              <y>155</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Clear Alarm_1</name>
+              <pv_name>$(S)ClearAlarmButton1</pv_name>
+              <x>140</x>
+              <y>155</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions>
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessClearAlarm1</pv_name>
+                  <value>0</value>
+                  <description>Clear Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState1</pv_name>
+                  <pv_name>$(S)AlarmClearable1</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 1: Configuration</name>
+            <x>323</x>
+            <y>10</y>
+            <width>534</width>
+            <height>383</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="77" blue="77">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Type Label_1</name>
+              <text>Alarm Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Type_1</name>
+              <pv_name>$(S)AlarmType1</pv_name>
+              <x>130</x>
+              <y>33</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+                <item>Item 2</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Source Label_1</name>
+              <text>Alarm Source:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source_1</name>
+              <pv_name>$(S)AlarmSource1</pv_name>
+              <x>130</x>
+              <y>59</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Source Instance Label_1</name>
+              <text>Source Instance:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source Instance_1</name>
+              <pv_name>$(S)SourceInstance1</pv_name>
+              <x>130</x>
+              <y>85</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>1</item>
+                <item>2</item>
+              </items>
+              <items_from_pv>false</items_from_pv>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Hysteresis Label_1</name>
+              <text>Hysteresis:</text>
+              <x>12</x>
+              <y>111</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Hysteresis_1</name>
+              <pv_name>$(S)AlarmHysteresis1</pv_name>
+              <x>130</x>
+              <y>111</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Logic Label_1</name>
+              <text>Alarm Logic:</text>
+              <x>12</x>
+              <y>137</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Logic_1</name>
+              <pv_name>$(S)AlarmLogic1</pv_name>
+              <x>130</x>
+              <y>137</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Sides Label_1</name>
+              <text>Alarm Sides:</text>
+              <x>10</x>
+              <y>163</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sides_1</name>
+              <pv_name>$(S)AlarmSides1</pv_name>
+              <x>130</x>
+              <y>163</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Lo SP Label_1</name>
+              <text>Low Setpoint:</text>
+              <x>10</x>
+              <y>189</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Lo SP_1</name>
+              <pv_name>$(S)AlarmLowSP1</pv_name>
+              <x>130</x>
+              <y>189</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 1">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                  <pv_name>$(S)AlarmSides1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm High SP Label_1</name>
+              <text>High Setpoint:</text>
+              <x>10</x>
+              <y>215</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm High SP_1</name>
+              <pv_name>$(S)AlarmHighSP1</pv_name>
+              <x>130</x>
+              <y>215</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 0">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 2">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                  <pv_name>$(S)AlarmSides1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Latching Label_1</name>
+              <text>Alarm Latching:</text>
+              <x>12</x>
+              <y>241</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Latching_1</name>
+              <pv_name>$(S)Latching1</pv_name>
+              <x>130</x>
+              <y>241</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Blocking Label_1</name>
+              <text>Alarm Blocking:</text>
+              <x>10</x>
+              <y>267</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Blocking_1</name>
+              <pv_name>$(S)Blocking1</pv_name>
+              <x>130</x>
+              <y>267</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silencing Label_1</name>
+              <text>Alarm Silencing:</text>
+              <x>10</x>
+              <y>293</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Silencing_1</name>
+              <pv_name>$(S)Silencing1</pv_name>
+              <x>130</x>
+              <y>293</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Delay Label_1</name>
+              <text>Delay Time:</text>
+              <x>10</x>
+              <y>319</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Delay_1</name>
+              <pv_name>$(S)AlarmDelay1</pv_name>
+              <x>130</x>
+              <y>319</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Type_5</name>
+              <pv_name>$(S)AlarmType1RB</pv_name>
+              <x>325</x>
+              <y>33</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmType1</pv_name>
+                  <pv_name>$(S)AlarmType1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source_5</name>
+              <pv_name>$(S)AlarmSource1RB</pv_name>
+              <x>325</x>
+              <y>59</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSource1</pv_name>
+                  <pv_name>$(S)AlarmSource1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source Instance_5</name>
+              <pv_name>$(S)SourceInstance1RB</pv_name>
+              <x>325</x>
+              <y>85</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)SourceInstance1</pv_name>
+                  <pv_name>$(S)SourceInstance1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Hysteresis_5</name>
+              <pv_name>$(S)AlarmHysteresis1RB</pv_name>
+              <x>325</x>
+              <y>111</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHysteresis1</pv_name>
+                  <pv_name>$(S)AlarmHysteresis1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Logic_5</name>
+              <pv_name>$(S)AlarmLogic1RB</pv_name>
+              <x>325</x>
+              <y>137</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvint0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLogic1</pv_name>
+                  <pv_name>$(S)AlarmLogic1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Sides_5</name>
+              <pv_name>$(S)AlarmSides1RB</pv_name>
+              <x>325</x>
+              <y>163</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides1</pv_name>
+                  <pv_name>$(S)AlarmSides1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Lo SP_5</name>
+              <pv_name>$(S)AlarmLowSP1RB</pv_name>
+              <x>325</x>
+              <y>189</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLowSP1</pv_name>
+                  <pv_name>$(S)AlarmLowSP1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm High SP RB</name>
+              <pv_name>$(S)AlarmHighSP1RB</pv_name>
+              <x>325</x>
+              <y>215</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt1 &lt;&gt; pvInt2">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHighSP1</pv_name>
+                  <pv_name>$(S)AlarmHighSP1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm LatchingRB</name>
+              <pv_name>$(S)Latching1RB</pv_name>
+              <x>325</x>
+              <y>241</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Latching1</pv_name>
+                  <pv_name>$(S)Latching1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>BlockingRB</name>
+              <pv_name>$(S)Blocking1RB</pv_name>
+              <x>325</x>
+              <y>267</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Blocking1</pv_name>
+                  <pv_name>$(S)Blocking1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SilencingRB</name>
+              <pv_name>$(S)Silencing1RB</pv_name>
+              <x>325</x>
+              <y>293</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Silencing1</pv_name>
+                  <pv_name>$(S)Silencing1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm DelayRB</name>
+              <pv_name>$(S)AlarmDelay1RB</pv_name>
+              <x>325</x>
+              <y>319</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmDelay1</pv_name>
+                  <pv_name>$(S)AlarmDelay1RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software</name>
+              <text>Software</text>
+              <x>130</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_1</name>
+              <text>Device</text>
+              <x>325</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Alarm #2</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 2: Status</name>
+            <x>8</x>
+            <y>10</y>
+            <width>314</width>
+            <height>223</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm State Label_2</name>
+              <text>Alarm State:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm State_2</name>
+              <pv_name>$(S)AlarmState2</pv_name>
+              <x>140</x>
+              <y>12</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Background" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>
+                      <color name="MAJOR" red="255" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmState2</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Clearable Label_2</name>
+              <text>Alarm Clearable:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Clearable_2</name>
+              <pv_name>$(S)AlarmClearable2</pv_name>
+              <x>140</x>
+              <y>38</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Silenced Label_2</name>
+              <text>Alarm Silenced:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Silenced_2</name>
+              <pv_name>$(S)AlarmSilenced2</pv_name>
+              <x>140</x>
+              <y>64</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Latched Label_2</name>
+              <text>Alarm Latched:</text>
+              <x>10</x>
+              <y>90</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Latched_2</name>
+              <pv_name>$(S)AlarmLatched2</pv_name>
+              <x>140</x>
+              <y>90</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silence Alarm Label_2</name>
+              <text>Silence Alarm:</text>
+              <x>10</x>
+              <y>129</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Silence Alarm_2</name>
+              <pv_name>$(S)SilenceAlarmButton2</pv_name>
+              <x>140</x>
+              <y>129</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessSilenceAlarm2</pv_name>
+                  <value>0</value>
+                  <description>Silence Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState2</pv_name>
+                  <pv_name>$(S)Silencing2</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Clear Alarm Label_2</name>
+              <text>Clear Alarm:</text>
+              <x>12</x>
+              <y>155</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Clear Alarm_2</name>
+              <pv_name>$(S)ClearAlarmButton2</pv_name>
+              <x>140</x>
+              <y>155</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessClearAlarm2</pv_name>
+                  <value>0</value>
+                  <description>Clear Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState2</pv_name>
+                  <pv_name>$(S)AlarmClearable2</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 2: Configuration</name>
+            <x>323</x>
+            <y>10</y>
+            <width>534</width>
+            <height>383</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="26" green="51" blue="153">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Type Label_2</name>
+              <text>Alarm Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Type_2</name>
+              <pv_name>$(S)AlarmType2</pv_name>
+              <x>130</x>
+              <y>33</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Source Label_2</name>
+              <text>Alarm Source:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source_2</name>
+              <pv_name>$(S)AlarmSource2</pv_name>
+              <x>130</x>
+              <y>59</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Source Instance Label_2</name>
+              <text>Source Instance:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source Instance_2</name>
+              <pv_name>$(S)SourceInstance2</pv_name>
+              <x>130</x>
+              <y>85</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>1</item>
+                <item>2</item>
+              </items>
+              <items_from_pv>false</items_from_pv>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Hysteresis Label_2</name>
+              <text>Hysteresis:</text>
+              <x>12</x>
+              <y>111</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Hysteresis_2</name>
+              <pv_name>$(S)AlarmHysteresis2</pv_name>
+              <x>130</x>
+              <y>111</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Logic Label_2</name>
+              <text>Alarm Logic:</text>
+              <x>12</x>
+              <y>137</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Logic_2</name>
+              <pv_name>$(S)AlarmLogic2</pv_name>
+              <x>130</x>
+              <y>137</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Sides Label_2</name>
+              <text>Alarm Sides:</text>
+              <x>10</x>
+              <y>163</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sides_2</name>
+              <pv_name>$(S)AlarmSides2</pv_name>
+              <x>130</x>
+              <y>163</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Lo SP Label_2</name>
+              <text>Low Setpoint:</text>
+              <x>10</x>
+              <y>189</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Lo SP_2</name>
+              <pv_name>$(S)AlarmLowSP2</pv_name>
+              <x>130</x>
+              <y>189</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides2</pv_name>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm High SP Label_2</name>
+              <text>High Setpoint:</text>
+              <x>10</x>
+              <y>215</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm High SP_2</name>
+              <pv_name>$(S)AlarmHighSP2</pv_name>
+              <x>130</x>
+              <y>215</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 2">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides2</pv_name>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Latching Label_2</name>
+              <text>Alarm Latching:</text>
+              <x>12</x>
+              <y>241</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Latching_2</name>
+              <pv_name>$(S)Latching2</pv_name>
+              <x>130</x>
+              <y>241</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Blocking Label_2</name>
+              <text>Alarm Blocking:</text>
+              <x>10</x>
+              <y>267</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Blocking_2</name>
+              <pv_name>$(S)Blocking2</pv_name>
+              <x>130</x>
+              <y>267</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silencing Label_2</name>
+              <text>Alarm Silencing:</text>
+              <x>10</x>
+              <y>293</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Silencing_2</name>
+              <pv_name>$(S)Silencing2</pv_name>
+              <x>130</x>
+              <y>293</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Delay Label_2</name>
+              <text>Delay Time:</text>
+              <x>10</x>
+              <y>319</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Delay_2</name>
+              <pv_name>$(S)AlarmDelay2</pv_name>
+              <x>130</x>
+              <y>319</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_4</name>
+              <text>Software</text>
+              <x>130</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_5</name>
+              <text>Device</text>
+              <x>325</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Type_RB</name>
+              <pv_name>$(S)AlarmType2RB</pv_name>
+              <x>325</x>
+              <y>33</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 == pvInt1">
+                    <value>
+                      <color name="Text" red="0" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmType2</pv_name>
+                  <pv_name>$(S)AlarmType2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source RB</name>
+              <pv_name>$(S)AlarmSource2RB</pv_name>
+              <x>325</x>
+              <y>59</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 == pvInt1">
+                    <value>
+                      <color name="Text" red="0" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSource2</pv_name>
+                  <pv_name>$(S)AlarmSource2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source InstanceRB</name>
+              <pv_name>$(S)SourceInstance2RB</pv_name>
+              <x>325</x>
+              <y>85</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt1 == pvInt2">
+                    <value>
+                      <color name="Text" red="0" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pvInt1 &lt;&gt; pvInt2">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSource2</pv_name>
+                  <pv_name>$(S)AlarmSource2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm HysteresisRB</name>
+              <pv_name>$(S)AlarmHysteresis2RB</pv_name>
+              <x>325</x>
+              <y>111</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 == pvInt1">
+                    <value>
+                      <color name="Text" red="0" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHysteresis2</pv_name>
+                  <pv_name>$(S)AlarmHysteresis2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>LogicRB</name>
+              <pv_name>$(S)AlarmLogic2RB</pv_name>
+              <x>325</x>
+              <y>137</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLogic2</pv_name>
+                  <pv_name>$(S)AlarmLogic2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SidesRB</name>
+              <pv_name>$(S)AlarmSides2RB</pv_name>
+              <x>325</x>
+              <y>163</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides2</pv_name>
+                  <pv_name>$(S)AlarmSides2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Lo SP RB</name>
+              <pv_name>$(S)AlarmLowSP2RB</pv_name>
+              <x>325</x>
+              <y>189</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLowSP2</pv_name>
+                  <pv_name>$(S)AlarmLowSP2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm High SP RB</name>
+              <pv_name>$(S)AlarmHighSP2RB</pv_name>
+              <x>325</x>
+              <y>215</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLowSP2</pv_name>
+                  <pv_name>$(S)AlarmLowSP2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm LatchingRB</name>
+              <pv_name>$(S)Latching2RB</pv_name>
+              <x>325</x>
+              <y>241</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Latching2</pv_name>
+                  <pv_name>$(S)Latching2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>BlockingRB</name>
+              <pv_name>$(S)Blocking2RB</pv_name>
+              <x>325</x>
+              <y>267</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Blocking2</pv_name>
+                  <pv_name>$(S)Blocking2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SilencingRB</name>
+              <pv_name>$(S)Silencing2RB</pv_name>
+              <x>325</x>
+              <y>293</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Silencing2</pv_name>
+                  <pv_name>$(S)Silencing2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm DelayRB</name>
+              <pv_name>$(S)AlarmDelay2RB</pv_name>
+              <x>325</x>
+              <y>319</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmDelay2</pv_name>
+                  <pv_name>$(S)AlarmDelay2RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Alarm #3</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 3: Status</name>
+            <x>8</x>
+            <y>10</y>
+            <width>314</width>
+            <height>223</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="102" green="26" blue="51">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm State Label_3</name>
+              <text>Alarm State:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm State_3</name>
+              <pv_name>$(S)AlarmState3</pv_name>
+              <x>140</x>
+              <y>12</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Background" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>
+                      <color name="MAJOR" red="255" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmState3</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Clearable Label_3</name>
+              <text>Alarm Clearable:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Clearable_3</name>
+              <pv_name>$(S)AlarmClearable3</pv_name>
+              <x>140</x>
+              <y>38</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Silenced Label_3</name>
+              <text>Alarm Silenced:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Silenced_3</name>
+              <pv_name>$(S)AlarmSilenced3</pv_name>
+              <x>140</x>
+              <y>64</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Latched Label_3</name>
+              <text>Alarm Latched:</text>
+              <x>10</x>
+              <y>90</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Latched_3</name>
+              <pv_name>$(S)AlarmLatched3</pv_name>
+              <x>140</x>
+              <y>90</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silence Alarm Label_3</name>
+              <text>Silence Alarm:</text>
+              <x>10</x>
+              <y>129</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Silence Alarm_3</name>
+              <pv_name>$(S)SilenceAlarmButton3</pv_name>
+              <x>140</x>
+              <y>129</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessSilenceAlarm3</pv_name>
+                  <value>0</value>
+                  <description>Silence Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState3</pv_name>
+                  <pv_name>$(S)Silencing3</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Clear Alarm Label_3</name>
+              <text>Clear Alarm:</text>
+              <x>12</x>
+              <y>155</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Clear Alarm_3</name>
+              <pv_name>$(S)ClearAlarmButton3</pv_name>
+              <x>140</x>
+              <y>155</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessClearAlarm3</pv_name>
+                  <value>0</value>
+                  <description>Clear Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState3</pv_name>
+                  <pv_name>$(S)AlarmClearable3</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 3: Configuration</name>
+            <x>323</x>
+            <y>10</y>
+            <width>534</width>
+            <height>383</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="102" green="26" blue="51">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Type Label_3</name>
+              <text>Alarm Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Type_3</name>
+              <pv_name>$(S)AlarmType3</pv_name>
+              <x>130</x>
+              <y>33</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Source Label_3</name>
+              <text>Alarm Source:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source_3</name>
+              <pv_name>$(S)AlarmSource3</pv_name>
+              <x>130</x>
+              <y>59</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Source Instance Label_3</name>
+              <text>Source Instance:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source Instance_3</name>
+              <pv_name>$(S)SourceInstance3</pv_name>
+              <x>130</x>
+              <y>85</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>1</item>
+                <item>2</item>
+              </items>
+              <items_from_pv>false</items_from_pv>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Hysteresis Label_3</name>
+              <text>Hysteresis:</text>
+              <x>12</x>
+              <y>111</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Hysteresis_3</name>
+              <pv_name>$(S)AlarmHysteresis3</pv_name>
+              <x>130</x>
+              <y>111</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Logic Label_3</name>
+              <text>Alarm Logic:</text>
+              <x>12</x>
+              <y>137</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Logic_3</name>
+              <pv_name>$(S)AlarmLogic3</pv_name>
+              <x>130</x>
+              <y>137</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Sides Label_3</name>
+              <text>Alarm Sides:</text>
+              <x>10</x>
+              <y>163</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sides_3</name>
+              <pv_name>$(S)AlarmSides3</pv_name>
+              <x>130</x>
+              <y>163</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Lo SP Label_3</name>
+              <text>Low Setpoint:</text>
+              <x>10</x>
+              <y>189</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Lo SP_3</name>
+              <pv_name>$(S)AlarmLowSP3</pv_name>
+              <x>130</x>
+              <y>189</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 ==1">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides3</pv_name>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm High SP Label_3</name>
+              <text>High Setpoint:</text>
+              <x>10</x>
+              <y>215</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm High SP_3</name>
+              <pv_name>$(S)AlarmHighSP3</pv_name>
+              <x>130</x>
+              <y>215</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 2">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides3</pv_name>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Latching Label_3</name>
+              <text>Alarm Latching:</text>
+              <x>12</x>
+              <y>241</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Latching_3</name>
+              <pv_name>$(S)Latching3</pv_name>
+              <x>130</x>
+              <y>241</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Blocking Label_3</name>
+              <text>Alarm Blocking:</text>
+              <x>10</x>
+              <y>267</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Blocking_3</name>
+              <pv_name>$(S)Blocking3</pv_name>
+              <x>130</x>
+              <y>267</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silencing Label_3</name>
+              <text>Alarm Silencing:</text>
+              <x>10</x>
+              <y>293</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Silencing_3</name>
+              <pv_name>$(S)Silencing3</pv_name>
+              <x>130</x>
+              <y>293</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Delay Label_3</name>
+              <text>Delay Time:</text>
+              <x>10</x>
+              <y>319</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Delay_3</name>
+              <pv_name>$(S)AlarmDelay3</pv_name>
+              <x>130</x>
+              <y>319</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_7</name>
+              <text>Software</text>
+              <x>130</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_6</name>
+              <text>Device</text>
+              <x>325</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm TypeRB</name>
+              <pv_name>$(S)AlarmType3RB</pv_name>
+              <x>325</x>
+              <y>33</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                  <pv_name>$(S)AlarmType3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm SourceRB</name>
+              <pv_name>$(S)AlarmSource3RB</pv_name>
+              <x>325</x>
+              <y>59</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSource3</pv_name>
+                  <pv_name>$(S)AlarmSource3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source InstanceRB</name>
+              <pv_name>$(S)SourceInstance3RB</pv_name>
+              <x>325</x>
+              <y>85</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType3</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm HysteresisRB</name>
+              <pv_name>$(S)AlarmHysteresis3RB</pv_name>
+              <x>325</x>
+              <y>111</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHysteresis3</pv_name>
+                  <pv_name>$(S)AlarmHysteresis3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>LogicRB</name>
+              <pv_name>$(S)AlarmLogic3RB</pv_name>
+              <x>325</x>
+              <y>137</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLogic3</pv_name>
+                  <pv_name>$(S)AlarmLogic3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SidesRB</name>
+              <pv_name>$(S)AlarmSides3RB</pv_name>
+              <x>325</x>
+              <y>163</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides3</pv_name>
+                  <pv_name>$(S)AlarmSides3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Lo SP RB</name>
+              <pv_name>$(S)AlarmLowSP3RB</pv_name>
+              <x>325</x>
+              <y>189</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvint0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Text" red="0" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLowSP3</pv_name>
+                  <pv_name>$(S)AlarmLowSP3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm High SPRB</name>
+              <pv_name>$(S)AlarmHighSP3RB</pv_name>
+              <x>325</x>
+              <y>215</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHighSP3</pv_name>
+                  <pv_name>$(S)AlarmHighSP3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm LatchingRB</name>
+              <pv_name>$(S)Latching3RB</pv_name>
+              <x>325</x>
+              <y>241</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Latching3</pv_name>
+                  <pv_name>$(S)Latching3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>BlockingRB</name>
+              <pv_name>$(S)Blocking3RB</pv_name>
+              <x>325</x>
+              <y>267</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Blocking3</pv_name>
+                  <pv_name>$(S)Blocking3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SilencingRB</name>
+              <pv_name>$(S)Silencing3RB</pv_name>
+              <x>325</x>
+              <y>293</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Silencing3</pv_name>
+                  <pv_name>$(S)Silencing3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm DelayRB</name>
+              <pv_name>$(S)AlarmDelay3RB</pv_name>
+              <x>325</x>
+              <y>319</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="Statse" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvint0">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmDelay3</pv_name>
+                  <pv_name>$(S)AlarmDelay3RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+      <tab>
+        <name>Alarm #4</name>
+        <children>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 4: Status</name>
+            <x>8</x>
+            <y>10</y>
+            <width>314</width>
+            <height>223</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="179" green="128" blue="26">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm State Label_4</name>
+              <text>Alarm State:</text>
+              <x>10</x>
+              <y>12</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm State_4</name>
+              <pv_name>$(S)AlarmState4</pv_name>
+              <x>140</x>
+              <y>12</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="Background" prop_id="background_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; 1">
+                    <value>
+                      <color name="MAJOR" red="255" green="0" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmState4</pv_name>
+                </rule>
+              </rules>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Clearable Label_4</name>
+              <text>Alarm Clearable:</text>
+              <x>10</x>
+              <y>38</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Clearable_4</name>
+              <pv_name>$(S)AlarmClearable4</pv_name>
+              <x>140</x>
+              <y>38</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Silenced Label_4</name>
+              <text>Alarm Silenced:</text>
+              <x>10</x>
+              <y>64</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Silenced_4</name>
+              <pv_name>$(S)AlarmSilenced4</pv_name>
+              <x>140</x>
+              <y>64</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Latched Label_4</name>
+              <text>Alarm Latched:</text>
+              <x>10</x>
+              <y>90</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Latched_4</name>
+              <pv_name>$(S)AlarmLatched4</pv_name>
+              <x>140</x>
+              <y>90</y>
+              <width>120</width>
+              <format>6</format>
+              <show_units>false</show_units>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silence Alarm Label_4</name>
+              <text>Silence Alarm:</text>
+              <x>10</x>
+              <y>129</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Silence Alarm_4</name>
+              <pv_name>$(S)SilenceAlarmButton4</pv_name>
+              <x>140</x>
+              <y>129</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessSilenceAlarm4</pv_name>
+                  <value>0</value>
+                  <description>Silence Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState4</pv_name>
+                  <pv_name>$(S)Silencing4</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Clear Alarm Label_4</name>
+              <text>Clear Alarm:</text>
+              <x>12</x>
+              <y>155</y>
+              <width>120</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="bool_button" version="2.0.0">
+              <name>Clear Alarm_4</name>
+              <pv_name>$(S)ClearAlarmButton4</pv_name>
+              <x>140</x>
+              <y>155</y>
+              <width>120</width>
+              <height>22</height>
+              <off_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </off_color>
+              <on_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </on_color>
+              <show_led>false</show_led>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <labels_from_pv>true</labels_from_pv>
+              <actions execute_as_one="true">
+                <action type="write_pv">
+                  <pv_name>$(S)ProcessClearAlarm4</pv_name>
+                  <value>0</value>
+                  <description>Clear Alarm</description>
+                </action>
+              </actions>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1 or (pvInt0 &lt;&gt; 1 and pvInt1 == 0)">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmState4</pv_name>
+                  <pv_name>$(S)AlarmClearable4</pv_name>
+                </rule>
+              </rules>
+              <tooltip>$(actions)</tooltip>
+              <show_confirm_dialog>false</show_confirm_dialog>
+            </widget>
+          </widget>
+          <widget type="group" version="2.0.0">
+            <name>Alarm 4: Configuration</name>
+            <x>323</x>
+            <y>10</y>
+            <width>534</width>
+            <height>383</height>
+            <font>
+              <font family="Liberation Sans" style="BOLD" size="14.0">
+              </font>
+            </font>
+            <foreground_color>
+              <color red="179" green="128" blue="26">
+              </color>
+            </foreground_color>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Type Label_4</name>
+              <text>Alarm Type:</text>
+              <x>10</x>
+              <y>33</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Type_4</name>
+              <pv_name>$(S)AlarmType4</pv_name>
+              <x>130</x>
+              <y>33</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Source Label_4</name>
+              <text>Alarm Source:</text>
+              <x>10</x>
+              <y>59</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source_4</name>
+              <pv_name>$(S)AlarmSource4</pv_name>
+              <x>130</x>
+              <y>59</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Source Instance Label_4</name>
+              <text>Source Instance:</text>
+              <x>10</x>
+              <y>85</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Source Instance_4</name>
+              <pv_name>$(S)SourceInstance4</pv_name>
+              <x>130</x>
+              <y>85</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>1</item>
+                <item>2</item>
+              </items>
+              <items_from_pv>false</items_from_pv>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Hysteresis Label_4</name>
+              <text>Hysteresis:</text>
+              <x>12</x>
+              <y>111</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Hysteresis_4</name>
+              <pv_name>$(S)AlarmHysteresis4</pv_name>
+              <x>130</x>
+              <y>111</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Logic Label_4</name>
+              <text>Alarm Logic:</text>
+              <x>12</x>
+              <y>137</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Logic_4</name>
+              <pv_name>$(S)AlarmLogic4</pv_name>
+              <x>130</x>
+              <y>137</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Sides Label_4</name>
+              <text>Alarm Sides:</text>
+              <x>10</x>
+              <y>163</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Sides_4</name>
+              <pv_name>$(S)AlarmSides4</pv_name>
+              <x>130</x>
+              <y>163</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Lo SP Label_4</name>
+              <text>Low Setpoint:</text>
+              <x>10</x>
+              <y>189</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Lo SP_4</name>
+              <pv_name>$(S)AlarmLowSP4</pv_name>
+              <x>130</x>
+              <y>189</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 1">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides4</pv_name>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm High SP Label_4</name>
+              <text>High Setpoint:</text>
+              <x>10</x>
+              <y>215</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm High SP_4</name>
+              <pv_name>$(S)AlarmHighSP4</pv_name>
+              <x>130</x>
+              <y>215</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0 == 2">
+                    <value>false</value>
+                  </exp>
+                  <exp bool_exp="pvInt1 == 0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides4</pv_name>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Latching Label_4</name>
+              <text>Alarm Latching:</text>
+              <x>12</x>
+              <y>241</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Alarm Latching_4</name>
+              <pv_name>$(S)Latching4</pv_name>
+              <x>130</x>
+              <y>241</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Blocking Label_4</name>
+              <text>Alarm Blocking:</text>
+              <x>10</x>
+              <y>267</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Blocking_4</name>
+              <pv_name>$(S)Blocking4</pv_name>
+              <x>130</x>
+              <y>267</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Silencing Label_4</name>
+              <text>Alarm Silencing:</text>
+              <x>10</x>
+              <y>293</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="combo" version="2.0.0">
+              <name>Silencing_4</name>
+              <pv_name>$(S)Silencing4</pv_name>
+              <x>130</x>
+              <y>293</y>
+              <width>150</width>
+              <height>22</height>
+              <background_color>
+                <color name="Write_Background" red="128" green="255" blue="255">
+                </color>
+              </background_color>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+              <items>
+                <item>Item 0</item>
+                <item>Item 1</item>
+              </items>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Alarm Delay Label_4</name>
+              <text>Delay Time:</text>
+              <x>10</x>
+              <y>319</y>
+              <width>110</width>
+              <horizontal_alignment>2</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+            </widget>
+            <widget type="textentry" version="3.0.0">
+              <name>Alarm Delay_4</name>
+              <pv_name>$(S)AlarmDelay4</pv_name>
+              <x>130</x>
+              <y>319</y>
+              <width>120</width>
+              <rules>
+                <rule name="Enable" prop_id="enabled" out_exp="false">
+                  <exp bool_exp="pvInt0==0">
+                    <value>false</value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_8</name>
+              <text>Software</text>
+              <x>130</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="label" version="2.0.0">
+              <name>Software_9</name>
+              <text>Device</text>
+              <x>325</x>
+              <y>6</y>
+              <width>150</width>
+              <font>
+                <font family="Liberation Sans" style="BOLD" size="14.0">
+                </font>
+              </font>
+              <transparent>false</transparent>
+              <horizontal_alignment>1</horizontal_alignment>
+              <vertical_alignment>1</vertical_alignment>
+              <border_width>1</border_width>
+              <border_color>
+                <color name="Header_Background" red="77" green="77" blue="77">
+                </color>
+              </border_color>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm TypeRB</name>
+              <pv_name>$(S)AlarmType4RB</pv_name>
+              <x>325</x>
+              <y>33</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmType4</pv_name>
+                  <pv_name>$(S)AlarmType4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm SourceRB</name>
+              <pv_name>$(S)AlarmSource4RB</pv_name>
+              <x>325</x>
+              <y>59</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSource4</pv_name>
+                  <pv_name>$(S)AlarmSource4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Source InstanceRB</name>
+              <pv_name>$(S)SourceInstance4RB</pv_name>
+              <x>325</x>
+              <y>85</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)SourceInstance4</pv_name>
+                  <pv_name>$(S)SourceInstance4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm HysteresisRB</name>
+              <pv_name>$(S)AlarmHysteresis4RB</pv_name>
+              <x>325</x>
+              <y>111</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHysteresis4</pv_name>
+                  <pv_name>$(S)AlarmHysteresis4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Logic_RB</name>
+              <pv_name>$(S)AlarmLogic4RB</pv_name>
+              <x>325</x>
+              <y>137</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLogic4</pv_name>
+                  <pv_name>$(S)AlarmLogic4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SidesRB</name>
+              <pv_name>$(S)AlarmSides4RB</pv_name>
+              <x>325</x>
+              <y>163</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmSides4</pv_name>
+                  <pv_name>$(S)AlarmSides4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm Lo SP RB</name>
+              <pv_name>$(S)AlarmLowSP4RB</pv_name>
+              <x>325</x>
+              <y>189</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvint0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmLowSP4</pv_name>
+                  <pv_name>$(S)AlarmLowSP4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm High SP RB</name>
+              <pv_name>$(S)AlarmHighSP4RB</pv_name>
+              <x>325</x>
+              <y>215</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmHighSP4</pv_name>
+                  <pv_name>$(S)AlarmHighSP4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm LatchingRB</name>
+              <pv_name>$(S)Latching4RB</pv_name>
+              <x>325</x>
+              <y>241</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Latching4</pv_name>
+                  <pv_name>$(S)Latching4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>BlockingRB</name>
+              <pv_name>$(S)Blocking4RB</pv_name>
+              <x>325</x>
+              <y>267</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Blocking4</pv_name>
+                  <pv_name>$(S)Blocking4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>SilencingRB</name>
+              <pv_name>$(S)Silencing4RB</pv_name>
+              <x>325</x>
+              <y>293</y>
+              <width>150</width>
+              <vertical_alignment>1</vertical_alignment>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)Silencing4</pv_name>
+                  <pv_name>$(S)Silencing4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+            <widget type="textupdate" version="2.0.0">
+              <name>Alarm DelayRB</name>
+              <pv_name>$(S)AlarmDelay4RB</pv_name>
+              <x>325</x>
+              <y>319</y>
+              <width>120</width>
+              <vertical_alignment>1</vertical_alignment>
+              <wrap_words>false</wrap_words>
+              <rules>
+                <rule name="State" prop_id="border_color" out_exp="false">
+                  <exp bool_exp="pvInt0 &lt;&gt; pvInt1">
+                    <value>
+                      <color name="Attention" red="255" green="160" blue="0">
+                      </color>
+                    </value>
+                  </exp>
+                  <pv_name>$(S)AlarmDelay4</pv_name>
+                  <pv_name>$(S)AlarmDelay4RB</pv_name>
+                </rule>
+              </rules>
+              <border_alarm_sensitive>false</border_alarm_sensitive>
+            </widget>
+          </widget>
+        </children>
+      </tab>
+    </tabs>
+    <x>5</x>
+    <y>5</y>
+    <width>870</width>
+    <height>435</height>
+  </widget>
+</display>
